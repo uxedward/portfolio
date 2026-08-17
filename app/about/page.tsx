@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Chip } from "@/components/ui/chip";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -38,7 +39,7 @@ const skills = [
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:py-24">
+    <div className="page-enter mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:py-24">
       <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
         <div>
           <p className="text-sm text-ink-soft">A bit about who I am</p>
@@ -64,7 +65,7 @@ export default function AboutPage() {
                 href={site.chat.href}
                 target="_blank"
                 rel="noreferrer"
-                className="text-ink underline decoration-hairline underline-offset-4 hover:decoration-ink"
+                className="text-ink underline decoration-hairline underline-offset-4 transition-colors duration-300 hover:decoration-ink"
               >
                 say hello
               </a>
@@ -123,11 +124,8 @@ export default function AboutPage() {
         </h2>
         <ul className="flex flex-wrap gap-2">
           {skills.map((skill) => (
-            <li
-              key={skill}
-              className="rounded-full border border-hairline px-3 py-1.5 text-sm"
-            >
-              {skill}
+            <li key={skill}>
+              <Chip>{skill}</Chip>
             </li>
           ))}
         </ul>

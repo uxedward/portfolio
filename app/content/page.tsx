@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ContentPage() {
   return (
-    <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:py-24">
+    <div className="page-enter mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:py-24">
       <p className="text-sm text-ink-soft">Archives</p>
       <h1 className="mt-5 max-w-3xl font-serif text-[clamp(2.2rem,5vw,4.4rem)] leading-[0.95] tracking-[-0.03em]">
         Ideas, lessons, and explorations that left a trail of the work.

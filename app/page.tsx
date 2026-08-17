@@ -4,9 +4,9 @@ import { projects } from "@/lib/projects";
 
 export default function Home() {
   return (
-    <>
+    <div className="page-enter">
       <HomeIntro />
       <ProjectGrid projects={projects} />
-    </>
+    </div>
   );
 }

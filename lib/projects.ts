@@ -16,11 +16,13 @@ export type Project = {
   outcome: string;
   metrics: Metric[];
   cover: string;
+  hero?: string;
   duration?: string;
   type?: string;
   liveUrl?: string;
   externalUrl?: string;
   featured?: boolean;
+  domains?: string[];
 };
 
 export const projects: Project[] = [
@@ -40,14 +42,15 @@ export const projects: Project[] = [
       { value: "+12.4%", label: "No-route error CVR to purchase" },
     ],
     cover: "/images/work/bus-search-cover.jpg",
-    duration: "Sept 2023 · 1 month",
-    type: "Post-release improvement",
+    duration: "Sept 2023 (1 month)",
+    type: "Post-Release Improvement",
+    domains: ["Product Thinking", "Product Design", "Human-Centricity"],
     liveUrl: "https://m.tiket.com/bus-travel",
     featured: true,
   },
   {
     slug: "train-booking",
-    title: "Improving Booking Form Experience",
+    title: "Improving Train’s Booking Form Experience",
     client: "tiket.com / Train",
     year: "2023",
     tags: ["Product", "Experiment"],
@@ -60,14 +63,16 @@ export const projects: Project[] = [
       { value: "90%", label: "Users filling passenger details" },
     ],
     cover: "/images/work/train-booking-cover.jpg",
-    duration: "June 2023 · 1 month",
-    type: "A/B experiment",
+    hero: "/images/work/train-7.jpg",
+    duration: "June 2023 (1 month)",
+    type: "A/B Experiment",
+    domains: ["Product Thinking", "Product Design", "Hi-fi Prototyping"],
     liveUrl: "https://m.tiket.com/kereta-api",
     featured: true,
   },
   {
     slug: "car-rentals",
-    title: "Improving Business Scheme & User Experience",
+    title: "Improving Car Rental's Business Scheme & User Experience",
     client: "tiket.com / Car Rentals",
     year: "2022",
     tags: ["Product", "Research"],
@@ -82,8 +87,10 @@ export const projects: Project[] = [
       { value: "−8%", label: "Area / zone complaints" },
     ],
     cover: "/images/work/car-rentals-cover.jpg",
-    duration: "February 2022 · 2 months",
-    type: "UX improvement",
+    hero: "/images/work/car-12.gif",
+    duration: "February 2022 (2 months)",
+    type: "UX Improvement",
+    domains: ["Product Thinking", "Product Design", "Hi-fi Prototyping"],
     liveUrl: "https://m.tiket.com/sewa-mobil",
     featured: true,
   },

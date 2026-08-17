@@ -13,7 +13,7 @@ export function ProjectCard({
   const href = projectHref(project);
   const external = isExternal(project);
   const className = cn(
-    "group relative block overflow-hidden bg-paper-2",
+    "group relative block overflow-hidden bg-paper-2 transition-transform duration-700 ease-[var(--ease-out)]",
     featured ? "min-h-[420px] md:min-h-[560px]" : "min-h-[340px] md:min-h-[420px]",
   );
 
@@ -25,11 +25,11 @@ export function ProjectCard({
         fill
         sizes={featured ? "(min-width: 768px) 100vw, 100vw" : "(min-width: 768px) 50vw, 100vw"}
         priority={featured}
-        className="object-cover transition duration-700 ease-out group-hover:scale-[1.04]"
+        className="object-cover transition-transform duration-700 ease-[var(--ease-out)] group-hover:scale-[1.045]"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-black/10" />
-      <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-        <span className="rounded-full bg-paper px-4 py-2 text-sm text-ink">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-black/10 transition-opacity duration-500 group-hover:from-black/78" />
+      <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 ease-[var(--ease-out)] group-hover:opacity-100">
+        <span className="rounded-full bg-paper px-5 py-2.5 text-sm text-ink shadow-sm">
           View details ↗
         </span>
       </div>
@@ -49,12 +49,7 @@ export function ProjectCard({
 
   if (external) {
     return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noreferrer"
-        className={className}
-      >
+      <a href={href} target="_blank" rel="noreferrer" className={className}>
         {content}
       </a>
     );

@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import { Button } from "@/components/ui/button";
 
 export function HomeIntro() {
   return (
@@ -14,14 +15,9 @@ export function HomeIntro() {
           Figma and product design to 200k+ people since 2021. If that sounds
           like you, let&apos;s build something together.
         </p>
-        <a
-          href={site.chat.href}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-8 inline-flex rounded-full bg-ink px-5 py-2.5 text-sm text-paper transition-opacity hover:opacity-80"
-        >
+        <Button href={site.chat.href} external className="mt-8">
           {site.chat.label}
-        </a>
+        </Button>
       </div>
       <aside className="border-t border-hairline pt-6 lg:border-t-0 lg:pt-0">
         <p className="text-[11px] uppercase tracking-[0.18em] text-ink-soft">
@@ -33,7 +29,7 @@ export function HomeIntro() {
             href={site.role.href}
             target="_blank"
             rel="noreferrer"
-            className="underline decoration-hairline underline-offset-4 transition-colors hover:decoration-ink"
+            className="underline decoration-hairline underline-offset-4 transition-colors duration-300 hover:decoration-ink"
           >
             {site.role.company}
           </a>
