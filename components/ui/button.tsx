@@ -3,14 +3,14 @@ import { cn } from "@/lib/cn";
 
 const variants = {
   primary:
-    "bg-ink text-paper hover:bg-[#2c2a27] hover:text-paper",
+    "bg-ink text-white hover:bg-[#2c2a27] hover:text-white",
   outline:
-    "border border-hairline bg-transparent text-ink hover:border-ink hover:bg-paper-2",
+    "border border-ink/35 bg-paper text-ink hover:border-ink hover:bg-paper-2",
   ghost: "bg-transparent text-ink-soft hover:text-ink",
 } as const;
 
 const sizes = {
-  sm: "px-3.5 py-1.5 text-sm",
+  sm: "px-4 py-2 text-sm font-medium",
   md: "px-5 py-2.5 text-sm",
 } as const;
 
@@ -43,7 +43,9 @@ export function Button({
     "active:scale-[0.98]",
     variants[variant],
     sizes[size],
-    pressed && variant === "outline" && "border-ink bg-ink text-paper hover:bg-ink hover:text-paper",
+    pressed &&
+      variant === "outline" &&
+      "border-ink bg-ink text-white hover:bg-ink hover:text-white",
     className,
   );
 

@@ -29,7 +29,11 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
 
   return (
     <section className="mx-auto max-w-[1440px] px-5 pb-20 sm:px-8">
-      <div className="mb-6 flex flex-wrap items-center gap-2">
+      <div
+        className="mb-6 inline-flex flex-wrap items-center gap-1 rounded-full border-2 border-ink/20 bg-paper-2 p-1.5"
+        role="tablist"
+        aria-label="Filter work"
+      >
         {filters.map((item) => {
           const selected = filter === item.id;
           return (
@@ -39,6 +43,7 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
               size="sm"
               pressed={selected}
               onClick={() => setFilter(item.id)}
+              className="min-w-[5.5rem]"
             >
               {item.label}
             </Button>
