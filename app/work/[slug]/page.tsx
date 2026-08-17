@@ -70,9 +70,11 @@ export default async function CaseStudyPage({ params }: Props) {
   const { toc, Body } = content;
 
   return (
-    <article className="page-enter">
-      <CaseStudyHero project={project} domains={project.domains ?? []} />
+    <article>
+      <CaseStudyHero project={project} />
       <CaseStudyShell
+        project={project}
+        domains={project.domains ?? []}
         toc={toc}
         next={
           nextProject

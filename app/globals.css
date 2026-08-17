@@ -116,11 +116,9 @@ img {
 @keyframes page-enter {
   from {
     opacity: 0;
-    transform: translateY(12px);
   }
   to {
     opacity: 1;
-    transform: none;
   }
 }
 
@@ -129,7 +127,13 @@ img {
 }
 
 .case-section {
-  scroll-margin-top: calc(var(--header-h) + 1.5rem);
+  scroll-margin-top: calc(var(--header-h) + 3.5rem);
+}
+
+@media (min-width: 1024px) {
+  .case-section {
+    scroll-margin-top: calc(var(--header-h) + 1.5rem);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

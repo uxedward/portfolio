@@ -13,9 +13,17 @@ const nav = [
 
 export function Header() {
   const pathname = usePathname();
+  const inverse = pathname.startsWith("/work/");
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-hairline/80 bg-paper/85 backdrop-blur-md transition-[background-color,border-color] duration-300">
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,color] duration-300",
+        inverse
+          ? "border-b border-white/10 bg-ink text-paper"
+          : "border-b border-hairline/80 bg-paper/85 text-ink backdrop-blur-md",
+      )}
+    >
       <div className="mx-auto flex h-14 max-w-[1440px] items-center justify-between gap-4 px-5 sm:px-8">
         <Link
           href="/"
@@ -27,7 +35,7 @@ export function Header() {
           {nav.map((item) => {
             const active =
               item.href === "/"
-                ? pathname === "/"
+                ? pathname === "/" || pathname.startsWith("/work/")
                 : pathname.startsWith(item.href);
             return (
               <Link
@@ -35,13 +43,20 @@ export function Header() {
                 href={item.href}
                 className={cn(
                   "relative py-1 transition-colors duration-300",
-                  active ? "text-ink" : "text-ink-soft hover:text-ink",
+                  inverse
+                    ? active
+                      ? "text-paper"
+                      : "text-paper/55 hover:text-paper"
+                    : active
+                      ? "text-ink"
+                      : "text-ink-soft hover:text-ink",
                 )}
               >
                 {item.label}
                 <span
                   className={cn(
-                    "absolute inset-x-0 -bottom-0.5 h-px origin-left bg-ink transition-transform duration-300 ease-[var(--ease-out)]",
+                    "absolute inset-x-0 -bottom-0.5 h-px origin-left transition-transform duration-300 ease-[var(--ease-out)]",
+                    inverse ? "bg-paper" : "bg-ink",
                     active ? "scale-x-100" : "scale-x-0",
                   )}
                 />
@@ -49,7 +64,14 @@ export function Header() {
             );
           })}
         </nav>
-        <p className="hidden text-sm text-ink-soft sm:block">{site.practice}</p>
+        <p
+          className={cn(
+            "hidden text-sm sm:block",
+            inverse ? "text-paper/55" : "text-ink-soft",
+          )}
+        >
+          {site.practice}
+        </p>
       </div>
     </header>
   );
