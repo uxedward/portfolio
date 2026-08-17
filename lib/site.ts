@@ -1,0 +1,53 @@
+export const site = {
+  name: "Edward",
+  fullName: "Edward Sudjono",
+  handle: "@ux.edward",
+  practice: "Product Design",
+  title: "Edward — Product Design",
+  description:
+    "Digital product designer at tiket.com. Specializing in user interface design, user behaviour analysis, and stakeholder alignment. Advocating Figma and product design since 2021.",
+  url: "https://www.uxedward.com",
+  location: "Jakarta",
+  role: {
+    label: "Current Role",
+    title: "Product Design",
+    company: "tiket.com",
+    href: "https://www.tiket.com",
+  },
+  chat: {
+    label: "Let's Chat",
+    href: "https://www.linkedin.com/in/edwardsudjono/",
+  },
+  socials: [
+    {
+      name: "Instagram",
+      href: "https://instagram.com/uxedward",
+      stat: "110k+",
+      label: "followers",
+    },
+    {
+      name: "TikTok",
+      href: "https://www.tiktok.com/@ux.edward",
+      stat: "90k+",
+      label: "followers",
+    },
+    {
+      name: "Threads",
+      href: "https://www.threads.net/@ux.edward",
+      stat: "20k+",
+      label: "followers",
+    },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/edwardsudjono/",
+      stat: "1k+",
+      label: "followers",
+    },
+    {
+      name: "Dribbble",
+      href: "https://dribbble.com/uxedward",
+      stat: "Explorations",
+      label: "design studies",
+    },
+  ],
+} as const;
