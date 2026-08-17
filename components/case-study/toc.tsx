@@ -58,6 +58,7 @@ export function CaseStudyToc({ items }: { items: TocItem[] }) {
                     ? "text-ink lg:border-ink"
                     : "text-ink-soft lg:border-transparent hover:text-ink",
                 )}
+                aria-current={isActive ? "location" : undefined}
               >
                 {item.label}
               </a>
