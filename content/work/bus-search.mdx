@@ -1,0 +1,87 @@
+## In a nutshell
+
+Small improvements, large impact.
+
+After repeated empty search results on Bus & Shuttle, the team ran Amplitude behaviour analysis, live usability tests, and an Impact × Implementation workshop with product, business, and engineering. We focused on the most frequent, most solvable failure: **no-result errors**.
+
+The winning experiment moved conversion without rebuilding the location data layer.
+
+<Figure
+  src="/images/work/bus-search-8.jpg"
+  alt="Bus and Shuttle search and results screens on two phones"
+  caption="Search and results after the empty-state work."
+/>
+
+## Background
+
+tiket.com is a Southeast Asian travel platform serving 52M+ active users across flights, hotels, trains, and more. After launching Bus & Shuttle in early 2023, search-to-book conversion sat at **6.44%**. That was the prompt to investigate.
+
+## Research
+
+Two methods, many issues, limited capacity:
+
+1. **User behaviour analysis** in Amplitude
+2. **Live usability testing** with Bus & Shuttle travellers
+
+We plotted findings on an Impact × Implementation matrix. The highest-priority, most feasible problem was the **“no result” error on the search results page**.
+
+## The root problem
+
+Inaccurate location data.
+
+Vendors can define their own departure and arrival names, so the same place appears as multiple entries. Users search one vendor’s name and land on another vendor’s empty result.
+
+Two error types showed up:
+
+- Error **with** alternative routes
+- Error **without** alternative routes
+
+## How might we
+
+We evaluated the live error experience and wrote three HMWs.
+
+<Callout eyebrow="Misleading header">
+When users search a specific terminal, the header still reads City to City. How might we present accurate information so people aren’t misled?
+</Callout>
+
+<Callout eyebrow="Huge error message">
+The error block dominates the screen and hides alternatives. How might we reduce the error’s prominence so the page doesn’t feel like a dead end?
+</Callout>
+
+<Callout eyebrow="Unclear alternatives">
+Recommended routes don’t explain what they’re based on. How might we show alternatives clearly and in context?
+</Callout>
+
+## Solutions
+
+We changed three parts of the empty-state experience.
+
+<Steps>
+  <Step number="01" title="Header: precise search results">
+    Instead of a generic City to City header, the page now repeats the exact terms the user searched.
+  </Step>
+  <Step number="02" title="Error message: less like a failure">
+    The error occupies less space and reads less like a hard stop, so people keep scanning alternatives.
+  </Step>
+  <Step number="03" title="Alternative routes: seamless recommendations">
+    Recommended routes are labelled (for example City to City) so users can see which terminals are being suggested.
+  </Step>
+</Steps>
+
+<Figure
+  src="/images/work/bus-search-14.jpg"
+  alt="Desktop search results with nearby available routes"
+  caption="Nearby available routes, shown instead of a dead-end error."
+/>
+
+## Impact
+
+We validated the redesign with an A/B experiment. The new empty state won.
+
+The better long-term fix is still the location data itself. This release proved that a more honest, less alarming empty state can recover conversion while that work continues.
+
+## Reflection
+
+This project stretched three muscles: Amplitude analysis, facilitating an impact-to-implementation workshop, and shipping an experiment that won.
+
+Shoutout to collaborators across product design (Ule, Nindya, Yossie, Ryan S), product (Agung, Alwan, Hanifa), business intelligence, and engineering.
