@@ -7,7 +7,8 @@ export const studios = [
     years: "2021—Present",
     siteHref: "https://www.tiket.com",
     siteLabel: "tiket.com",
-    mark: "t",
+    mark: "logo",
+    image: "/images/tiket-logo.png",
   },
   {
     id: "uxedward",

@@ -5,37 +5,28 @@ import type { Studio } from "@/lib/nav";
 
 export function StudioMark({
   studio,
-  active = false,
   size = "md",
 }: {
   studio: Studio;
   active?: boolean;
   size?: "sm" | "md";
 }) {
-  const box = size === "sm" ? "h-8 w-8 text-[13px]" : "h-9 w-9 text-sm";
-
-  if (studio.mark === "portrait") {
-    return (
-      <Image
-        src={studio.image}
-        alt=""
-        width={36}
-        height={36}
-        className={cn("shrink-0 rounded-full object-cover", box)}
-      />
-    );
-  }
+  const box = size === "sm" ? "h-8 w-8" : "h-9 w-9";
 
   return (
-    <span
+    <Image
+      src={studio.image}
+      alt={studio.label}
+      width={36}
+      height={36}
       className={cn(
-        "grid shrink-0 place-items-center rounded-[var(--radius-sm)] font-medium tracking-tight",
+        "shrink-0 object-cover",
         box,
-        active ? "bg-paper text-ink" : "bg-paper-2 text-ink",
+        studio.mark === "portrait"
+          ? "rounded-full"
+          : "rounded-[var(--radius-sm)]",
       )}
-    >
-      {studio.mark}
-    </span>
+    />
   );
 }
 
