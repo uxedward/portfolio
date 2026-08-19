@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
+  BusProductBody,
+  busProductToc,
+} from "@/components/case-studies/bus-product";
+import {
   BusSearchBody,
   busSearchToc,
 } from "@/components/case-studies/bus-search";
@@ -35,6 +39,7 @@ const bodies: Record<
   "bus-search": { toc: busSearchToc, Body: BusSearchBody },
   "train-booking": { toc: trainBookingToc, Body: TrainBookingBody },
   "car-rentals": { toc: carRentalsToc, Body: CarRentalsBody },
+  "bus-product": { toc: busProductToc, Body: BusProductBody },
 };
 
 export function generateStaticParams() {

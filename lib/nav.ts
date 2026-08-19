@@ -15,7 +15,7 @@ export const studios = [
     href: "/content",
     subtitle: "Teaching in public",
     years: "2021—",
-    siteHref: "https://instagram.com/uxedward",
+    siteHref: "https://www.instagram.com/ux.edward/",
     siteLabel: "Instagram",
     mark: "portrait",
     image: "/images/about/edward-portrait.jpg",

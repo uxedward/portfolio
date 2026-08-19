@@ -126,16 +126,17 @@ export const projects: Project[] = [
       "#2 on Search Inquiries at Homepage",
       "+256k projected users per year",
     ],
-    note: "You will be directed to tiket.design article.",
     outcome: "#2 homepage search · 256k projected users / year",
     metrics: [
       { value: "#2", label: "Homepage search inquiries" },
       { value: "256k", label: "Projected users per year" },
     ],
     cover: "/images/work/bus-product-cover.jpg",
+    hero: "/images/work/bus-odyssey-01.gif",
     duration: "2023",
     type: "New product",
-    externalUrl:
+    domains: ["Product Thinking", "Product Design", "Research"],
+    liveUrl:
       "https://tiket.design/stories/the-design-odyssey-of-bus-and-shuttle-at-tiket-com",
     featured: true,
   },
@@ -153,7 +154,7 @@ export const projects: Project[] = [
     outcome: "110k+ followers",
     metrics: [{ value: "110k+", label: "Followers" }],
     cover: "/images/about/edward-portrait.jpg",
-    externalUrl: "https://instagram.com/uxedward",
+    externalUrl: "https://www.instagram.com/ux.edward/",
   },
   {
     slug: "tiktok",

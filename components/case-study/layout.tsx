@@ -14,9 +14,9 @@ export function CaseStudyHero({
   const isGif = hero.endsWith(".gif");
 
   return (
-    <header className="bg-paper text-ink">
+    <header className="bg-ink text-paper">
       <div className="mx-auto max-w-[1180px] px-5 pb-16 pt-10 sm:px-8 lg:pb-20 lg:pt-14">
-        <p className="text-sm text-ink-soft">{project.client}</p>
+        <p className="text-sm text-paper/65">{project.client}</p>
         <h1 className="mt-3 max-w-4xl font-serif text-[clamp(2.4rem,6vw,5.4rem)] leading-[0.95] tracking-[-0.03em]">
           {project.title}
         </h1>
