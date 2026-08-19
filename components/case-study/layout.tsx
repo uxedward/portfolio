@@ -17,7 +17,7 @@ export function CaseStudyHero({
     <header className="bg-ink text-paper">
       <div className="mx-auto max-w-[1180px] px-5 pb-16 pt-10 sm:px-8 lg:pb-20 lg:pt-14">
         <p className="text-sm text-paper/65">{project.client}</p>
-        <h1 className="mt-3 max-w-4xl font-serif text-[clamp(2.4rem,6vw,5.4rem)] leading-[0.95] tracking-[-0.03em]">
+        <h1 className="mt-3 max-w-4xl font-sans text-[clamp(2.4rem,6vw,5.4rem)] leading-[0.95] tracking-[-0.03em]">
           {project.title}
         </h1>
         <div className="relative mt-10 overflow-hidden rounded-[var(--radius)] bg-paper-2">
@@ -135,7 +135,7 @@ export function Section({
   return (
     <section id={id} className="case-section mb-24">
       <p className="text-sm text-ink-soft">{label}</p>
-      <h2 className="mt-2 font-serif text-[clamp(2rem,4vw,3.2rem)] leading-[1.05] tracking-[-0.03em]">
+      <h2 className="mt-2 font-sans text-[clamp(2rem,4vw,3.2rem)] leading-[1.05] tracking-[-0.03em]">
         {heading}
       </h2>
       <div className="mt-6 space-y-5 text-[17px] leading-7 text-ink-soft">
@@ -206,7 +206,7 @@ export function Metrics({
     >
       {items.map((item) => (
         <div key={item.label} className="bg-paper px-5 py-6">
-          <p className="font-serif text-4xl tracking-tight text-accent">
+          <p className="font-sans text-4xl tracking-tight text-accent">
             {item.value}
           </p>
           <p className="mt-2 text-sm leading-5 text-ink-soft">{item.label}</p>

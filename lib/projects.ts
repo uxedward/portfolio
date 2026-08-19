@@ -24,7 +24,6 @@ export type Project = {
   type?: string;
   liveUrl?: string;
   externalUrl?: string;
-  featured?: boolean;
   domains?: string[];
 };
 
@@ -55,7 +54,6 @@ export const projects: Project[] = [
     type: "Post-Release Improvement",
     domains: ["Product Thinking", "Product Design", "Human-Centricity"],
     liveUrl: "https://m.tiket.com/bus-travel",
-    featured: true,
   },
   {
     slug: "train-booking",
@@ -79,7 +77,6 @@ export const projects: Project[] = [
     type: "A/B Experiment",
     domains: ["Product Thinking", "Product Design", "Hi-fi Prototyping"],
     liveUrl: "https://m.tiket.com/kereta-api",
-    featured: true,
   },
   {
     slug: "car-rentals",
@@ -110,7 +107,6 @@ export const projects: Project[] = [
     type: "UX Improvement",
     domains: ["Product Thinking", "Product Design", "Hi-fi Prototyping"],
     liveUrl: "https://m.tiket.com/sewa-mobil",
-    featured: true,
   },
   {
     slug: "bus-product",
@@ -138,7 +134,6 @@ export const projects: Project[] = [
     domains: ["Product Thinking", "Product Design", "Research"],
     liveUrl:
       "https://tiket.design/stories/the-design-odyssey-of-bus-and-shuttle-at-tiket-com",
-    featured: true,
   },
   {
     slug: "instagram",

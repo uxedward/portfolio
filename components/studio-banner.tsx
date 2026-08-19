@@ -8,7 +8,7 @@ export function StudioBanner({ studio }: { studio: Studio }) {
       <div className="flex items-center gap-3">
         <StudioMark studio={studio} size="sm" />
         <div>
-          <h1 className="font-serif text-[clamp(2.2rem,5vw,4.4rem)] leading-[0.95] tracking-[-0.03em]">
+          <h1 className="font-sans text-[clamp(2.2rem,5vw,4.4rem)] leading-[0.95] tracking-[-0.03em]">
             {studio.label}
           </h1>
           <p className="mt-2 text-sm text-ink-soft">{studio.years}</p>

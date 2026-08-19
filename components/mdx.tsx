@@ -19,7 +19,7 @@ export function Metric({
 }) {
   return (
     <div className="bg-paper px-5 py-6">
-      <p className="font-serif text-4xl tracking-tight text-accent">{value}</p>
+      <p className="font-sans text-4xl tracking-tight text-accent">{value}</p>
       <p className="mt-2 text-sm leading-5 text-ink-soft">{label}</p>
     </div>
   );
@@ -88,7 +88,7 @@ export function Step({
 }) {
   return (
     <li className="grid gap-3 sm:grid-cols-[4rem_1fr]">
-      <span className="font-serif text-3xl text-accent">{number}</span>
+      <span className="font-sans text-3xl text-accent">{number}</span>
       <div>
         <h3 className="text-xl leading-tight">{title}</h3>
         <div className="mt-2 space-y-3 text-[16px] leading-7 text-ink-soft">
@@ -107,7 +107,7 @@ export const mdxComponents: NonNullable<MDXRemoteProps["components"]> = {
   Steps,
   Step,
   h2: ({ children }) => (
-    <h2 className="mt-16 font-serif text-3xl tracking-tight sm:text-4xl">
+    <h2 className="mt-16 font-sans text-3xl tracking-tight sm:text-4xl">
       {children}
     </h2>
   ),
