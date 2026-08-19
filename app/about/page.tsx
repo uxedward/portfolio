@@ -73,7 +73,7 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
-        <div className="overflow-hidden bg-paper-2">
+        <div className="overflow-hidden rounded-[var(--radius)] bg-paper-2">
           <Image
             src="/images/about/edward-grid.jpg"
             alt="Portraits of Edward Sudjono"

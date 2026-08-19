@@ -116,9 +116,9 @@ export function Sidebar() {
                 <Link
                   href="/about"
                   className={cn(
-                    "block rounded-2xl px-3 py-3 text-[15px] transition-colors duration-300",
+                    "block rounded-[var(--radius)] px-3 py-3 text-[15px] transition-colors duration-300",
                     pathname === "/about"
-                      ? "bg-ink text-white"
+                      ? "bg-ink text-paper"
                       : "hover:bg-paper-2",
                   )}
                 >
@@ -130,7 +130,7 @@ export function Sidebar() {
                   href={site.chat.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="block rounded-2xl px-3 py-3 text-[15px] hover:bg-paper-2"
+                  className="block rounded-[var(--radius)] px-3 py-3 text-[15px] hover:bg-paper-2"
                 >
                   {site.chat.label} ↗
                 </a>
@@ -200,7 +200,7 @@ function SocialRow() {
               target="_blank"
               rel="noreferrer"
               aria-label={social.name}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-paper-2 text-ink-soft transition-colors duration-300 hover:bg-hairline hover:text-ink"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-hairline text-ink-soft transition-colors duration-300 hover:border-ink hover:text-ink"
             >
               <Icon />
             </a>

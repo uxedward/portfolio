@@ -1,43 +1,27 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { ProjectCard } from "@/components/project-card";
 import type { Project } from "@/lib/projects";
 import { duration, easeOut } from "@/lib/motion";
 
 export function ProjectGrid({ projects }: { projects: Project[] }) {
-  const featured = projects[0];
-  const rest = projects.slice(1);
-
   return (
-    <section>
-      <AnimatePresence mode="wait">
+    <section className="flex flex-col gap-10">
+      {projects.map((project, index) => (
         <motion.div
-          key={featured?.slug ?? "empty"}
+          key={project.slug}
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 8 }}
-          transition={{ duration: duration.base, ease: easeOut }}
+          transition={{
+            duration: duration.base,
+            delay: 0.05 * index,
+            ease: easeOut,
+          }}
         >
-          {featured ? <ProjectCard project={featured} featured /> : null}
-          <div className="mt-3 grid gap-3 md:grid-cols-2">
-            {rest.map((project, index) => (
-              <motion.div
-                key={project.slug}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: duration.base,
-                  delay: 0.04 * index,
-                  ease: easeOut,
-                }}
-              >
-                <ProjectCard project={project} />
-              </motion.div>
-            ))}
-          </div>
+          <ProjectCard project={project} />
         </motion.div>
-      </AnimatePresence>
+      ))}
     </section>
   );
 }

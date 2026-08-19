@@ -4,21 +4,21 @@ import type { Studio } from "@/lib/nav";
 
 export function StudioBanner({ studio }: { studio: Studio }) {
   return (
-    <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+    <div className="mb-12 flex flex-wrap items-end justify-between gap-5 border-b border-hairline pb-8">
       <div className="flex items-center gap-3">
         <StudioMark studio={studio} size="sm" />
         <div>
-          <h1 className="text-xl font-medium tracking-tight sm:text-2xl">
+          <h1 className="font-serif text-[clamp(2.2rem,5vw,4.4rem)] leading-[0.95] tracking-[-0.03em]">
             {studio.label}
           </h1>
-          <p className="mt-0.5 text-sm text-ink-soft">{studio.years}</p>
+          <p className="mt-2 text-sm text-ink-soft">{studio.years}</p>
         </div>
       </div>
       <a
         href={studio.siteHref}
         target="_blank"
         rel="noreferrer"
-        className="inline-flex items-center gap-1.5 rounded-full border border-ink/20 bg-paper px-3.5 py-2 text-sm transition-colors duration-300 hover:border-ink"
+        className="inline-flex items-center gap-1.5 rounded-[var(--radius-sm)] border border-hairline bg-paper px-3 py-2 text-[13px] transition-colors duration-300 hover:border-ink"
       >
         {studio.siteLabel}
         <IconExternal />

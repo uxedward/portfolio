@@ -14,13 +14,13 @@ export function CaseStudyHero({
   const isGif = hero.endsWith(".gif");
 
   return (
-    <header className="bg-ink text-paper">
+    <header className="bg-paper text-ink">
       <div className="mx-auto max-w-[1180px] px-5 pb-16 pt-10 sm:px-8 lg:pb-20 lg:pt-14">
-        <p className="text-sm text-paper/65">{project.client}</p>
-        <h1 className="mt-3 max-w-4xl font-serif text-[clamp(2.1rem,5vw,4.4rem)] leading-[0.95] tracking-[-0.03em]">
+        <p className="text-sm text-ink-soft">{project.client}</p>
+        <h1 className="mt-3 max-w-4xl font-serif text-[clamp(2.4rem,6vw,5.4rem)] leading-[0.95] tracking-[-0.03em]">
           {project.title}
         </h1>
-        <div className="relative mt-10 overflow-hidden rounded-[28px] bg-paper-2">
+        <div className="relative mt-10 overflow-hidden rounded-[var(--radius)] bg-paper-2">
           <Image
             src={hero}
             alt={project.title}
@@ -135,7 +135,7 @@ export function Section({
   return (
     <section id={id} className="case-section mb-24">
       <p className="text-sm text-ink-soft">{label}</p>
-      <h2 className="mt-2 font-serif text-3xl tracking-tight sm:text-[2.6rem] sm:leading-[1.1]">
+      <h2 className="mt-2 font-serif text-[clamp(2rem,4vw,3.2rem)] leading-[1.05] tracking-[-0.03em]">
         {heading}
       </h2>
       <div className="mt-6 space-y-5 text-[17px] leading-7 text-ink-soft">
@@ -176,7 +176,7 @@ export function Figure({
   return (
     <figure
       className={cn(
-        "my-2 overflow-hidden rounded-2xl bg-paper-2",
+        "my-2 overflow-hidden rounded-[var(--radius)] bg-paper-2",
         className,
       )}
     >
@@ -200,7 +200,7 @@ export function Metrics({
   return (
     <div
       className={cn(
-        "grid gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline",
+        "grid gap-px overflow-hidden rounded-[var(--radius)] border border-hairline bg-hairline",
         items.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3",
       )}
     >
@@ -226,7 +226,7 @@ export function Issue({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-hairline bg-paper-2/50 px-5 py-5">
+    <div className="rounded-[var(--radius)] border border-hairline bg-paper-2 px-5 py-5">
       <p className="text-sm text-ink-soft">{number}</p>
       <h3 className="mt-2 text-lg text-ink">{title}</h3>
       {children ? (

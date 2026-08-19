@@ -5,12 +5,12 @@
 /* -------------------------------------------------------------------------- */
 
 :root {
-  --paper: #f3f0e8;
-  --paper-2: #e8e3d6;
-  --ink: #171614;
-  --ink-soft: #5f5a52;
-  --hairline: #d8d2c4;
-  --accent: #c24e1a;
+  --paper: #ffffff;
+  --paper-2: #f0f0f0;
+  --ink: #121212;
+  --ink-soft: #999999;
+  --hairline: #dddddd;
+  --accent: #ff6f00;
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
@@ -18,8 +18,8 @@
   --duration: 420ms;
   --duration-slow: 700ms;
 
-  --radius-sm: 8px;
-  --radius: 16px;
+  --radius-sm: 4px;
+  --radius: 12px;
   --radius-pill: 999px;
   --header-h: 3.5rem;
   --sidebar-w: 280px;
@@ -76,7 +76,7 @@ body {
 }
 
 ::selection {
-  background: #ead7c8;
+  background: #ececec;
   color: var(--ink);
 }
 

@@ -29,7 +29,7 @@ export function StudioMark({
   return (
     <span
       className={cn(
-        "grid shrink-0 place-items-center rounded-xl font-medium tracking-tight",
+        "grid shrink-0 place-items-center rounded-[var(--radius-sm)] font-medium tracking-tight",
         box,
         active ? "bg-paper text-ink" : "bg-paper-2 text-ink",
       )}
@@ -51,8 +51,8 @@ export function StudioTab({
       href={studio.href}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "flex items-start gap-3 rounded-2xl px-3 py-2.5 transition-colors duration-300",
-        active ? "bg-ink text-white" : "text-ink hover:bg-paper-2",
+        "flex items-start gap-3 rounded-[var(--radius)] px-3 py-2.5 transition-colors duration-300",
+        active ? "bg-ink text-paper" : "text-ink hover:bg-paper-2",
       )}
     >
       <StudioMark studio={studio} active={active} />
@@ -63,7 +63,7 @@ export function StudioTab({
         <span
           className={cn(
             "mt-0.5 block text-[13px] leading-5",
-            active ? "text-white/70" : "text-ink-soft",
+            active ? "text-paper/70" : "text-ink-soft",
           )}
         >
           {studio.subtitle}
@@ -72,7 +72,7 @@ export function StudioTab({
       <span
         className={cn(
           "shrink-0 pt-0.5 text-[12px]",
-          active ? "text-white/70" : "text-ink-soft",
+          active ? "text-paper/70" : "text-ink-soft",
         )}
       >
         {studio.years}
