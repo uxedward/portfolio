@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, Inter_Tight } from "next/font/google";
 import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
+import { Sidebar } from "@/components/sidebar";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -66,9 +66,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${sans.variable} ${serif.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-paper font-sans text-ink">
-        <Header />
-        <main className="pt-14">{children}</main>
-        <Footer />
+        <Sidebar />
+        <div className="min-h-full bg-paper-2/50 pt-14 lg:pl-[var(--sidebar-w)] lg:pt-0">
+          <main>{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

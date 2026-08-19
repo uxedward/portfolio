@@ -1,58 +1,19 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { useMemo, useState } from "react";
 import { ProjectCard } from "@/components/project-card";
-import { Button } from "@/components/ui/button";
-import type { Category, Project } from "@/lib/projects";
+import type { Project } from "@/lib/projects";
 import { duration, easeOut } from "@/lib/motion";
 
-const filters: { id: "all" | Category; label: string }[] = [
-  { id: "all", label: "All" },
-  { id: "product", label: "Product" },
-  { id: "content", label: "Content" },
-];
-
 export function ProjectGrid({ projects }: { projects: Project[] }) {
-  const [filter, setFilter] = useState<"all" | Category>("all");
-
-  const visible = useMemo(
-    () =>
-      filter === "all"
-        ? projects
-        : projects.filter((project) => project.category === filter),
-    [filter, projects],
-  );
-
-  const featured = visible[0];
-  const rest = visible.slice(1);
+  const featured = projects[0];
+  const rest = projects.slice(1);
 
   return (
-    <section className="mx-auto max-w-[1440px] px-5 pb-20 sm:px-8">
-      <div
-        className="mb-6 inline-flex flex-wrap items-center gap-1 rounded-full border-2 border-ink/20 bg-paper-2 p-1.5"
-        role="tablist"
-        aria-label="Filter work"
-      >
-        {filters.map((item) => {
-          const selected = filter === item.id;
-          return (
-            <Button
-              key={item.id}
-              variant={selected ? "primary" : "outline"}
-              size="sm"
-              pressed={selected}
-              onClick={() => setFilter(item.id)}
-              className="min-w-[5.5rem]"
-            >
-              {item.label}
-            </Button>
-          );
-        })}
-      </div>
+    <section>
       <AnimatePresence mode="wait">
         <motion.div
-          key={filter}
+          key={featured?.slug ?? "empty"}
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 8 }}

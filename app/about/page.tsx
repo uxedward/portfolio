@@ -39,7 +39,7 @@ const skills = [
 
 export default function AboutPage() {
   return (
-    <div className="page-enter mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:py-24">
+    <div className="page-enter px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
       <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
         <div>
           <p className="text-sm text-ink-soft">A bit about who I am</p>

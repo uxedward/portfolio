@@ -18,7 +18,7 @@ const colors = [
 
 export default function DesignSystemPage() {
   return (
-    <div className="page-enter mx-auto max-w-[1180px] px-5 py-16 sm:px-8 lg:py-24">
+    <div className="page-enter mx-auto max-w-[1180px] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
       <p className="text-sm text-ink-soft">Edward / Product Design</p>
       <h1 className="mt-3 font-serif text-[clamp(2.2rem,5vw,4.4rem)] leading-[0.95] tracking-[-0.03em]">
         Design system

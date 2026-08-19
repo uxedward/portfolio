@@ -98,7 +98,7 @@ export function CaseStudyShell({
 
       <div className="bg-paper">
         <div className="mx-auto grid max-w-[1180px] lg:grid-cols-[200px_minmax(0,760px)] lg:gap-16">
-          <aside className="sticky top-14 z-30 border-b border-hairline bg-paper/90 px-5 backdrop-blur-md lg:top-20 lg:self-start lg:border-b-0 lg:bg-transparent lg:px-8 lg:py-12 lg:backdrop-blur-none">
+          <aside className="sticky top-14 z-30 border-b border-hairline bg-paper/90 px-5 backdrop-blur-md lg:top-6 lg:self-start lg:border-b-0 lg:bg-transparent lg:px-8 lg:py-12 lg:backdrop-blur-none">
             <CaseStudyToc items={toc} />
           </aside>
           <div className="min-w-0 px-5 py-10 sm:px-8 lg:py-12">{children}</div>

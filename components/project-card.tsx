@@ -13,7 +13,7 @@ export function ProjectCard({
   const href = projectHref(project);
   const external = isExternal(project);
   const className = cn(
-    "group relative block overflow-hidden bg-paper-2 transition-transform duration-700 ease-[var(--ease-out)]",
+    "group relative block overflow-hidden rounded-[28px] bg-paper-2 transition-transform duration-700 ease-[var(--ease-out)]",
     featured ? "min-h-[420px] md:min-h-[560px]" : "min-h-[340px] md:min-h-[420px]",
   );
 
