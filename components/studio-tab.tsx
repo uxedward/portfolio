@@ -8,23 +8,25 @@ export function StudioMark({
   size = "md",
 }: {
   studio: Studio;
-  active?: boolean;
-  size?: "sm" | "md";
+  size?: "sm" | "md" | "lg";
 }) {
-  const box = size === "sm" ? "h-8 w-8" : "h-9 w-9";
+  const box =
+    size === "lg" ? "h-[92px] w-[92px]" : size === "sm" ? "h-8 w-8" : "h-9 w-9";
+  const pixels = size === "lg" ? 184 : 36;
 
   return (
     <Image
       src={studio.image}
-      alt={studio.label}
-      width={36}
-      height={36}
+      alt={studio.bannerLabel}
+      width={pixels}
+      height={pixels}
+      quality={100}
       className={cn(
-        "shrink-0 object-cover",
+        "shrink-0 overflow-hidden bg-paper",
         box,
         studio.mark === "portrait"
-          ? "rounded-full"
-          : "rounded-[var(--radius-sm)]",
+          ? "rounded-full object-cover"
+          : "rounded-[var(--radius-sm)] object-contain",
       )}
     />
   );
@@ -46,7 +48,7 @@ export function StudioTab({
         active ? "bg-ink text-paper" : "text-ink hover:bg-paper-2",
       )}
     >
-      <StudioMark studio={studio} active={active} />
+      <StudioMark studio={studio} />
       <span className="min-w-0 flex-1">
         <span className="block text-[15px] font-medium tracking-tight">
           {studio.label}
@@ -59,14 +61,6 @@ export function StudioTab({
         >
           {studio.subtitle}
         </span>
-      </span>
-      <span
-        className={cn(
-          "shrink-0 pt-0.5 text-[12px]",
-          active ? "text-paper/70" : "text-ink-soft",
-        )}
-      >
-        {studio.years}
       </span>
     </Link>
   );

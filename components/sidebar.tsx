@@ -23,6 +23,18 @@ const socialIcons = {
   Dribbble: IconDribbble,
 } as const;
 
+function Bio() {
+  return (
+    <p className="max-w-sm text-[15px] leading-6 text-ink-soft">
+      Product Designer by day,{" "}
+      <em className="italic text-ink">content creator</em> by night.
+      <br />
+      <br />
+      Currently <em className="italic">building products</em> @ tiket.com
+    </p>
+  );
+}
+
 export function Sidebar() {
   const pathname = usePathname();
   const activeStudio = studioFromPath(pathname);
@@ -94,14 +106,8 @@ export function Sidebar() {
           className="fixed inset-0 z-40 overflow-y-auto bg-paper pt-14 lg:hidden"
         >
           <nav aria-label="Mobile" className="flex min-h-full flex-col px-5 py-8">
-            <p className="max-w-sm text-[15px] leading-6 text-ink-soft">
-              Designer in practice, educator at heart. Product design at
-              tiket.com, based in {site.location}.
-            </p>
-            <p className="mt-8 text-[11px] uppercase tracking-[0.16em] text-ink-soft">
-              Work
-            </p>
-            <ul className="mt-3 space-y-1.5">
+            <Bio />
+            <ul className="mt-8 space-y-1.5">
               {studios.map((studio) => (
                 <li key={studio.id}>
                   <StudioTab
@@ -111,31 +117,14 @@ export function Sidebar() {
                 </li>
               ))}
             </ul>
-            <ul className="mt-6 space-y-1 border-t border-hairline pt-6">
-              <li>
-                <Link
-                  href="/about"
-                  className={cn(
-                    "block rounded-[var(--radius)] px-3 py-3 text-[15px] transition-colors duration-300",
-                    pathname === "/about"
-                      ? "bg-ink text-paper"
-                      : "hover:bg-paper-2",
-                  )}
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <a
-                  href={site.chat.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="block rounded-[var(--radius)] px-3 py-3 text-[15px] hover:bg-paper-2"
-                >
-                  {site.chat.label} ↗
-                </a>
-              </li>
-            </ul>
+            <a
+              href={site.chat.href}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-6 text-sm text-ink-soft"
+            >
+              {site.chat.label} ↗
+            </a>
             <div className="mt-auto pt-10">
               <SocialRow />
             </div>
@@ -147,16 +136,9 @@ export function Sidebar() {
         <Link href="/" className="text-lg font-medium tracking-tight">
           {site.fullName}
         </Link>
-        <p className="mt-4 text-[15px] leading-6 text-ink-soft">
-          Designer in practice, <em className="italic text-ink">educator</em> at
-          heart. Product design at tiket.com, based in {site.location}.
-        </p>
-        <Link
-          href="/about"
-          className="mt-4 w-fit text-sm text-ink underline decoration-hairline underline-offset-4 transition-colors duration-300 hover:decoration-ink"
-        >
-          About →
-        </Link>
+        <div className="mt-4">
+          <Bio />
+        </div>
 
         <div className="mt-6">
           <SocialRow />

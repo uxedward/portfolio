@@ -1,10 +1,11 @@
 export const studios = [
   {
     id: "tiket",
-    label: "tiket.com",
+    label: "tiket.com (2021 - now)",
+    bannerLabel: "tiket.com",
     href: "/",
-    subtitle: "Product design",
-    years: "2021—Present",
+    subtitle: "Senior Product Designer",
+    years: "2021 - Present",
     siteHref: "https://www.tiket.com",
     siteLabel: "tiket.com",
     mark: "logo",
@@ -13,11 +14,20 @@ export const studios = [
   {
     id: "uxedward",
     label: "@ux.edward",
+    bannerLabel: "@ux.edward",
     href: "/content",
-    subtitle: "Teaching in public",
-    years: "2021—",
+    subtitle: "Content Creation",
     siteHref: "https://www.instagram.com/ux.edward/",
     siteLabel: "Instagram",
+    mark: "portrait",
+    image: "/images/about/edward-portrait.jpg",
+  },
+  {
+    id: "aitools",
+    label: "AI Tools",
+    bannerLabel: "AI Tools",
+    href: "/ai-tools",
+    subtitle: "Personal AI Playground",
     mark: "portrait",
     image: "/images/about/edward-portrait.jpg",
   },
@@ -28,6 +38,7 @@ export type StudioId = Studio["id"];
 
 export function studioFromPath(pathname: string): StudioId | null {
   if (pathname.startsWith("/content")) return "uxedward";
+  if (pathname.startsWith("/ai-tools")) return "aitools";
   if (pathname === "/" || pathname.startsWith("/work/")) return "tiket";
   return null;
 }

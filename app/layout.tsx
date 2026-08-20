@@ -9,6 +9,7 @@ const sans = Inter_Tight({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
