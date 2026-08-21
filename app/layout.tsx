@@ -60,7 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full bg-paper font-sans text-ink">
         <Sidebar />
-        <div className="min-h-full bg-paper pt-14 lg:pl-[var(--sidebar-w)] lg:pt-0">
+        <div className="vt-main min-h-full bg-paper pt-14 lg:pl-[var(--sidebar-w)] lg:pt-0">
           <main>{children}</main>
           <Footer />
         </div>

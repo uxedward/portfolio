@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function ContentPage() {
   return (
-    <div className="page-enter px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
+    <div className="px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
       <StudioBanner studio={studio} />
       <p className="mb-8 max-w-xl text-[17px] leading-7 text-ink-soft">
         Since 2021 I&apos;ve been teaching product design in public — Figma

@@ -7,7 +7,7 @@ const studio = getStudio("tiket");
 
 export default function Home() {
   return (
-    <div className="page-enter px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
+    <div className="px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
       <StudioBanner studio={studio} />
       <ProjectGrid projects={workProjects} />
     </div>

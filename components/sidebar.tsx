@@ -1,5 +1,6 @@
 "use client";
 
+import { LayoutGroup } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
@@ -107,16 +108,19 @@ export function Sidebar() {
         >
           <nav aria-label="Mobile" className="flex min-h-full flex-col px-5 py-8">
             <Bio />
-            <ul className="mt-8 space-y-1.5">
-              {studios.map((studio) => (
-                <li key={studio.id}>
-                  <StudioTab
-                    studio={studio}
-                    active={activeStudio === studio.id}
-                  />
-                </li>
-              ))}
-            </ul>
+            <LayoutGroup id="studio-tabs-mobile">
+              <ul className="mt-8 space-y-1.5">
+                {studios.map((studio) => (
+                  <li key={studio.id}>
+                    <StudioTab
+                      studio={studio}
+                      active={activeStudio === studio.id}
+                      layoutId="studio-tab-active"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </LayoutGroup>
             <a
               href={site.chat.href}
               target="_blank"
@@ -132,7 +136,7 @@ export function Sidebar() {
         </div>
       ) : null}
 
-      <aside className="fixed inset-y-0 left-0 z-40 hidden w-[var(--sidebar-w)] flex-col border-r border-hairline bg-paper px-6 py-8 lg:flex">
+      <aside className="vt-sidebar fixed inset-y-0 left-0 z-40 hidden w-[var(--sidebar-w)] flex-col border-r border-hairline bg-paper px-6 py-8 lg:flex">
         <Link href="/" className="text-lg font-medium tracking-tight">
           {site.fullName}
         </Link>
@@ -145,16 +149,19 @@ export function Sidebar() {
         </div>
 
         <nav aria-label="Work" className="mt-10 flex-1">
-          <ul className="space-y-1.5">
-            {studios.map((studio) => (
-              <li key={studio.id}>
-                <StudioTab
-                  studio={studio}
-                  active={activeStudio === studio.id}
-                />
-              </li>
-            ))}
-          </ul>
+          <LayoutGroup id="studio-tabs-desktop">
+            <ul className="space-y-1.5">
+              {studios.map((studio) => (
+                <li key={studio.id}>
+                  <StudioTab
+                    studio={studio}
+                    active={activeStudio === studio.id}
+                    layoutId="studio-tab-active"
+                  />
+                </li>
+              ))}
+            </ul>
+          </LayoutGroup>
         </nav>
 
         <a

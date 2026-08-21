@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function AiToolsPage() {
   return (
-    <div className="page-enter px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
+    <div className="px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
       <StudioBanner studio={studio} />
       <p className="mb-3 text-sm text-ink-soft">Personal AI Playground</p>
       <p className="mb-8 max-w-xl text-[17px] leading-7 text-ink-soft">

@@ -1,6 +1,10 @@
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
+import { tabSpring } from "@/lib/motion";
 import type { Studio } from "@/lib/nav";
 
 export function StudioMark({
@@ -35,31 +39,49 @@ export function StudioMark({
 export function StudioTab({
   studio,
   active,
+  layoutId,
 }: {
   studio: Studio;
   active: boolean;
+  layoutId: string;
 }) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <Link
       href={studio.href}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "flex items-start gap-3 rounded-[var(--radius)] px-3 py-2.5 transition-colors duration-300",
-        active ? "bg-ink text-paper" : "text-ink hover:bg-paper-2",
+        "relative isolate block rounded-[var(--radius)] px-3 py-2.5 transition-colors duration-300",
+        active ? "text-paper" : "text-ink hover:bg-paper-2",
       )}
     >
-      <StudioMark studio={studio} />
-      <span className="min-w-0 flex-1">
-        <span className="block text-[15px] font-medium tracking-tight">
-          {studio.label}
-        </span>
-        <span
-          className={cn(
-            "mt-0.5 block text-[13px] leading-5",
-            active ? "text-paper/70" : "text-ink-soft",
-          )}
-        >
-          {studio.subtitle}
+      {active ? (
+        reduceMotion ? (
+          <span className="absolute inset-0 z-0 rounded-[var(--radius)] bg-ink" />
+        ) : (
+          <motion.span
+            layoutId={layoutId}
+            className="absolute inset-0 z-0 bg-ink"
+            style={{ borderRadius: 12 }}
+            transition={tabSpring}
+          />
+        )
+      ) : null}
+      <span className="relative z-10 flex min-w-0 flex-1 items-start gap-3">
+        <StudioMark studio={studio} />
+        <span className="min-w-0 flex-1">
+          <span className="block text-[15px] font-medium tracking-tight transition-colors duration-300">
+            {studio.label}
+          </span>
+          <span
+            className={cn(
+              "mt-0.5 block text-[13px] leading-5 transition-colors duration-300",
+              active ? "text-paper/70" : "text-ink-soft",
+            )}
+          >
+            {studio.subtitle}
+          </span>
         </span>
       </span>
     </Link>
