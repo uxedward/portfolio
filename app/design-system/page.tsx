@@ -11,6 +11,7 @@ const colors = [
   { name: "paper", value: "#ffffff", className: "bg-paper border border-hairline" },
   { name: "paper-2", value: "#f0f0f0", className: "bg-paper-2" },
   { name: "ink", value: "#121212", className: "bg-ink" },
+  { name: "ink-muted", value: "#4a4a4a", className: "bg-ink-muted" },
   { name: "ink-soft", value: "#999999", className: "bg-ink-soft" },
   { name: "hairline", value: "#dddddd", className: "bg-hairline" },
   { name: "accent", value: "#ff6f00", className: "bg-accent" },
@@ -51,8 +52,9 @@ export default function DesignSystemPage() {
         <p className="mt-8 font-sans text-[clamp(2.4rem,6vw,5.4rem)] leading-[0.95] tracking-[-0.03em]">
           Inter Tight for titles
         </p>
-        <p className="mt-4 max-w-xl text-[17px] leading-7 text-ink-soft">
-          Inter Tight for interface, body, and the case-study left nav.
+        <p className="mt-4 max-w-xl text-[18px] leading-8 text-ink">
+          Inter Tight for titles, interface, and body. Case-study paragraphs use
+          ink; labels and captions stay muted.
         </p>
       </section>
 

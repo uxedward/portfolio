@@ -53,7 +53,7 @@ export function CaseStudyShell({
     <>
       <div className="border-b border-hairline bg-paper">
         <div className="mx-auto max-w-[1180px] px-5 py-10 sm:px-8">
-          <p className="text-sm text-ink-soft">
+          <p className="text-[17px] leading-7 text-ink">
             This project will demonstrate my expertise in these three crucial
             domains:
           </p>
@@ -134,11 +134,13 @@ export function Section({
 }) {
   return (
     <section id={id} className="case-section mb-24">
-      <p className="text-sm text-ink-soft">{label}</p>
-      <h2 className="mt-2 font-sans text-[clamp(2rem,4vw,3.2rem)] leading-[1.05] tracking-[-0.03em]">
+      <p className="text-[13px] font-medium uppercase tracking-[0.14em] text-ink-muted">
+        {label}
+      </p>
+      <h2 className="mt-2 font-sans text-[clamp(1.85rem,3.6vw,2.75rem)] font-medium leading-[1.15] tracking-[-0.03em] text-ink">
         {heading}
       </h2>
-      <div className="mt-6 space-y-5 text-[17px] leading-7 text-ink-soft">
+      <div className="mt-6 space-y-5 text-[18px] leading-8 text-ink">
         {children}
       </div>
     </section>
@@ -146,7 +148,7 @@ export function Section({
 }
 
 export function Subhead({ children }: { children: React.ReactNode }) {
-  return <h3 className="pt-4 text-xl leading-snug text-ink">{children}</h3>;
+  return <h3 className="pt-4 text-[1.35rem] font-medium leading-snug text-ink">{children}</h3>;
 }
 
 export function StepHeading({
@@ -158,8 +160,8 @@ export function StepHeading({
 }) {
   return (
     <div className="pt-6">
-      <p className="text-sm text-ink-soft">{number}</p>
-      <h3 className="mt-1 text-xl leading-snug text-ink">{children}</h3>
+      <p className="text-[13px] font-medium text-ink-muted">{number}</p>
+      <h3 className="mt-1 text-[1.35rem] font-medium leading-snug text-ink">{children}</h3>
     </div>
   );
 }
@@ -209,7 +211,7 @@ export function Metrics({
           <p className="font-sans text-4xl tracking-tight text-accent">
             {item.value}
           </p>
-          <p className="mt-2 text-sm leading-5 text-ink-soft">{item.label}</p>
+          <p className="mt-2 text-sm leading-6 text-ink-muted">{item.label}</p>
         </div>
       ))}
     </div>
@@ -227,10 +229,10 @@ export function Issue({
 }) {
   return (
     <div className="rounded-[var(--radius)] border border-hairline bg-paper-2 px-5 py-5">
-      <p className="text-sm text-ink-soft">{number}</p>
-      <h3 className="mt-2 text-lg text-ink">{title}</h3>
+      <p className="text-[13px] font-medium text-ink-muted">{number}</p>
+      <h3 className="mt-2 text-lg font-medium text-ink">{title}</h3>
       {children ? (
-        <div className="mt-2 space-y-2 text-[16px] leading-7">{children}</div>
+        <div className="mt-2 space-y-2 text-[17px] leading-8 text-ink">{children}</div>
       ) : null}
     </div>
   );

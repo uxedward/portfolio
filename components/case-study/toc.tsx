@@ -55,7 +55,7 @@ export function CaseStudyToc({ items }: { items: TocItem[] }) {
                   "block whitespace-nowrap py-2 text-[15px] leading-snug tracking-tight transition-colors duration-300 ease-[var(--ease-out)]",
                   isActive
                     ? "font-medium text-ink"
-                    : "text-ink-soft hover:text-ink",
+                    : "text-ink-muted hover:text-ink",
                 )}
               >
                 {item.label}

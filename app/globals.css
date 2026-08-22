@@ -8,6 +8,7 @@
   --paper: #ffffff;
   --paper-2: #f0f0f0;
   --ink: #121212;
+  --ink-muted: #4a4a4a;
   --ink-soft: #999999;
   --hairline: #dddddd;
   --accent: #ff6f00;
@@ -31,6 +32,7 @@
   --color-paper: var(--paper);
   --color-paper-2: var(--paper-2);
   --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
   --color-ink-soft: var(--ink-soft);
   --color-hairline: var(--hairline);
   --color-accent: var(--accent);
