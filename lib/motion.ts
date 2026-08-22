@@ -3,7 +3,6 @@ export const easeInOut = [0.65, 0, 0.35, 1] as const;
 
 export const duration = {
   fast: 0.18,
-  page: 0.22,
   base: 0.32,
   slow: 0.5,
 } as const;
@@ -13,12 +12,6 @@ export const fadeUp = {
   animate: { opacity: 1, y: 0 },
   exit: { opacity: 0, y: 8 },
   transition: { duration: duration.base, ease: easeOut },
-} as const;
-
-export const pageTransition = {
-  initial: { opacity: 0, y: 6 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: duration.page, ease: easeOut },
 } as const;
 
 export const cardGrid = {
@@ -38,10 +31,4 @@ export const cardItem = {
     y: 0,
     transition: { duration: duration.base, ease: easeOut },
   },
-} as const;
-
-export const tabSpring = {
-  type: "tween",
-  duration: duration.page,
-  ease: easeOut,
 } as const;

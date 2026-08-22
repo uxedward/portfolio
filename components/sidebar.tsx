@@ -1,8 +1,7 @@
 "use client";
 
-import { LayoutGroup } from "motion/react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 import {
   IconDribbble,
@@ -38,6 +37,7 @@ function Bio() {
 
 export function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
   const activeStudio = studioFromPath(pathname);
   const [open, setOpen] = useState(false);
   const [menuPath, setMenuPath] = useState(pathname);
@@ -47,6 +47,16 @@ export function Sidebar() {
     setMenuPath(pathname);
     setOpen(false);
   }
+
+  useEffect(() => {
+    for (const studio of studios) {
+      router.prefetch(studio.href);
+    }
+  }, [router]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -108,19 +118,16 @@ export function Sidebar() {
         >
           <nav aria-label="Mobile" className="flex min-h-full flex-col px-5 py-8">
             <Bio />
-            <LayoutGroup id="studio-tabs-mobile">
-              <ul className="mt-8 space-y-1.5">
-                {studios.map((studio) => (
-                  <li key={studio.id}>
-                    <StudioTab
-                      studio={studio}
-                      active={activeStudio === studio.id}
-                      layoutId="studio-tab-active"
-                    />
-                  </li>
-                ))}
-              </ul>
-            </LayoutGroup>
+            <ul className="mt-8 space-y-1.5">
+              {studios.map((studio) => (
+                <li key={studio.id}>
+                  <StudioTab
+                    studio={studio}
+                    active={activeStudio === studio.id}
+                  />
+                </li>
+              ))}
+            </ul>
             <a
               href={site.chat.href}
               target="_blank"
@@ -149,19 +156,16 @@ export function Sidebar() {
         </div>
 
         <nav aria-label="Work" className="mt-10 flex-1">
-          <LayoutGroup id="studio-tabs-desktop">
-            <ul className="space-y-1.5">
-              {studios.map((studio) => (
-                <li key={studio.id}>
-                  <StudioTab
-                    studio={studio}
-                    active={activeStudio === studio.id}
-                    layoutId="studio-tab-active"
-                  />
-                </li>
-              ))}
-            </ul>
-          </LayoutGroup>
+          <ul className="space-y-1.5">
+            {studios.map((studio) => (
+              <li key={studio.id}>
+                <StudioTab
+                  studio={studio}
+                  active={activeStudio === studio.id}
+                />
+              </li>
+            ))}
+          </ul>
         </nav>
 
         <a
