@@ -52,7 +52,7 @@ export function StudioTab({
       href={studio.href}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "relative isolate block rounded-[var(--radius)] px-3 py-2.5 transition-colors duration-300",
+        "relative isolate block rounded-[var(--radius)] px-3 py-2.5 transition-colors duration-200",
         active ? "text-paper" : "text-ink hover:bg-paper-2",
       )}
     >
@@ -71,12 +71,12 @@ export function StudioTab({
       <span className="relative z-10 flex min-w-0 flex-1 items-start gap-3">
         <StudioMark studio={studio} />
         <span className="min-w-0 flex-1">
-          <span className="block text-[15px] font-medium tracking-tight transition-colors duration-300">
+          <span className="block text-[15px] font-medium tracking-tight transition-colors duration-200">
             {studio.label}
           </span>
           <span
             className={cn(
-              "mt-0.5 block text-[13px] leading-5 transition-colors duration-300",
+              "mt-0.5 block text-[13px] leading-5 transition-colors duration-200",
               active ? "text-paper/70" : "text-ink-soft",
             )}
           >
