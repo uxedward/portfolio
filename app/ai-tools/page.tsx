@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RiseIn } from "@/components/rise-in";
 import { StudioBanner } from "@/components/studio-banner";
 import { ToolCard } from "@/components/tool-card";
 import { getStudio } from "@/lib/nav";
@@ -23,21 +24,25 @@ export default function AiToolsPage() {
         experiments from my own practice.
       </p>
       {aiTools.length === 0 ? (
-        <div className="rounded-[var(--radius)] border border-hairline bg-paper-2 px-5 py-16 sm:px-8">
-          <p className="text-[15px] text-ink">First tools coming soon.</p>
-          <p className="mt-2 max-w-md text-sm leading-6 text-ink-soft">
-            This is where I&apos;ll collect the AI-built tools I actually use —
-            not tutorials, the things I shipped.
-          </p>
-        </div>
+        <RiseIn>
+          <div className="rounded-[var(--radius)] border border-hairline bg-paper-2 px-5 py-16 sm:px-8">
+            <p className="text-[15px] text-ink">First tools coming soon.</p>
+            <p className="mt-2 max-w-md text-sm leading-6 text-ink-soft">
+              This is where I&apos;ll collect the AI-built tools I actually use —
+              not tutorials, the things I shipped.
+            </p>
+          </div>
+        </RiseIn>
       ) : (
-        <ul className="grid gap-3 md:grid-cols-2">
-          {aiTools.map((tool) => (
-            <li key={tool.slug}>
-              <ToolCard tool={tool} />
-            </li>
-          ))}
-        </ul>
+        <RiseIn>
+          <ul className="grid gap-3 md:grid-cols-2">
+            {aiTools.map((tool) => (
+              <li key={tool.slug}>
+                <ToolCard tool={tool} />
+              </li>
+            ))}
+          </ul>
+        </RiseIn>
       )}
     </div>
   );
