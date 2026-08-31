@@ -37,12 +37,10 @@ export default function Home() {
         <Image
           src="/images/about/edward-home.jpg"
           alt="Edward Sudjono"
-          width={1280}
-          height={1920}
+          fill
           priority
           sizes="320px"
-          className="absolute left-0 w-full max-w-none"
-          style={{ height: "150%", top: "-47.5%" }}
+          className="object-cover object-[center_35%]"
         />
       </div>
 
