@@ -7,6 +7,7 @@
 :root {
   --paper: #ffffff;
   --paper-2: #f0f0f0;
+  --paper-warm: #fcf8f8;
   --ink: #121212;
   --ink-muted: #4a4a4a;
   --ink-soft: #999999;
@@ -31,13 +32,14 @@
 @theme inline {
   --color-paper: var(--paper);
   --color-paper-2: var(--paper-2);
+  --color-paper-warm: var(--paper-warm);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
   --color-ink-soft: var(--ink-soft);
   --color-hairline: var(--hairline);
   --color-accent: var(--accent);
   --font-sans: var(--font-inter);
-  --font-serif: var(--font-inter);
+  --font-serif: var(--font-instrument);
   --ease-out: var(--ease-out);
   --ease-in-out: var(--ease-in-out);
   --radius-sm: var(--radius-sm);

@@ -18,6 +18,7 @@ export type Resource = {
   summary: string;
   readTime: string;
   cta: string;
+  logos: { src: string; alt: string }[];
   links: ResourceLink[];
   steps: ResourceStep[];
 };
@@ -27,6 +28,8 @@ export type ResourceItem = {
   href: string;
   body: string;
   external: boolean;
+  logo: string;
+  logoAlt: string;
 };
 
 export const resourceItems: ResourceItem[] = [
@@ -35,54 +38,48 @@ export const resourceItems: ResourceItem[] = [
     href: "https://psxid.figma.com/edward_agent",
     body: "Explore the capabilities of Figma's agents.",
     external: true,
+    logo: "/images/brands/figma.png",
+    logoAlt: "Figma",
   },
   {
     title: "Mobbin",
     href: "https://mobbin.com/edward",
     body: "Get 20% off your annual plan. Mobile and web app design library.",
     external: true,
-  },
-  {
-    title: "Try out Framer Agents",
-    href: "https://framer.link/uxedward",
-    body: "Explore the new chapter of Framer 3.0.",
-    external: true,
-  },
-  {
-    title: "Try Figma Make",
-    href: "https://psxid.figma.com/uxedward",
-    body: "Generate, tweak, and build faster, all in one creative space.",
-    external: true,
+    logo: "/images/brands/mobbin.png",
+    logoAlt: "Mobbin",
   },
   {
     title: "Try Claude Cowork",
     href: "https://clau.de/ux.edward1",
     body: "The AI for problem solvers.",
     external: true,
+    logo: "/images/brands/claude-cowork.png",
+    logoAlt: "Claude Cowork",
   },
   {
     title: "Try Claude Code",
     href: "https://clau.de/ux.edward",
     body: "Describe what you need, and Claude handles the rest.",
     external: true,
-  },
-  {
-    title: "Documentation — Figma Community file",
-    href: "https://www.figma.com/community/file/1528075304642827265",
-    body: "Make design handoffs smooth and easy.",
-    external: true,
+    logo: "/images/brands/claude-code.png",
+    logoAlt: "Claude Code",
   },
   {
     title: "Notion AI",
     href: "https://ntn.so/uxedward",
     body: "The AI workspace that works for you.",
     external: true,
+    logo: "/images/brands/notion.png",
+    logoAlt: "Notion AI",
   },
   {
     title: "PipDecks",
     href: "https://pipdecks.com/uxedward",
     body: "Ditch dull meetings. Design better products and services.",
     external: true,
+    logo: "/images/brands/pipdecks.png",
+    logoAlt: "PipDecks",
   },
 ];
 
@@ -96,6 +93,11 @@ export const resources: Resource[] = [
       "Install and configure the Figma Remote MCP Plugin to interact directly with your designs through Claude's command line.",
     readTime: "8 min read",
     cta: "Read Guidebook",
+    logos: [
+      { src: "/images/brands/claude.png", alt: "Claude" },
+      { src: "/images/brands/mcp.png", alt: "MCP" },
+      { src: "/images/brands/figma.png", alt: "Figma" },
+    ],
     links: [
       {
         label: "Claude Code Documentation",
@@ -145,6 +147,10 @@ export const resources: Resource[] = [
     summary: "Install Mobbin MCP into Claude Code",
     readTime: "8 min read",
     cta: "Read Guidebook",
+    logos: [
+      { src: "/images/brands/claude.png", alt: "Claude" },
+      { src: "/images/brands/mobbin.png", alt: "Mobbin" },
+    ],
     links: [
       {
         label: "Claude Code Documentation",

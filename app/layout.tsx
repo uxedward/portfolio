@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter_Tight } from "next/font/google";
+import { Instrument_Serif, Inter_Tight } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { Sidebar } from "@/components/sidebar";
 import { site } from "@/lib/site";
@@ -10,6 +10,13 @@ const sans = Inter_Tight({
   variable: "--font-inter",
   display: "swap",
   style: ["normal", "italic"],
+});
+
+const serif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-instrument",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -56,7 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       id="top"
-      className={`${sans.variable} h-full antialiased`}
+      className={`${sans.variable} ${serif.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-paper font-sans text-ink">
         <Sidebar />

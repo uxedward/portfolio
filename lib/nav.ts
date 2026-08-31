@@ -4,7 +4,7 @@ export const studios = [
     label: "Home",
     bannerLabel: "Edward",
     href: "/",
-    subtitle: "About",
+    subtitle: "About me",
     mark: "none" as const,
   },
   {
@@ -24,7 +24,7 @@ export const studios = [
     label: "Resources",
     bannerLabel: "Resources",
     href: "/resources",
-    subtitle: "Guides & tools",
+    subtitle: "Content Creation",
     mark: "none" as const,
   },
   {

@@ -23,18 +23,6 @@ const socialIcons = {
   Dribbble: IconDribbble,
 } as const;
 
-function Bio() {
-  return (
-    <p className="max-w-sm text-[15px] leading-6 text-ink-soft">
-      Product Designer by day,{" "}
-      <em className="italic text-ink">content creator</em> by night.
-      <br />
-      <br />
-      Currently <em className="italic">building products</em> @ tiket.com
-    </p>
-  );
-}
-
 export function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
@@ -128,12 +116,9 @@ export function Sidebar() {
           className="fixed inset-0 z-40 overflow-y-auto bg-paper pt-14 lg:hidden"
         >
           <nav aria-label="Mobile" className="flex min-h-full flex-col px-5 py-8">
-            <Bio />
-            <div className="mt-8">
+            <SocialRow />
+            <div className="mt-10">
               <Tabs />
-            </div>
-            <div className="mt-auto pt-10">
-              <SocialRow />
             </div>
           </nav>
         </div>
@@ -143,9 +128,6 @@ export function Sidebar() {
         <Link href="/" className="text-lg font-medium tracking-tight">
           {site.fullName}
         </Link>
-        <div className="mt-4">
-          <Bio />
-        </div>
 
         <div className="mt-6">
           <SocialRow />
