@@ -21,7 +21,7 @@ export const site = {
   socials: [
     {
       name: "Instagram",
-      href: "https://instagram.com/uxedward",
+      href: "https://www.instagram.com/ux.edward/",
       stat: "110k+",
       label: "followers",
     },

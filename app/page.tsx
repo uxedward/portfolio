@@ -1,12 +1,15 @@
-import { HomeIntro } from "@/components/home-intro";
 import { ProjectGrid } from "@/components/project-grid";
-import { projects } from "@/lib/projects";
+import { StudioBanner } from "@/components/studio-banner";
+import { getStudio } from "@/lib/nav";
+import { workProjects } from "@/lib/projects";
+
+const studio = getStudio("tiket");
 
 export default function Home() {
   return (
-    <div className="page-enter">
-      <HomeIntro />
-      <ProjectGrid projects={projects} />
+    <div className="px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
+      <StudioBanner studio={studio} />
+      <ProjectGrid projects={workProjects} />
     </div>
   );
 }

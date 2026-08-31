@@ -19,8 +19,8 @@ export function Metric({
 }) {
   return (
     <div className="bg-paper px-5 py-6">
-      <p className="font-serif text-4xl tracking-tight text-accent">{value}</p>
-      <p className="mt-2 text-sm leading-5 text-ink-soft">{label}</p>
+      <p className="font-sans text-4xl tracking-tight text-accent">{value}</p>
+      <p className="mt-2 text-sm leading-6 text-ink-muted">{label}</p>
     </div>
   );
 }
@@ -68,7 +68,7 @@ export function Callout({
           {eyebrow}
         </p>
       ) : null}
-      <div className="mt-2 text-[17px] leading-7">{children}</div>
+      <div className="mt-2 text-[18px] leading-8 text-ink">{children}</div>
     </aside>
   );
 }
@@ -88,10 +88,10 @@ export function Step({
 }) {
   return (
     <li className="grid gap-3 sm:grid-cols-[4rem_1fr]">
-      <span className="font-serif text-3xl text-accent">{number}</span>
+      <span className="font-sans text-3xl text-accent">{number}</span>
       <div>
         <h3 className="text-xl leading-tight">{title}</h3>
-        <div className="mt-2 space-y-3 text-[16px] leading-7 text-ink-soft">
+        <div className="mt-2 space-y-3 text-[18px] leading-8 text-ink">
           {children}
         </div>
       </div>
@@ -107,23 +107,25 @@ export const mdxComponents: NonNullable<MDXRemoteProps["components"]> = {
   Steps,
   Step,
   h2: ({ children }) => (
-    <h2 className="mt-16 font-serif text-3xl tracking-tight sm:text-4xl">
+    <h2 className="mt-16 font-sans text-3xl font-medium tracking-tight text-ink sm:text-4xl">
       {children}
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="mt-10 text-xl leading-snug">{children}</h3>
+    <h3 className="mt-10 text-[1.35rem] font-medium leading-snug text-ink">
+      {children}
+    </h3>
   ),
   p: ({ children }) => (
-    <p className="mt-4 text-[17px] leading-7 text-ink-soft">{children}</p>
+    <p className="mt-4 text-[18px] leading-8 text-ink">{children}</p>
   ),
   ul: ({ children }) => (
-    <ul className="mt-4 list-disc space-y-2 pl-5 text-[17px] leading-7 text-ink-soft">
+    <ul className="mt-4 list-disc space-y-2 pl-5 text-[18px] leading-8 text-ink">
       {children}
     </ul>
   ),
   ol: ({ children }) => (
-    <ol className="mt-4 list-decimal space-y-2 pl-5 text-[17px] leading-7 text-ink-soft">
+    <ol className="mt-4 list-decimal space-y-2 pl-5 text-[18px] leading-8 text-ink">
       {children}
     </ol>
   ),

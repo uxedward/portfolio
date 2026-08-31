@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
+  BusProductBody,
+  busProductToc,
+} from "@/components/case-studies/bus-product";
+import {
   BusSearchBody,
   busSearchToc,
 } from "@/components/case-studies/bus-search";
@@ -35,6 +39,7 @@ const bodies: Record<
   "bus-search": { toc: busSearchToc, Body: BusSearchBody },
   "train-booking": { toc: trainBookingToc, Body: TrainBookingBody },
   "car-rentals": { toc: carRentalsToc, Body: CarRentalsBody },
+  "bus-product": { toc: busProductToc, Body: BusProductBody },
 };
 
 export function generateStaticParams() {
@@ -70,9 +75,11 @@ export default async function CaseStudyPage({ params }: Props) {
   const { toc, Body } = content;
 
   return (
-    <article className="page-enter">
-      <CaseStudyHero project={project} domains={project.domains ?? []} />
+    <article>
+      <CaseStudyHero project={project} />
       <CaseStudyShell
+        project={project}
+        domains={project.domains ?? []}
         toc={toc}
         next={
           nextProject

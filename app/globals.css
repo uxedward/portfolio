@@ -5,12 +5,13 @@
 /* -------------------------------------------------------------------------- */
 
 :root {
-  --paper: #f3f0e8;
-  --paper-2: #e8e3d6;
-  --ink: #171614;
-  --ink-soft: #5f5a52;
-  --hairline: #d8d2c4;
-  --accent: #c24e1a;
+  --paper: #ffffff;
+  --paper-2: #f0f0f0;
+  --ink: #121212;
+  --ink-muted: #4a4a4a;
+  --ink-soft: #999999;
+  --hairline: #dddddd;
+  --accent: #ff6f00;
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
@@ -18,10 +19,11 @@
   --duration: 420ms;
   --duration-slow: 700ms;
 
-  --radius-sm: 8px;
-  --radius: 16px;
+  --radius-sm: 4px;
+  --radius: 12px;
   --radius-pill: 999px;
   --header-h: 3.5rem;
+  --sidebar-w: 280px;
   --content: 720px;
   --toc: 220px;
 }
@@ -30,11 +32,12 @@
   --color-paper: var(--paper);
   --color-paper-2: var(--paper-2);
   --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
   --color-ink-soft: var(--ink-soft);
   --color-hairline: var(--hairline);
   --color-accent: var(--accent);
   --font-sans: var(--font-inter);
-  --font-serif: var(--font-instrument);
+  --font-serif: var(--font-inter);
   --ease-out: var(--ease-out);
   --ease-in-out: var(--ease-in-out);
   --radius-sm: var(--radius-sm);
@@ -46,18 +49,51 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scroll-padding-top: calc(var(--header-h) + 1.5rem);
 }
 
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: 1.5rem;
+  }
+}
+
 @view-transition {
-  navigation: auto;
+  navigation: none;
+}
+
+.vt-sidebar {
+  view-transition-name: sidebar;
+}
+
+.vt-main {
+  view-transition-name: content;
 }
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: var(--duration);
-  animation-timing-function: var(--ease-out);
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(sidebar),
+::view-transition-new(sidebar) {
+  animation: none;
+}
+
+::view-transition-old(content),
+::view-transition-new(content) {
+  animation: none;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 body {
@@ -69,43 +105,45 @@ body {
 }
 
 ::selection {
-  background: #ead7c8;
+  background: #ececec;
   color: var(--ink);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-button,
-[type="button"],
-[type="submit"] {
-  appearance: none;
-  -webkit-appearance: none;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-  line-height: inherit;
-  margin: 0;
-  padding: 0;
-}
+  button,
+  [type="button"],
+  [type="submit"] {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+  }
 
-button:focus,
-[type="button"]:focus,
-[type="submit"]:focus {
-  outline: none;
-}
+  button:focus,
+  [type="button"]:focus,
+  [type="submit"]:focus {
+    outline: none;
+  }
 
-button:focus-visible,
-[type="button"]:focus-visible,
-[type="submit"]:focus-visible,
-a:focus-visible {
-  outline: 2px solid var(--ink);
-  outline-offset: 3px;
+  button:focus-visible,
+  [type="button"]:focus-visible,
+  [type="submit"]:focus-visible,
+  a:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+  }
 }
 
 img {
@@ -113,23 +151,18 @@ img {
   height: auto;
 }
 
-@keyframes page-enter {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
 .page-enter {
   animation: page-enter var(--duration-slow) var(--ease-out) both;
 }
 
 .case-section {
-  scroll-margin-top: calc(var(--header-h) + 1.5rem);
+  scroll-margin-top: calc(var(--header-h) + 3.5rem);
+}
+
+@media (min-width: 1024px) {
+  .case-section {
+    scroll-margin-top: 1.5rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -141,6 +174,11 @@ img {
   * {
     animation: none !important;
     transition: none !important;
+  }
+
+  .vt-sidebar,
+  .vt-main {
+    view-transition-name: none;
   }
 
   @view-transition {

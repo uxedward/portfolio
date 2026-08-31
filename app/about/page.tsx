@@ -39,11 +39,11 @@ const skills = [
 
 export default function AboutPage() {
   return (
-    <div className="page-enter mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:py-24">
+    <div className="page-enter px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
       <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
         <div>
           <p className="text-sm text-ink-soft">A bit about who I am</p>
-          <h1 className="mt-5 max-w-3xl font-serif text-[clamp(2.2rem,5vw,4.4rem)] leading-[0.95] tracking-[-0.03em]">
+          <h1 className="mt-5 max-w-3xl font-sans text-[clamp(2.2rem,5vw,4.4rem)] leading-[0.95] tracking-[-0.03em]">
             I design digital products — and I teach the craft in public.
           </h1>
           <div className="mt-8 max-w-xl space-y-5 text-[17px] leading-7 text-ink-soft">
@@ -73,7 +73,7 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
-        <div className="overflow-hidden bg-paper-2">
+        <div className="overflow-hidden rounded-[var(--radius)] bg-paper-2">
           <Image
             src="/images/about/edward-grid.jpg"
             alt="Portraits of Edward Sudjono"

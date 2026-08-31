@@ -5,43 +5,41 @@ import { cn } from "@/lib/cn";
 
 export type TocItem = { id: string; label: string };
 
+const HEADER_OFFSET = 96;
+
 export function CaseStudyToc({ items }: { items: TocItem[] }) {
   const [active, setActive] = useState(items[0]?.id);
 
   useEffect(() => {
-    const headings = items
-      .map((item) => document.getElementById(item.id))
-      .filter((el): el is HTMLElement => Boolean(el));
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort(
-            (a, b) => a.boundingClientRect.top - b.boundingClientRect.top,
-          );
-        if (visible[0]?.target.id) {
-          setActive(visible[0].target.id);
+    function onScroll() {
+      let current = items[0]?.id;
+      for (const item of items) {
+        const el = document.getElementById(item.id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= HEADER_OFFSET) {
+          current = item.id;
         }
-      },
-      { rootMargin: "-18% 0px -68% 0px", threshold: [0, 0.2, 1] },
-    );
+      }
+      if (current) setActive(current);
+    }
 
-    headings.forEach((heading) => observer.observe(heading));
-    return () => observer.disconnect();
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, [items]);
 
-  function scrollTo(id: string) {
+  function goTo(id: string) {
     const el = document.getElementById(id);
     if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    const top = el.getBoundingClientRect().top + window.scrollY - (HEADER_OFFSET - 8);
+    window.scrollTo({ top, behavior: "smooth" });
     history.replaceState(null, "", `#${id}`);
     setActive(id);
   }
 
   return (
     <nav aria-label="On this page">
-      <ul className="flex gap-5 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-col lg:gap-0 lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden">
+      <ul className="flex gap-5 overflow-x-auto py-3 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-col lg:gap-1 lg:overflow-visible lg:py-0 [&::-webkit-scrollbar]:hidden">
         {items.map((item) => {
           const isActive = active === item.id;
           return (
@@ -50,15 +48,15 @@ export function CaseStudyToc({ items }: { items: TocItem[] }) {
                 href={`#${item.id}`}
                 onClick={(event) => {
                   event.preventDefault();
-                  scrollTo(item.id);
+                  goTo(item.id);
                 }}
-                className={cn(
-                  "block whitespace-nowrap py-1.5 text-[13px] tracking-tight transition-colors duration-300 ease-[var(--ease-out)] lg:border-l lg:px-4",
-                  isActive
-                    ? "text-ink lg:border-ink"
-                    : "text-ink-soft lg:border-transparent hover:text-ink",
-                )}
                 aria-current={isActive ? "location" : undefined}
+                className={cn(
+                  "block whitespace-nowrap py-2 text-[15px] leading-snug tracking-tight transition-colors duration-300 ease-[var(--ease-out)]",
+                  isActive
+                    ? "font-medium text-ink"
+                    : "text-ink-muted hover:text-ink",
+                )}
               >
                 {item.label}
               </a>
