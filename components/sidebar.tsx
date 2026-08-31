@@ -10,9 +10,8 @@ import {
   IconThreads,
   IconTikTok,
 } from "@/components/icons";
-import { StudioTab } from "@/components/studio-tab";
 import { cn } from "@/lib/cn";
-import { studioFromPath, studios } from "@/lib/nav";
+import { navFromPath, navItems } from "@/lib/nav";
 import { site } from "@/lib/site";
 
 const socialIcons = {
@@ -35,10 +34,45 @@ function Bio() {
   );
 }
 
+function NavList({
+  active,
+  onNavigate,
+}: {
+  active: ReturnType<typeof navFromPath>;
+  onNavigate?: () => void;
+}) {
+  return (
+    <ul className="space-y-1">
+      {navItems.map((item) => {
+        const isActive = active === item.id;
+        return (
+          <li key={item.id}>
+            <Link
+              href={item.href}
+              prefetch
+              scroll={false}
+              aria-current={isActive ? "page" : undefined}
+              onClick={onNavigate}
+              className={cn(
+                "block rounded-[var(--radius-sm)] px-2 py-1.5 text-[15px] tracking-tight transition-colors duration-300",
+                isActive
+                  ? "font-medium text-ink"
+                  : "text-ink-soft hover:text-ink",
+              )}
+            >
+              {item.label}
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 export function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  const activeStudio = studioFromPath(pathname);
+  const active = navFromPath(pathname);
   const [open, setOpen] = useState(false);
   const [menuPath, setMenuPath] = useState(pathname);
   const menuId = useId();
@@ -49,8 +83,8 @@ export function Sidebar() {
   }
 
   useEffect(() => {
-    for (const studio of studios) {
-      router.prefetch(studio.href);
+    for (const item of navItems) {
+      router.prefetch(item.href);
     }
   }, [router]);
 
@@ -118,16 +152,9 @@ export function Sidebar() {
         >
           <nav aria-label="Mobile" className="flex min-h-full flex-col px-5 py-8">
             <Bio />
-            <ul className="mt-8 space-y-1.5">
-              {studios.map((studio) => (
-                <li key={studio.id}>
-                  <StudioTab
-                    studio={studio}
-                    active={activeStudio === studio.id}
-                  />
-                </li>
-              ))}
-            </ul>
+            <div className="mt-8">
+              <NavList active={active} onNavigate={() => setOpen(false)} />
+            </div>
             <a
               href={site.chat.href}
               target="_blank"
@@ -155,17 +182,8 @@ export function Sidebar() {
           <SocialRow />
         </div>
 
-        <nav aria-label="Work" className="mt-10 flex-1">
-          <ul className="space-y-1.5">
-            {studios.map((studio) => (
-              <li key={studio.id}>
-                <StudioTab
-                  studio={studio}
-                  active={activeStudio === studio.id}
-                />
-              </li>
-            ))}
-          </ul>
+        <nav aria-label="Primary" className="mt-10 flex-1">
+          <NavList active={active} />
         </nav>
 
         <a
