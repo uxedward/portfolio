@@ -10,7 +10,7 @@ export default function NotFound() {
       <p className="mt-4 text-ink-soft">
         The work is still here — just on a different path.
       </p>
-      <Button href="/" className="mt-8 w-fit">
+      <Button href="/work" className="mt-8 w-fit">
         Back to work
       </Button>
     </div>

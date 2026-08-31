@@ -18,5 +18,10 @@ export const config: VercelConfig = {
       destination: "/work/train-booking",
       permanent: true,
     },
+    {
+      source: "/about",
+      destination: "/",
+      permanent: false,
+    },
   ],
 };

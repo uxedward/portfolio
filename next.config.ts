@@ -21,6 +21,11 @@ const nextConfig: NextConfig = {
         destination: "/work/train-booking",
         permanent: true,
       },
+      {
+        source: "/about",
+        destination: "/",
+        permanent: false,
+      },
     ];
   },
 };

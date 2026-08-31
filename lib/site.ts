@@ -22,19 +22,19 @@ export const site = {
     {
       name: "Instagram",
       href: "https://www.instagram.com/ux.edward/",
-      stat: "110k+",
+      stat: "123k+",
       label: "followers",
     },
     {
       name: "TikTok",
       href: "https://www.tiktok.com/@ux.edward",
-      stat: "90k+",
+      stat: "95k+",
       label: "followers",
     },
     {
       name: "Threads",
       href: "https://www.threads.net/@ux.edward",
-      stat: "20k+",
+      stat: "27.5k+",
       label: "followers",
     },
     {

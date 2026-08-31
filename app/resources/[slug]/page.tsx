@@ -1,0 +1,115 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { CommandBlock, GuideHeader } from "@/components/resource-card";
+import { getResource, resources } from "@/lib/resources";
+import { site } from "@/lib/site";
+
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export function generateStaticParams() {
+  return resources.map((resource) => ({ slug: resource.slug }));
+}
+
+export const dynamicParams = false;
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const resource = getResource(slug);
+  if (!resource) return {};
+
+  return {
+    title: resource.pageTitle,
+    description: resource.summary,
+    alternates: { canonical: `/resources/${resource.slug}` },
+  };
+}
+
+export default async function ResourceGuidePage({ params }: Props) {
+  const { slug } = await params;
+  const resource = getResource(slug);
+  if (!resource) notFound();
+
+  return (
+    <article className="px-5 py-10 sm:px-8 lg:px-10 lg:py-14">
+      <p className="mb-8">
+        <Link
+          href="/resources"
+          className="text-[14px] text-ink-soft transition-colors duration-300 hover:text-ink"
+        >
+          ← Resources
+        </Link>
+      </p>
+
+      <GuideHeader title={resource.pageTitle} />
+
+      <p className="mt-6 max-w-2xl text-[18px] leading-8 text-ink">
+        {resource.summary}
+      </p>
+
+      <section className="mt-14 max-w-2xl">
+        <h2 className="text-[11px] uppercase tracking-[0.16em] text-ink-soft">
+          Useful Links
+        </h2>
+        <ul className="mt-4 space-y-3">
+          {resource.links.map((link) => (
+            <li key={link.href}>
+              <p className="text-[14px] text-ink-soft">{link.label}</p>
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="break-all text-[15px] text-ink underline decoration-hairline underline-offset-4 transition-colors duration-300 hover:decoration-ink"
+              >
+                {link.href}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mt-14 max-w-2xl">
+        <h2 className="text-[11px] uppercase tracking-[0.16em] text-ink-soft">
+          Step by Step Setup
+        </h2>
+        <ol className="mt-6 space-y-8">
+          {resource.steps.map((step, index) => (
+            <li key={step.title} className="border-t border-hairline pt-6">
+              <p className="text-[13px] text-ink-soft">Step {index + 1}</p>
+              <h3 className="mt-1 text-[20px] font-medium tracking-tight">
+                {step.title}
+              </h3>
+              <p className="mt-2 text-[16px] leading-7 text-ink">{step.body}</p>
+              {step.extra ? (
+                <p className="mt-2 text-[16px] leading-7 text-ink">
+                  {step.extra.includes("mobbin.com/edward") ? (
+                    <>
+                      Get 20% off:{" "}
+                      <a
+                        href="https://mobbin.com/edward"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="underline decoration-hairline underline-offset-4 hover:decoration-ink"
+                      >
+                        mobbin.com/edward
+                      </a>
+                    </>
+                  ) : (
+                    step.extra
+                  )}
+                </p>
+              ) : null}
+              {step.command ? <CommandBlock command={step.command} /> : null}
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <p className="mt-16 text-[14px] text-ink-soft">
+        Created by {site.handle}
+      </p>
+    </article>
+  );
+}

@@ -40,13 +40,7 @@ export function Sidebar() {
   const router = useRouter();
   const activeStudio = studioFromPath(pathname);
   const [open, setOpen] = useState(false);
-  const [menuPath, setMenuPath] = useState(pathname);
   const menuId = useId();
-
-  if (pathname !== menuPath) {
-    setMenuPath(pathname);
-    setOpen(false);
-  }
 
   useEffect(() => {
     for (const studio of studios) {
@@ -55,6 +49,7 @@ export function Sidebar() {
   }, [router]);
 
   useEffect(() => {
+    setOpen(false);
     window.scrollTo(0, 0);
   }, [pathname]);
 
@@ -75,6 +70,22 @@ export function Sidebar() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
+
+  function Tabs() {
+    return (
+      <ul className="space-y-1.5">
+        {studios.map((studio) => (
+          <li key={studio.id}>
+            <StudioTab
+              studio={studio}
+              active={activeStudio === studio.id}
+              onNavigate={() => setOpen(false)}
+            />
+          </li>
+        ))}
+      </ul>
+    );
+  }
 
   return (
     <>
@@ -118,24 +129,9 @@ export function Sidebar() {
         >
           <nav aria-label="Mobile" className="flex min-h-full flex-col px-5 py-8">
             <Bio />
-            <ul className="mt-8 space-y-1.5">
-              {studios.map((studio) => (
-                <li key={studio.id}>
-                  <StudioTab
-                    studio={studio}
-                    active={activeStudio === studio.id}
-                  />
-                </li>
-              ))}
-            </ul>
-            <a
-              href={site.chat.href}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-6 text-sm text-ink-soft"
-            >
-              {site.chat.label} ↗
-            </a>
+            <div className="mt-8">
+              <Tabs />
+            </div>
             <div className="mt-auto pt-10">
               <SocialRow />
             </div>
@@ -156,26 +152,8 @@ export function Sidebar() {
         </div>
 
         <nav aria-label="Work" className="mt-10 flex-1">
-          <ul className="space-y-1.5">
-            {studios.map((studio) => (
-              <li key={studio.id}>
-                <StudioTab
-                  studio={studio}
-                  active={activeStudio === studio.id}
-                />
-              </li>
-            ))}
-          </ul>
+          <Tabs />
         </nav>
-
-        <a
-          href={site.chat.href}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-6 text-sm text-ink-soft transition-colors duration-300 hover:text-ink"
-        >
-          {site.chat.label} ↗
-        </a>
       </aside>
     </>
   );
