@@ -12,6 +12,8 @@ export function StudioMark({
   studio: Studio;
   size?: "sm" | "md" | "lg";
 }) {
+  if (!("image" in studio) || !studio.image) return null;
+
   const box =
     size === "lg" ? "h-[92px] w-[92px]" : size === "sm" ? "h-8 w-8" : "h-9 w-9";
   const pixels = size === "lg" ? 184 : 36;
@@ -24,11 +26,8 @@ export function StudioMark({
       height={pixels}
       quality={100}
       className={cn(
-        "shrink-0 overflow-hidden bg-paper",
+        "shrink-0 overflow-hidden rounded-[var(--radius-sm)] bg-paper object-contain",
         box,
-        studio.mark === "portrait"
-          ? "rounded-full object-cover"
-          : "rounded-[var(--radius-sm)] object-contain",
       )}
     />
   );
@@ -43,6 +42,8 @@ export function StudioTab({
   active: boolean;
   onNavigate?: () => void;
 }) {
+  const mark = <StudioMark studio={studio} />;
+
   return (
     <Link
       href={studio.href}
@@ -58,7 +59,7 @@ export function StudioTab({
         active ? "bg-ink text-paper" : "text-ink hover:bg-paper-2",
       )}
     >
-      <StudioMark studio={studio} />
+      {mark}
       <span className="min-w-0 flex-1">
         <span className="block text-[15px] font-medium tracking-tight">
           {studio.label}

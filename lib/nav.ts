@@ -1,5 +1,13 @@
 export const studios = [
   {
+    id: "home",
+    label: "Home",
+    bannerLabel: "Edward",
+    href: "/",
+    subtitle: "About",
+    mark: "none" as const,
+  },
+  {
     id: "tiket",
     label: "tiket.com (2021 - now)",
     bannerLabel: "tiket.com",
@@ -19,8 +27,7 @@ export const studios = [
     subtitle: "Content Creation",
     siteHref: "https://www.instagram.com/ux.edward/",
     siteLabel: "Instagram",
-    mark: "portrait" as const,
-    image: "/images/about/edward-portrait.jpg",
+    mark: "none" as const,
   },
   {
     id: "aitools",
@@ -28,19 +35,18 @@ export const studios = [
     bannerLabel: "AI Tools",
     href: "/ai-tools",
     subtitle: "Personal AI Playground",
-    mark: "portrait" as const,
-    image: "/images/about/edward-portrait.jpg",
+    mark: "none" as const,
   },
 ] as const;
 
 export type Studio = (typeof studios)[number];
 export type StudioId = Studio["id"];
 
-export function studioFromPath(pathname: string): StudioId | null {
+export function studioFromPath(pathname: string): StudioId {
   if (pathname.startsWith("/content")) return "uxedward";
   if (pathname.startsWith("/ai-tools")) return "aitools";
   if (pathname.startsWith("/work")) return "tiket";
-  return null;
+  return "home";
 }
 
 export function getStudio(id: StudioId): Studio {

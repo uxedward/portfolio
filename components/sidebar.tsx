@@ -46,7 +46,6 @@ export function Sidebar() {
     for (const studio of studios) {
       router.prefetch(studio.href);
     }
-    router.prefetch("/");
   }, [router]);
 
   useEffect(() => {
