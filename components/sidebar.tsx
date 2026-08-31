@@ -52,9 +52,12 @@ function NavList({
               prefetch
               scroll={false}
               aria-current={isActive ? "page" : undefined}
-              onClick={onNavigate}
+              onClick={() => {
+                if (!onNavigate) return;
+                window.setTimeout(onNavigate, 0);
+              }}
               className={cn(
-                "block rounded-[var(--radius-sm)] px-2 py-1.5 text-[15px] tracking-tight transition-colors duration-300",
+                "block rounded-[var(--radius-sm)] px-2 py-2.5 text-[15px] tracking-tight transition-colors duration-300",
                 isActive
                   ? "font-medium text-ink"
                   : "text-ink-soft hover:text-ink",
@@ -74,13 +77,7 @@ export function Sidebar() {
   const router = useRouter();
   const active = navFromPath(pathname);
   const [open, setOpen] = useState(false);
-  const [menuPath, setMenuPath] = useState(pathname);
   const menuId = useId();
-
-  if (pathname !== menuPath) {
-    setMenuPath(pathname);
-    setOpen(false);
-  }
 
   useEffect(() => {
     for (const item of navItems) {
@@ -89,6 +86,7 @@ export function Sidebar() {
   }, [router]);
 
   useEffect(() => {
+    setOpen(false);
     window.scrollTo(0, 0);
   }, [pathname]);
 
