@@ -39,7 +39,7 @@ export const resourceItems: ResourceItem[] = [
   {
     title: "Mobbin",
     href: "https://mobbin.com/edward",
-    body: "Mobile & web app design library. 20% off with this link.",
+    body: "Get 20% off your annual plan. Mobile and web app design library.",
     external: true,
   },
   {
@@ -47,12 +47,6 @@ export const resourceItems: ResourceItem[] = [
     href: "https://framer.link/uxedward",
     body: "Explore the new chapter of Framer 3.0.",
     external: true,
-  },
-  {
-    title: "Figma × Claude Code Setup",
-    href: "/resources/figma-claude-setup",
-    body: "Install Figma MCP and talk to your files from Claude Code.",
-    external: false,
   },
   {
     title: "Try Figma Make",

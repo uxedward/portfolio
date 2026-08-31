@@ -24,9 +24,7 @@ export const studios = [
     label: "Resources",
     bannerLabel: "Resources",
     href: "/resources",
-    subtitle: "Content Creation",
-    siteHref: "https://beacons.ai/ux.edward",
-    siteLabel: "Beacons",
+    subtitle: "Guides & tools",
     mark: "none" as const,
   },
   {

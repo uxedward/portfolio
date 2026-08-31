@@ -6,15 +6,15 @@ export function ResourceCard({ resource }: { resource: Resource }) {
   return (
     <Link
       href={`/resources/${resource.slug}`}
-      className="group block border-b border-hairline py-8 transition-opacity duration-300 hover:opacity-80"
+      className="group block rounded-[var(--radius)] border border-hairline px-5 py-6 transition-opacity duration-300 hover:opacity-80 sm:px-6"
     >
       <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-ink-soft">
         {resource.category}
       </p>
-      <h2 className="mt-3 font-sans text-[clamp(1.5rem,3vw,2.1rem)] font-medium leading-[1.05] tracking-[-0.03em]">
+      <h3 className="mt-3 font-sans text-[clamp(1.35rem,2.4vw,1.75rem)] font-medium leading-[1.1] tracking-[-0.03em]">
         {resource.title}
-      </h2>
-      <p className="mt-3 max-w-2xl text-[16px] leading-7 text-ink-muted">
+      </h3>
+      <p className="mt-2 max-w-2xl text-[16px] leading-7 text-ink-muted">
         {resource.summary}
       </p>
       <p className="mt-5 text-[14px] text-ink-soft transition-colors duration-300 group-hover:text-ink">
