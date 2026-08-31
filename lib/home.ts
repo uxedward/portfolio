@@ -46,12 +46,12 @@ export const homePhotoRows: HomePhotoRow[] = [
     photos: [
       {
         src: "/images/home/img-1022.jpg",
-        alt: "Edward speaking into a microphone on stage",
+        alt: "Logitech MX Master product on a presentation display",
         widthClass: "flex-1",
       },
       {
         src: "/images/home/img-1016.jpg",
-        alt: "Presentation slide for a new workflow with Figma Make",
+        alt: "Presentation slide about structure, prototypes, and UI design",
         widthClass: "flex-1",
       },
     ],

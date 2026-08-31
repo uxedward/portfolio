@@ -71,7 +71,7 @@ export default function Home() {
             key={row.photos.map((photo) => photo.src).join("-")}
             className={`flex gap-4 ${row.heightClass}`}
           >
-            {row.photos.map((photo) => (
+            {row.photos.map((photo, photoIndex) => (
               <div
                 key={photo.src}
                 className={`relative min-w-0 overflow-hidden rounded-[10px] ${photo.widthClass}`}
@@ -80,6 +80,7 @@ export default function Home() {
                   src={photo.src}
                   alt={photo.alt}
                   fill
+                  priority={row === homePhotoRows[0] && photoIndex === 0}
                   sizes="(max-width: 1024px) 100vw, calc(100vw - 280px)"
                   className={`object-cover ${photo.objectClass ?? ""}`}
                 />
