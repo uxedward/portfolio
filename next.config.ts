@@ -22,13 +22,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/content",
+        source: "/about",
         destination: "/",
-        permanent: false,
-      },
-      {
-        source: "/ai-tools",
-        destination: "/resources",
         permanent: false,
       },
     ];

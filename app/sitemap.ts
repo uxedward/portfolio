@@ -5,8 +5,9 @@ export default function sitemap() {
   const lastModified = new Date();
   const routes = [
     "",
-    "/about",
     "/work",
+    "/content",
+    "/ai-tools",
     "/resources",
     "/work/bus-search",
     "/work/train-booking",

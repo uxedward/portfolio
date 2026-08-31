@@ -10,8 +10,9 @@ import {
   IconThreads,
   IconTikTok,
 } from "@/components/icons";
+import { StudioTab } from "@/components/studio-tab";
 import { cn } from "@/lib/cn";
-import { navFromPath, navItems } from "@/lib/nav";
+import { studioFromPath, studios } from "@/lib/nav";
 import { site } from "@/lib/site";
 
 const socialIcons = {
@@ -34,55 +35,18 @@ function Bio() {
   );
 }
 
-function NavList({
-  active,
-  onNavigate,
-}: {
-  active: ReturnType<typeof navFromPath>;
-  onNavigate?: () => void;
-}) {
-  return (
-    <ul className="space-y-1">
-      {navItems.map((item) => {
-        const isActive = active === item.id;
-        return (
-          <li key={item.id}>
-            <Link
-              href={item.href}
-              prefetch
-              scroll={false}
-              aria-current={isActive ? "page" : undefined}
-              onClick={() => {
-                if (!onNavigate) return;
-                window.setTimeout(onNavigate, 0);
-              }}
-              className={cn(
-                "block rounded-[var(--radius-sm)] px-2 py-2.5 text-[15px] tracking-tight transition-colors duration-300",
-                isActive
-                  ? "font-medium text-ink"
-                  : "text-ink-soft hover:text-ink",
-              )}
-            >
-              {item.label}
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
-
 export function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  const active = navFromPath(pathname);
+  const activeStudio = studioFromPath(pathname);
   const [open, setOpen] = useState(false);
   const menuId = useId();
 
   useEffect(() => {
-    for (const item of navItems) {
-      router.prefetch(item.href);
+    for (const studio of studios) {
+      router.prefetch(studio.href);
     }
+    router.prefetch("/");
   }, [router]);
 
   useEffect(() => {
@@ -107,6 +71,22 @@ export function Sidebar() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
+
+  function Tabs() {
+    return (
+      <ul className="space-y-1.5">
+        {studios.map((studio) => (
+          <li key={studio.id}>
+            <StudioTab
+              studio={studio}
+              active={activeStudio === studio.id}
+              onNavigate={() => setOpen(false)}
+            />
+          </li>
+        ))}
+      </ul>
+    );
+  }
 
   return (
     <>
@@ -151,16 +131,8 @@ export function Sidebar() {
           <nav aria-label="Mobile" className="flex min-h-full flex-col px-5 py-8">
             <Bio />
             <div className="mt-8">
-              <NavList active={active} onNavigate={() => setOpen(false)} />
+              <Tabs />
             </div>
-            <a
-              href={site.chat.href}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-6 text-sm text-ink-soft"
-            >
-              {site.chat.label} ↗
-            </a>
             <div className="mt-auto pt-10">
               <SocialRow />
             </div>
@@ -180,18 +152,9 @@ export function Sidebar() {
           <SocialRow />
         </div>
 
-        <nav aria-label="Primary" className="mt-10 flex-1">
-          <NavList active={active} />
+        <nav aria-label="Work" className="mt-10 flex-1">
+          <Tabs />
         </nav>
-
-        <a
-          href={site.chat.href}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-6 text-sm text-ink-soft transition-colors duration-300 hover:text-ink"
-        >
-          {site.chat.label} ↗
-        </a>
       </aside>
     </>
   );

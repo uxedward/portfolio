@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { ProjectGrid } from "@/components/project-grid";
 import { StudioBanner } from "@/components/studio-banner";
-import { tiketStudio } from "@/lib/nav";
+import { getStudio } from "@/lib/nav";
 import { workProjects } from "@/lib/projects";
+
+const studio = getStudio("tiket");
 
 export const metadata: Metadata = {
   title: "Work",
@@ -14,7 +16,7 @@ export const metadata: Metadata = {
 export default function WorkPage() {
   return (
     <div className="px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
-      <StudioBanner studio={tiketStudio} />
+      <StudioBanner studio={studio} />
       <ProjectGrid projects={workProjects} />
     </div>
   );
