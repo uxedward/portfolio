@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { ProjectGrid } from "@/components/project-grid";
 import { StudioBanner } from "@/components/studio-banner";
-import { getStudio } from "@/lib/nav";
+import { contentStudio } from "@/lib/nav";
 import { contentProjects } from "@/lib/projects";
 import { site } from "@/lib/site";
 
-const studio = getStudio("uxedward");
+const studio = contentStudio;
 
 export const metadata: Metadata = {
   title: "Content",

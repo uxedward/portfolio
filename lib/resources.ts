@@ -22,6 +22,76 @@ export type Resource = {
   steps: ResourceStep[];
 };
 
+export type ResourceItem = {
+  title: string;
+  href: string;
+  body: string;
+  external: boolean;
+};
+
+export const resourceItems: ResourceItem[] = [
+  {
+    title: "Figma agent Playground",
+    href: "https://psxid.figma.com/edward_agent",
+    body: "Explore the capabilities of Figma's agents.",
+    external: true,
+  },
+  {
+    title: "Mobbin",
+    href: "https://mobbin.com/edward",
+    body: "Mobile & web app design library. 20% off with this link.",
+    external: true,
+  },
+  {
+    title: "Try out Framer Agents",
+    href: "https://framer.link/uxedward",
+    body: "Explore the new chapter of Framer 3.0.",
+    external: true,
+  },
+  {
+    title: "Figma × Claude Code Setup",
+    href: "/resources/figma-claude-setup",
+    body: "Install Figma MCP and talk to your files from Claude Code.",
+    external: false,
+  },
+  {
+    title: "Try Figma Make",
+    href: "https://psxid.figma.com/uxedward",
+    body: "Generate, tweak, and build faster, all in one creative space.",
+    external: true,
+  },
+  {
+    title: "Try Claude Cowork",
+    href: "https://clau.de/ux.edward1",
+    body: "The AI for problem solvers.",
+    external: true,
+  },
+  {
+    title: "Try Claude Code",
+    href: "https://clau.de/ux.edward",
+    body: "Describe what you need, and Claude handles the rest.",
+    external: true,
+  },
+  {
+    title: "Documentation — Figma Community file",
+    href: "https://www.figma.com/community/file/1528075304642827265",
+    body: "Make design handoffs smooth and easy.",
+    external: true,
+  },
+  {
+    title: "Notion AI",
+    href: "https://ntn.so/uxedward",
+    body: "The AI workspace that works for you.",
+    external: true,
+  },
+  {
+    title: "PipDecks",
+    href: "https://pipdecks.com/uxedward",
+    body: "Ditch dull meetings. Design better products and services.",
+    external: true,
+  },
+];
+
 export const resources: Resource[] = [
   {
     slug: "figma-claude-setup",

@@ -16,13 +16,13 @@ const now = [
     title: "Building products @ tiket.com",
     href: "/work",
     external: false,
-    body: "As a Product Designer, I build products at tiket.com — Indonesia’s leading online travel company.",
+    body: "As a Product Designer, I build products at tiket.com, Indonesia’s leading online travel company.",
   },
   {
     title: "Teaching design in public",
     href: "https://www.instagram.com/ux.edward/",
     external: true,
-    body: "As a Creator, I break down how real product teams think, make decisions, and test ideas — and advocate AI and modern design tools so designers can ship work that matters.",
+    body: "As a Creator, I break down how real product teams think, make decisions, and test ideas and advocate AI and modern design tools so designers can ship work that matters.",
   },
 ];
 
@@ -33,14 +33,18 @@ const highlightedSocials = site.socials.filter((social) =>
 export default function Home() {
   return (
     <div className="px-5 py-10 sm:px-8 lg:max-w-[720px] lg:px-10 lg:py-14">
-      <Image
-        src="/images/about/edward-grid.jpg"
-        alt="Edward Sudjono"
-        width={1600}
-        height={2000}
-        priority
-        className="h-auto w-full rounded-[var(--radius)]"
-      />
+      <div className="relative size-[320px] max-w-full overflow-hidden rounded-[24px]">
+        <Image
+          src="/images/about/edward-home.jpg"
+          alt="Edward Sudjono"
+          width={1280}
+          height={1920}
+          priority
+          sizes="320px"
+          className="absolute left-0 w-full max-w-none"
+          style={{ height: "150%", top: "-47.5%" }}
+        />
+      </div>
 
       <h1 className="mt-10 font-sans text-[clamp(2.2rem,5vw,3.8rem)] leading-[0.95] tracking-[-0.03em]">
         Hi! I&apos;m Edward.

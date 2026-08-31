@@ -5,10 +5,10 @@ import { ToolCard } from "@/components/tool-card";
 import { getStudio } from "@/lib/nav";
 import { aiTools } from "@/lib/tools";
 
-const studio = getStudio("aitools");
+const studio = getStudio("playground");
 
 export const metadata: Metadata = {
-  title: "AI Tools",
+  title: "Playground",
   description:
     "A personal playground of tools Edward Sudjono has built with AI.",
   alternates: { canonical: "/ai-tools" },
@@ -18,7 +18,7 @@ export default function AiToolsPage() {
   return (
     <div className="px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
       <StudioBanner studio={studio} />
-      <p className="mb-3 text-sm text-ink-soft">Personal AI Playground</p>
+      <p className="mb-3 text-sm text-ink-soft">Stuff I’m building</p>
       <p className="mb-8 max-w-xl text-[17px] leading-7 text-ink-soft">
         Tools I&apos;ve built with AI — small products, agents, and workflow
         experiments from my own practice.

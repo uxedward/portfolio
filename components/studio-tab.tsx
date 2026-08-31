@@ -42,8 +42,6 @@ export function StudioTab({
   active: boolean;
   onNavigate?: () => void;
 }) {
-  const mark = <StudioMark studio={studio} />;
-
   return (
     <Link
       href={studio.href}
@@ -59,7 +57,6 @@ export function StudioTab({
         active ? "bg-ink text-paper" : "text-ink hover:bg-paper-2",
       )}
     >
-      {mark}
       <span className="min-w-0 flex-1">
         <span className="block text-[15px] font-medium tracking-tight">
           {studio.label}

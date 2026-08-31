@@ -4,7 +4,7 @@ import { StudioBanner } from "@/components/studio-banner";
 import { getStudio } from "@/lib/nav";
 import { workProjects } from "@/lib/projects";
 
-const studio = getStudio("tiket");
+const studio = getStudio("work");
 
 export const metadata: Metadata = {
   title: "Work",
