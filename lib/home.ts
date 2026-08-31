@@ -36,7 +36,7 @@ export const homePhotoRows: HomePhotoRow[] = [
       },
       {
         src: "/images/home/img-9472.jpg",
-        alt: "Edward standing at a conference with a Logitech presentation behind him",
+        alt: "Edward at Config APAC with the conference stage behind him",
         widthClass: "w-[38%] sm:w-[280px] sm:shrink-0",
       },
     ],
@@ -46,12 +46,12 @@ export const homePhotoRows: HomePhotoRow[] = [
     photos: [
       {
         src: "/images/home/img-1022.jpg",
-        alt: "Logitech MX Master product on a presentation display",
+        alt: "Edward speaking on stage at a Logitech MX Master event",
         widthClass: "flex-1",
       },
       {
         src: "/images/home/img-1016.jpg",
-        alt: "Presentation slide about structure, prototypes, and UI design",
+        alt: "Edward presenting a new workflow with Figma Make",
         widthClass: "flex-1",
       },
     ],
@@ -66,7 +66,7 @@ export const homePhotoRows: HomePhotoRow[] = [
       },
       {
         src: "/images/home/d50d4909.jpg",
-        alt: "Group photo at a Logitech partner event",
+        alt: "Group photo at Maker Collective Singapore",
         widthClass: "w-[38%] sm:w-[280px] sm:shrink-0",
       },
     ],
@@ -81,7 +81,7 @@ export const homePhotoRows: HomePhotoRow[] = [
       },
       {
         src: "/images/home/img-6884.jpg",
-        alt: "Slide titled UX Designer 2026 AI Tool Stack with Edward’s portrait",
+        alt: "Edward presenting UX Designer 2026 AI Tool Stack at GDG Bandung",
         widthClass: "flex-1",
       },
     ],
@@ -91,13 +91,12 @@ export const homePhotoRows: HomePhotoRow[] = [
     photos: [
       {
         src: "/images/home/desk.jpg",
-        alt: "Audience at a Logitech-branded event",
+        alt: "Group photo around a Logitech logi sign",
         widthClass: "flex-1",
-        objectClass: "object-bottom",
       },
       {
         src: "/images/home/img-0119.jpg",
-        alt: "Edward working at a desk with a laptop and tablet",
+        alt: "Edward at a desk with a laptop and tablet showing design work",
         widthClass: "w-[42%] sm:w-[393px] sm:shrink-0",
       },
     ],
