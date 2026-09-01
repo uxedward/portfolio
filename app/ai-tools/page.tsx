@@ -35,7 +35,13 @@ export default function AiToolsPage() {
         </RiseIn>
       ) : (
         <RiseIn>
-          <ul className="grid gap-4 md:grid-cols-2 md:gap-3">
+          <ul
+            className={
+              aiTools.length > 1
+                ? "grid gap-4 md:grid-cols-2 md:gap-3"
+                : "grid max-w-xl gap-4"
+            }
+          >
             {aiTools.map((tool) => (
               <li key={tool.slug}>
                 <ToolCard tool={tool} />
