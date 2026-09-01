@@ -27,6 +27,12 @@ const nextConfig: NextConfig = {
         destination: "/",
         permanent: false,
       },
+      {
+        source: "/work/bus-product",
+        destination:
+          "https://tiket.design/stories/the-design-odyssey-of-bus-and-shuttle-at-tiket-com",
+        permanent: true,
+      },
     ];
   },
 };

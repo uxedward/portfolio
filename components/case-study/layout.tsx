@@ -102,7 +102,7 @@ export function CaseStudyShell({
   domains?: string[];
   toc: TocItem[];
   children: React.ReactNode;
-  next?: { href: string; title: string };
+  next?: { href: string; title: string; external?: boolean };
 }) {
   return (
     <>
@@ -127,6 +127,7 @@ export function CaseStudyShell({
             </p>
             <Button
               href={next.href}
+              external={next.external}
               variant="ghost"
               className="px-0 text-right text-[15px] leading-snug sm:text-lg"
             >
