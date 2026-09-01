@@ -449,7 +449,7 @@ export function CarRentalsBody() {
           prompting us to replace it with <em>&quot;Area&quot;</em> for improved
           clarity.
         </p>
-        <h3 className="pt-6 font-sans text-2xl tracking-tight text-ink">
+        <h3 className="pt-6 font-sans text-xl tracking-tight text-ink sm:text-2xl">
           Product Detail Page
         </h3>
         <StepHeading number="1">Restructuring Information Architect</StepHeading>
@@ -505,7 +505,7 @@ export function CarRentalsBody() {
             },
           ]}
         />
-        <h3 className="pt-6 font-sans text-2xl tracking-tight text-ink">
+        <h3 className="pt-6 font-sans text-xl tracking-tight text-ink sm:text-2xl">
           Booking Form Page
         </h3>
         <StepHeading number="1">From 1 Page to 2 Pages</StepHeading>
@@ -542,7 +542,7 @@ export function CarRentalsBody() {
           src="/images/work/car-7.jpg"
           alt="Adding a Rental Area on the booking form"
         />
-        <h3 className="pt-6 font-sans text-2xl tracking-tight text-ink">
+        <h3 className="pt-6 font-sans text-xl tracking-tight text-ink sm:text-2xl">
           Add Area Page
         </h3>
         <StepHeading number="1">Selecting Area by Date</StepHeading>

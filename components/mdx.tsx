@@ -19,7 +19,9 @@ export function Metric({
 }) {
   return (
     <div className="bg-paper px-5 py-6">
-      <p className="font-sans text-4xl tracking-tight text-accent">{value}</p>
+      <p className="font-sans text-[2rem] tracking-tight text-accent sm:text-4xl">
+        {value}
+      </p>
       <p className="mt-2 text-sm leading-6 text-ink-muted">{label}</p>
     </div>
   );
@@ -44,7 +46,8 @@ export function Figure({
           alt={alt}
           width={1600}
           height={1200}
-          className="h-auto w-full"
+          className="block h-auto w-full"
+          style={{ width: "100%", height: "auto", aspectRatio: "auto" }}
         />
       </div>
       {caption ? (
@@ -68,7 +71,9 @@ export function Callout({
           {eyebrow}
         </p>
       ) : null}
-      <div className="mt-2 text-[18px] leading-8 text-ink">{children}</div>
+      <div className="mt-2 text-[16px] leading-7 text-ink sm:text-[18px] sm:leading-8">
+        {children}
+      </div>
     </aside>
   );
 }
@@ -91,7 +96,7 @@ export function Step({
       <span className="font-sans text-3xl text-accent">{number}</span>
       <div>
         <h3 className="text-xl leading-tight">{title}</h3>
-        <div className="mt-2 space-y-3 text-[18px] leading-8 text-ink">
+        <div className="mt-2 space-y-3 text-[16px] leading-7 text-ink sm:text-[18px] sm:leading-8">
           {children}
         </div>
       </div>
@@ -107,7 +112,7 @@ export const mdxComponents: NonNullable<MDXRemoteProps["components"]> = {
   Steps,
   Step,
   h2: ({ children }) => (
-    <h2 className="mt-16 font-sans text-3xl font-medium tracking-tight text-ink sm:text-4xl">
+    <h2 className="mt-12 font-sans text-2xl font-medium tracking-tight text-ink sm:mt-16 sm:text-3xl md:text-4xl">
       {children}
     </h2>
   ),
@@ -117,15 +122,17 @@ export const mdxComponents: NonNullable<MDXRemoteProps["components"]> = {
     </h3>
   ),
   p: ({ children }) => (
-    <p className="mt-4 text-[18px] leading-8 text-ink">{children}</p>
+    <p className="mt-4 text-[16px] leading-7 text-ink sm:text-[18px] sm:leading-8">
+      {children}
+    </p>
   ),
   ul: ({ children }) => (
-    <ul className="mt-4 list-disc space-y-2 pl-5 text-[18px] leading-8 text-ink">
+    <ul className="mt-4 list-disc space-y-2 pl-5 text-[16px] leading-7 text-ink sm:text-[18px] sm:leading-8">
       {children}
     </ul>
   ),
   ol: ({ children }) => (
-    <ol className="mt-4 list-decimal space-y-2 pl-5 text-[18px] leading-8 text-ink">
+    <ol className="mt-4 list-decimal space-y-2 pl-5 text-[16px] leading-7 text-ink sm:text-[18px] sm:leading-8">
       {children}
     </ol>
   ),
