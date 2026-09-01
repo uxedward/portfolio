@@ -27,6 +27,7 @@ export function CarRentalsBody() {
         id="in-a-nutshell"
         label="In A Nutshell"
         heading="Revamping Business Model & User Experience"
+        card
       >
         <p>
           In response to numerous complaints about our business model and user
@@ -109,6 +110,7 @@ export function CarRentalsBody() {
           </li>
         </ol>
         <Figure
+          bleed={false}
           src="/images/work/car-6.png"
           alt="Car Rental Flow [Late 2021]"
         />
@@ -123,7 +125,7 @@ export function CarRentalsBody() {
           During October 2021 - February 2022 period, there are a large number
           of complaints and inquiries regarding Car Rentals.
         </p>
-        <div className="space-y-3">
+        <div className="grid gap-6 lg:grid-cols-2 lg:gap-6">
           <Issue number="1" title="🚨 No Incentive to Explore">
             <p>44% - General Information of Car Rentals</p>
             <p>20% - How to order Car Rental at tiket.com</p>
@@ -174,6 +176,7 @@ export function CarRentalsBody() {
           regulations on tiket.com
         </p>
         <Figure
+          bleed={false}
           src="/images/work/car-10.jpg"
           alt="Landing Page — 38% users clicked search, 8.5% users clicked regulations"
         />
@@ -189,6 +192,7 @@ export function CarRentalsBody() {
           page by designing 3 new features:
         </p>
         <Figure
+          bleed={false}
           src="/images/work/car-3.jpg"
           alt="NEW Landing Page with How to Rent info, video, and FAQ"
         />
@@ -200,6 +204,7 @@ export function CarRentalsBody() {
           rental guide on tiket.com before booking.
         </p>
         <Figure
+          bleed={false}
           src="/images/work/car-18.jpg"
           alt="NEW Landing Page and How to Order Info Page"
         />
@@ -211,6 +216,7 @@ export function CarRentalsBody() {
           tiket.com.
         </p>
         <Figure
+          bleed={false}
           src="/images/work/car-11.jpg"
           alt="How to Rent Video Tutorial on the landing page"
         />
@@ -220,6 +226,7 @@ export function CarRentalsBody() {
           the Car Rental product.
         </p>
         <Figure
+          bleed={false}
           src="/images/work/car-17.jpg"
           alt="Frequently Asked Questions page"
         />
@@ -232,6 +239,7 @@ export function CarRentalsBody() {
           results:
         </p>
         <Metrics
+          plain
           items={[
             {
               value: "+16.7%",
@@ -301,6 +309,7 @@ export function CarRentalsBody() {
           no additional payment is required for those zones.
         </p>
         <Figure
+          bleed={false}
           src="/images/work/car-16.jpg"
           alt="Bali - Zone Usage Map [Early 2022]"
         />
@@ -354,6 +363,7 @@ export function CarRentalsBody() {
           </li>
         </ul>
         <Figure
+          bleed={false}
           src="/images/work/car-15.jpg"
           alt="Product Detail Page — Your Rental Area and package details"
         />
@@ -371,6 +381,7 @@ export function CarRentalsBody() {
           </li>
         </ul>
         <Figure
+          bleed={false}
           src="/images/work/car-14.jpg"
           alt="Booking Form Page pickup and drop-off zone fees"
         />
@@ -385,6 +396,7 @@ export function CarRentalsBody() {
           </li>
         </ul>
         <Figure
+          bleed={false}
           src="/images/work/car-21.jpg"
           alt="Additional Zone Page from the booking form"
         />
@@ -405,6 +417,7 @@ export function CarRentalsBody() {
           resulting users in surprise when charged by our Car Rental vendors.
         </p>
         <Figure
+          bleed={false}
           src="/images/work/car-19.jpg"
           alt="Adding Zones flow forcing payment for Zones 1 and 2 after selecting Zone 3"
         />
@@ -464,6 +477,7 @@ export function CarRentalsBody() {
           <li>What’s Included &amp; What’s Not</li>
         </ol>
         <Figure
+          bleed={false}
           src="/images/work/car-4.jpg"
           alt="Product Detail Page — old versus NEW"
         />
@@ -472,6 +486,7 @@ export function CarRentalsBody() {
           Provide users with early education on their city’s Rental Area(s).
         </p>
         <Figure
+          bleed={false}
           src="/images/work/car-13.jpg"
           alt="NEW Product Detail Page and Coverage Areas in Bali"
         />
@@ -481,6 +496,7 @@ export function CarRentalsBody() {
           regarding the Rental Area.
         </p>
         <Figure
+          bleed={false}
           src="/images/work/car-2.jpg"
           alt="NEW Product Detail Page — emphasized package details"
         />
@@ -493,6 +509,7 @@ export function CarRentalsBody() {
           results:
         </p>
         <Metrics
+          plain
           items={[
             {
               value: "49.3%",
@@ -520,6 +537,7 @@ export function CarRentalsBody() {
           </li>
         </ol>
         <Figure
+          bleed={false}
           src="/images/work/car-5.jpg"
           alt="Booking Form Page Improvements — from 1 page to 2 pages"
         />
@@ -530,6 +548,7 @@ export function CarRentalsBody() {
           charges.
         </p>
         <Figure
+          bleed={false}
           src="/images/work/car-9.jpg"
           alt="Pickup and Drop-off location Area fees"
         />
@@ -539,6 +558,7 @@ export function CarRentalsBody() {
           selection or adding them manually.
         </p>
         <Figure
+          bleed={false}
           src="/images/work/car-7.jpg"
           alt="Adding a Rental Area on the booking form"
         />
@@ -553,6 +573,7 @@ export function CarRentalsBody() {
           when adding an Area/Zone.
         </p>
         <Figure
+          bleed={false}
           src="/images/work/car-8.jpg"
           alt="OLD Add Area Page versus NEW Add Area Page"
         />
@@ -563,6 +584,7 @@ export function CarRentalsBody() {
           also covers Zones 1 and 2, with no additional charges required).
         </p>
         <Figure
+          bleed={false}
           src="/images/work/car-20.jpg"
           alt="OLD Area Information versus NEW Area Information"
         />
@@ -572,6 +594,7 @@ export function CarRentalsBody() {
           designated route or location.
         </p>
         <Figure
+          bleed={false}
           src="/images/work/car-1.jpg"
           alt="NEW Search Bar to check a location's Area"
         />
@@ -584,6 +607,7 @@ export function CarRentalsBody() {
           results:
         </p>
         <Metrics
+          plain
           items={[
             {
               value: "+8.2%",

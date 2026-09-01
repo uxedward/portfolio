@@ -1,6 +1,7 @@
 import {
   Figure,
   Metrics,
+  ProblemSplit,
   Section,
   StepHeading,
 } from "@/components/case-study/layout";
@@ -23,6 +24,7 @@ export function TrainBookingBody() {
         id="in-a-nutshell"
         label="In A Nutshell"
         heading="Small Improvements, Large Impact"
+        card
       >
         <p>
           Due to multiple user <em>Error Search Results</em>, my team and I
@@ -53,6 +55,7 @@ export function TrainBookingBody() {
         </ul>
         <p>Here&apos;s how the story goes ▼</p>
         <Figure
+          bleed={false}
           src="/images/work/train-3.jpg"
           alt="Old Design versus New Design of the Train booking form"
         />
@@ -65,6 +68,7 @@ export function TrainBookingBody() {
           Hotels and Trains.
         </p>
         <Figure
+          bleed={false}
           src="/images/work/train-1.jpg"
           alt="Previous Train Booking Form Flow [Early 2023]"
         />
@@ -103,15 +107,23 @@ export function TrainBookingBody() {
           high-impact problems, leading us to focus on the three issues below.
         </p>
         <Figure
+          bleed={false}
           src="/images/work/train-2.png"
           alt="Workshop board mapping train booking problems, impact, and solutions"
         />
       </Section>
 
-      <Section
+      <ProblemSplit
         id="p1"
         label="Problem #1"
         heading="Difficulty in Viewing Final Price Breakdown Early"
+        figure={
+          <Figure
+            bleed={false}
+            src="/images/work/train-5.jpg"
+            alt="Train booking form price breakdown problem"
+          />
+        }
       >
         <p>
           Train users compare prices across OTAs and seek a final price
@@ -119,16 +131,19 @@ export function TrainBookingBody() {
           Form Page 2,{" "}
           <strong>which users view as a barrier.</strong>
         </p>
-        <Figure
-          src="/images/work/train-5.jpg"
-          alt="Train booking form price breakdown problem"
-        />
-      </Section>
+      </ProblemSplit>
 
-      <Section
+      <ProblemSplit
         id="p2"
         label="Problem #2"
         heading="Difficulty Understanding Countdown Meaning"
+        figure={
+          <Figure
+            bleed={false}
+            src="/images/work/train-12.jpg"
+            alt="Train booking form countdown problem"
+          />
+        }
       >
         <p>
           Train users often mistake the countdown in our Booking Form for
@@ -136,16 +151,19 @@ export function TrainBookingBody() {
           <strong>leading to concerns about accidental bookings</strong> and
           higher drop-off rates.
         </p>
-        <Figure
-          src="/images/work/train-12.jpg"
-          alt="Train booking form countdown problem"
-        />
-      </Section>
+      </ProblemSplit>
 
-      <Section
+      <ProblemSplit
         id="p3"
         label="Problem #3"
         heading="Difficulty noticing Passenger Details"
+        figure={
+          <Figure
+            bleed={false}
+            src="/images/work/train-8.jpg"
+            alt="Train booking form passenger details problem"
+          />
+        }
       >
         <p>
           Participants see the{" "}
@@ -153,11 +171,7 @@ export function TrainBookingBody() {
           final price breakdown, so evaluating its accessibility is crucial to
           avoid user frustration and incomplete transactions.
         </p>
-        <Figure
-          src="/images/work/train-8.jpg"
-          alt="Train booking form passenger details problem"
-        />
-      </Section>
+      </ProblemSplit>
 
       <Section
         id="design-solutions"
@@ -165,65 +179,85 @@ export function TrainBookingBody() {
         heading="Small Improvement, Large Impacts"
       >
         <p>We improved 3 main aspects of our Train Booking Form.</p>
-        <StepHeading number="1">Header: Guiding instead of Pressuring</StepHeading>
-        <p>
-          We removed the booking countdown to prevent early drop-offs and added
-          a stepper to visually guide users through the booking steps before
-          payment.
-        </p>
+        <div className="space-y-8">
+          <div className="space-y-3">
+            <StepHeading number="1">
+              Header: Guiding instead of Pressuring
+            </StepHeading>
+            <Figure
+              bleed={false}
+              src="/images/work/train-9.jpg"
+              alt="Header with stepper guiding instead of pressuring"
+            />
+            <p>
+              We removed the booking countdown to prevent early drop-offs and
+              added a stepper to visually guide users through the booking steps
+              before payment.
+            </p>
+          </div>
+          <div className="space-y-3">
+            <StepHeading number="2">
+              Passenger Details: Improved Copywriting &amp; Icon
+            </StepHeading>
+            <Figure
+              bleed={false}
+              src="/images/work/train-11.jpg"
+              alt="Improved passenger details copywriting and icon"
+            />
+            <p>
+              By testing different copywritings &amp; icons during usability
+              tests, the new wording uses &quot;Fill&quot; to invite users to
+              enter passenger details, and the pencil icon indicates information
+              to be filled or edited.
+            </p>
+          </div>
+          <div className="space-y-3">
+            <StepHeading number="3">
+              Price Details: Inform price breakdown early
+            </StepHeading>
+            <Figure
+              bleed={false}
+              src="/images/work/train-4.jpg"
+              alt="Price breakdown shown early in the booking form"
+            />
+            <p>
+              We added a price breakdown entry point to provide users with full
+              transparency on ticket prices and service fees before proceeding.
+              This allows users to easily compare prices with other OTAs.
+            </p>
+          </div>
+          <div className="space-y-3">
+            <StepHeading number="4">
+              Final Booking Form Flow &amp; Impact
+            </StepHeading>
+            <Figure
+              bleed={false}
+              src="/images/work/train-6.jpg"
+              alt="Final booking form flow"
+            />
+            <p>
+              To validate whether my designs worked, we conducted an A/B
+              Experiment to test both designs. The new designs resulted in the
+              following results:
+            </p>
+            <Metrics
+              plain
+              items={[
+                {
+                  value: "+2.12%",
+                  label:
+                    "Increased CVR (Conversion Rate) from Booking Form Page 1 to Purchase",
+                },
+                {
+                  value: "90%",
+                  label: "Filled in Passenger Details",
+                },
+              ]}
+            />
+          </div>
+        </div>
         <Figure
-          src="/images/work/train-9.jpg"
-          alt="Header with stepper guiding instead of pressuring"
-        />
-        <StepHeading number="2">
-          Passenger Details: Improved Copywriting &amp; Icon
-        </StepHeading>
-        <p>
-          By testing different copywritings &amp; icons during usability tests,
-          the new wording uses &quot;Fill&quot; to invite users to enter
-          passenger details, and the pencil icon indicates information to be
-          filled or edited.
-        </p>
-        <Figure
-          src="/images/work/train-11.jpg"
-          alt="Improved passenger details copywriting and icon"
-        />
-        <StepHeading number="3">
-          Price Details: Inform price breakdown early
-        </StepHeading>
-        <p>
-          We added a price breakdown entry point to provide users with full
-          transparency on ticket prices and service fees before proceeding. This
-          allows users to easily compare prices with other OTAs.
-        </p>
-        <Figure
-          src="/images/work/train-4.jpg"
-          alt="Price breakdown shown early in the booking form"
-        />
-        <StepHeading number="4">Final Booking Form Flow &amp; Impact</StepHeading>
-        <p>
-          To validate whether my designs worked, we conducted an A/B Experiment
-          to test both designs. The new designs resulted in the following
-          results:
-        </p>
-        <Figure
-          src="/images/work/train-6.jpg"
-          alt="Final booking form flow"
-        />
-        <Metrics
-          items={[
-            {
-              value: "+2.12%",
-              label:
-                "Increased CVR (Conversion Rate) from Booking Form Page 1 to Purchase",
-            },
-            {
-              value: "90%",
-              label: "Filled in Passenger Details",
-            },
-          ]}
-        />
-        <Figure
+          bleed={false}
           src="/images/work/train-10.jpg"
           alt="Train booking form screens"
         />

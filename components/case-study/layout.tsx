@@ -25,7 +25,7 @@ export function CaseStudyHero({
       <div className="mx-auto flex max-w-[1180px] flex-col gap-6 px-5 pb-8 pt-10 lg:gap-8 lg:px-10 lg:pb-8 lg:pt-[100px]">
         <div className="flex flex-col gap-4 lg:gap-6">
           <div>
-            <p className="text-[10px] font-medium tracking-[0.12em] text-accent lg:text-xl lg:tracking-[0.06em]">
+            <p className="text-[10px] font-medium tracking-[0.12em] text-case-link lg:text-xl lg:tracking-[0.06em]">
               {project.client}
             </p>
             <h1 className="mt-1 font-sans text-[1.25rem] font-medium leading-[1.4] tracking-[-0.03em] lg:text-[2.5rem] lg:leading-[1.5]">
@@ -73,14 +73,14 @@ export function CaseStudyHero({
             <dd className="text-paper/85">{project.duration}</dd>
           </div>
           <div className="flex flex-col gap-2">
-            <dt className="font-medium">Link</dt>
+            <dt className="font-medium text-case-link">Link</dt>
             <dd>
               {project.liveUrl ? (
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-block break-all font-medium text-accent underline decoration-accent/40 underline-offset-4 transition-colors duration-300 hover:decoration-accent"
+                  className="inline-block break-all font-medium text-case-link underline decoration-case-link/40 underline-offset-4 transition-colors duration-300 hover:decoration-case-link"
                 >
                   {project.liveUrl}
                 </a>
@@ -243,6 +243,40 @@ export function SplitPanel({
       </div>
       <div className="min-w-0 lg:flex-1">{figure}</div>
     </div>
+  );
+}
+
+export function ProblemSplit({
+  id,
+  label,
+  heading,
+  children,
+  figure,
+}: {
+  id: string;
+  label: string;
+  heading: string;
+  children: React.ReactNode;
+  figure: React.ReactNode;
+}) {
+  return (
+    <section
+      id={id}
+      className="case-section flex max-w-full flex-col gap-4 rounded-[12px] bg-paper-2 p-5 lg:flex-row lg:items-start lg:gap-5"
+    >
+      <div className="min-w-0 space-y-3 lg:flex-1">
+        <p className="text-[12px] font-medium tracking-[0.1em] text-ink-soft">
+          {label}
+        </p>
+        <h2 className="font-sans text-xl font-medium leading-[1.4] tracking-[-0.03em] text-ink sm:text-2xl">
+          {heading}
+        </h2>
+        <div className="space-y-3 text-[15px] leading-7 break-words text-ink sm:text-base sm:leading-[1.5]">
+          {children}
+        </div>
+      </div>
+      <div className="min-w-0 lg:flex-1">{figure}</div>
+    </section>
   );
 }
 
