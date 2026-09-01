@@ -27,7 +27,7 @@ export function CaseStudyHero({
           {project.title}
         </h1>
       </div>
-      <div className="mx-auto mt-8 max-w-[1180px] overflow-hidden bg-paper-2 sm:mt-10 sm:px-8 sm:pb-16 lg:pb-20">
+      <div className="mx-auto mt-8 w-full min-w-0 max-w-[1180px] overflow-hidden bg-paper-2 sm:mt-10 sm:px-8 sm:pb-16 lg:pb-20">
         <div className="relative sm:overflow-hidden sm:rounded-[var(--radius)]">
           <Image
             src={hero}
@@ -37,7 +37,7 @@ export function CaseStudyHero({
             priority
             unoptimized={isGif}
             sizes="100vw"
-            className="block h-auto w-full"
+            className="block h-auto w-full max-w-full"
             style={caseImageStyle}
           />
         </div>
@@ -107,11 +107,11 @@ export function CaseStudyShell({
       </div>
 
       <div className="bg-paper">
-        <div className="mx-auto grid max-w-[1180px] lg:grid-cols-[200px_minmax(0,760px)] lg:gap-16">
-          <aside className="sticky top-16 z-30 border-b border-hairline bg-paper/90 px-6 backdrop-blur-md lg:top-6 lg:self-start lg:border-b-0 lg:bg-transparent lg:px-8 lg:py-12 lg:backdrop-blur-none">
+        <div className="mx-auto grid w-full min-w-0 max-w-[1180px] grid-cols-1 lg:grid-cols-[200px_minmax(0,760px)] lg:gap-16">
+          <aside className="sticky top-16 z-30 min-w-0 max-w-full overflow-x-auto border-b border-hairline bg-paper/90 px-6 backdrop-blur-md lg:top-6 lg:self-start lg:overflow-visible lg:border-b-0 lg:bg-transparent lg:px-8 lg:py-12 lg:backdrop-blur-none">
             <CaseStudyToc items={toc} />
           </aside>
-          <div className="min-w-0 overflow-x-hidden px-6 py-8 sm:px-8 sm:py-10 lg:py-12">
+          <div className="min-w-0 max-w-full overflow-x-hidden px-6 py-8 sm:px-8 sm:py-10 lg:py-12">
             {children}
           </div>
         </div>
@@ -149,14 +149,14 @@ export function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="case-section mb-14 sm:mb-24">
+    <section id={id} className="case-section mb-14 max-w-full sm:mb-24">
       <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-ink-muted sm:text-[13px]">
         {label}
       </p>
       <h2 className="mt-2 font-sans text-[clamp(1.35rem,5.6vw,2.75rem)] font-medium leading-[1.2] tracking-[-0.03em] text-ink">
         {heading}
       </h2>
-      <div className="mt-5 space-y-4 text-[16px] leading-7 text-ink sm:mt-6 sm:space-y-5 sm:text-[18px] sm:leading-8">
+      <div className="mt-5 max-w-full space-y-4 overflow-x-hidden text-[16px] leading-7 break-words text-ink sm:mt-6 sm:space-y-5 sm:text-[18px] sm:leading-8">
         {children}
       </div>
     </section>
@@ -200,7 +200,7 @@ export function Figure({
   return (
     <figure
       className={cn(
-        "-mx-6 my-2 overflow-hidden bg-paper-2 sm:mx-0 sm:rounded-[var(--radius)]",
+        "relative w-[calc(100%+3rem)] max-w-none -mx-6 my-2 overflow-hidden bg-paper-2 sm:mx-0 sm:w-full sm:rounded-[var(--radius)]",
         className,
       )}
     >
@@ -211,7 +211,7 @@ export function Figure({
         height={1200}
         sizes="100vw"
         unoptimized={src.endsWith(".gif")}
-        className="block h-auto w-full"
+        className="block h-auto w-full max-w-full"
         style={caseImageStyle}
       />
     </figure>

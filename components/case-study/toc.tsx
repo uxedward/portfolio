@@ -38,12 +38,15 @@ export function CaseStudyToc({ items }: { items: TocItem[] }) {
   }
 
   return (
-    <nav aria-label="On this page">
-      <ul className="flex gap-5 overflow-x-auto py-3 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-col lg:gap-1 lg:overflow-visible lg:py-0 [&::-webkit-scrollbar]:hidden">
+    <nav
+      aria-label="On this page"
+      className="min-w-0 w-full max-w-full overflow-x-auto overscroll-x-contain [-ms-overflow-style:none] [scrollbar-width:none] lg:overflow-visible [&::-webkit-scrollbar]:hidden"
+    >
+      <ul className="flex w-max gap-5 py-3 lg:w-full lg:flex-col lg:gap-1 lg:py-0">
         {items.map((item) => {
           const isActive = active === item.id;
           return (
-            <li key={item.id}>
+            <li key={item.id} className="shrink-0 lg:shrink">
               <a
                 href={`#${item.id}`}
                 onClick={(event) => {

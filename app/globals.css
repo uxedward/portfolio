@@ -51,6 +51,7 @@
 }
 
 html {
+  overflow-x: hidden;
   scroll-behavior: auto;
   scroll-padding-top: calc(var(--header-h) + 1.5rem);
 }
@@ -99,6 +100,8 @@ html {
 }
 
 body {
+  max-width: 100%;
+  overflow-x: hidden;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
@@ -151,6 +154,12 @@ body {
 img {
   max-width: 100%;
   height: auto;
+}
+
+.vt-main {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .page-enter {
