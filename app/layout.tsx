@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, Inter_Tight } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Footer } from "@/components/footer";
 import { Sidebar } from "@/components/sidebar";
 import { site } from "@/lib/site";
@@ -71,6 +72,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <main>{children}</main>
           <Footer />
         </div>
+        <SpeedInsights />
       </body>
     </html>
   );
