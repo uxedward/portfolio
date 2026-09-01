@@ -15,7 +15,7 @@ export function CaseStudyHero({
 
   return (
     <header className="bg-ink text-paper">
-      <div className="mx-auto max-w-[1180px] px-5 pb-16 pt-10 sm:px-8 lg:pb-20 lg:pt-14">
+      <div className="mx-auto max-w-[1180px] px-6 pb-16 pt-10 sm:px-8 lg:pb-20 lg:pt-14">
         <p className="text-sm text-paper/65">{project.client}</p>
         <h1 className="mt-3 max-w-4xl font-sans text-[clamp(2.4rem,6vw,5.4rem)] leading-[0.95] tracking-[-0.03em]">
           {project.title}
@@ -52,7 +52,7 @@ export function CaseStudyShell({
   return (
     <>
       <div className="border-b border-hairline bg-paper">
-        <div className="mx-auto max-w-[1180px] px-5 py-10 sm:px-8">
+        <div className="mx-auto max-w-[1180px] px-6 py-10 sm:px-8">
           <p className="text-[17px] leading-7 text-ink">
             This project will demonstrate my expertise in these three crucial
             domains:
@@ -98,16 +98,16 @@ export function CaseStudyShell({
 
       <div className="bg-paper">
         <div className="mx-auto grid max-w-[1180px] lg:grid-cols-[200px_minmax(0,760px)] lg:gap-16">
-          <aside className="sticky top-14 z-30 border-b border-hairline bg-paper/90 px-5 backdrop-blur-md lg:top-6 lg:self-start lg:border-b-0 lg:bg-transparent lg:px-8 lg:py-12 lg:backdrop-blur-none">
+          <aside className="sticky top-16 z-30 border-b border-hairline bg-paper/90 px-6 backdrop-blur-md lg:top-6 lg:self-start lg:border-b-0 lg:bg-transparent lg:px-8 lg:py-12 lg:backdrop-blur-none">
             <CaseStudyToc items={toc} />
           </aside>
-          <div className="min-w-0 px-5 py-10 sm:px-8 lg:py-12">{children}</div>
+          <div className="min-w-0 px-6 py-10 sm:px-8 lg:py-12">{children}</div>
         </div>
       </div>
 
       {next ? (
         <div className="border-t border-hairline bg-paper">
-          <div className="mx-auto flex max-w-[1180px] items-center justify-between gap-6 px-5 py-8 sm:px-8">
+          <div className="mx-auto flex max-w-[1180px] items-center justify-between gap-6 px-6 py-8 sm:px-8">
             <p className="text-[11px] uppercase tracking-[0.16em] text-ink-soft">
               Next project
             </p>

@@ -15,7 +15,11 @@ export function StudioMark({
   if (!("image" in studio) || !studio.image) return null;
 
   const box =
-    size === "lg" ? "h-[92px] w-[92px]" : size === "sm" ? "h-8 w-8" : "h-9 w-9";
+    size === "lg"
+      ? "h-16 w-16 md:h-[92px] md:w-[92px]"
+      : size === "sm"
+        ? "h-8 w-8"
+        : "h-9 w-9";
   const pixels = size === "lg" ? 184 : 36;
 
   return (

@@ -3,7 +3,7 @@ import type { Project } from "@/lib/projects";
 
 export function ProjectGrid({ projects }: { projects: Project[] }) {
   return (
-    <section className="grid gap-3 md:grid-cols-2">
+    <section className="grid gap-4 md:grid-cols-2 md:gap-3">
       {projects.map((project, index) => (
         <div
           key={project.slug}

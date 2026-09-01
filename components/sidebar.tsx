@@ -12,7 +12,7 @@ import {
 } from "@/components/icons";
 import { StudioTab } from "@/components/studio-tab";
 import { cn } from "@/lib/cn";
-import { studioFromPath, studios } from "@/lib/nav";
+import { studioFromPath, studios, type StudioId } from "@/lib/nav";
 import { site } from "@/lib/site";
 
 const socialIcons = {
@@ -28,7 +28,13 @@ export function Sidebar() {
   const router = useRouter();
   const activeStudio = studioFromPath(pathname);
   const [open, setOpen] = useState(false);
+  const [openForPath, setOpenForPath] = useState(pathname);
   const menuId = useId();
+
+  if (openForPath !== pathname) {
+    setOpenForPath(pathname);
+    setOpen(false);
+  }
 
   useEffect(() => {
     for (const studio of studios) {
@@ -37,7 +43,6 @@ export function Sidebar() {
   }, [router]);
 
   useEffect(() => {
-    setOpen(false);
     window.scrollTo(0, 0);
   }, [pathname]);
 
@@ -59,26 +64,10 @@ export function Sidebar() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  function Tabs() {
-    return (
-      <ul className="space-y-1.5">
-        {studios.map((studio) => (
-          <li key={studio.id}>
-            <StudioTab
-              studio={studio}
-              active={activeStudio === studio.id}
-              onNavigate={() => setOpen(false)}
-            />
-          </li>
-        ))}
-      </ul>
-    );
-  }
-
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-between border-b border-hairline bg-paper px-5 lg:hidden">
-        <Link href="/" className="text-sm font-medium tracking-tight">
+      <header className="fixed inset-x-0 top-0 z-50 flex h-16 items-center justify-between border-b border-hairline bg-paper px-6 lg:hidden">
+        <Link href="/" className="text-[15px] font-medium tracking-tight">
           {site.name}
         </Link>
         <button
@@ -113,12 +102,18 @@ export function Sidebar() {
       {open ? (
         <div
           id={menuId}
-          className="fixed inset-0 z-40 overflow-y-auto bg-paper pt-14 lg:hidden"
+          className="fixed inset-0 z-40 flex flex-col bg-paper pt-16 lg:hidden"
         >
-          <nav aria-label="Mobile" className="flex min-h-full flex-col px-5 py-8">
-            <SocialRow />
-            <div className="mt-10">
-              <Tabs />
+          <nav
+            aria-label="Mobile"
+            className="flex min-h-0 flex-1 flex-col overflow-y-auto px-6 pb-8 pt-2"
+          >
+            <MobileNav
+              activeStudio={activeStudio}
+              onNavigate={() => setOpen(false)}
+            />
+            <div className="mt-auto border-t border-hairline pt-6">
+              <SocialRow />
             </div>
           </nav>
         </div>
@@ -134,10 +129,62 @@ export function Sidebar() {
         </div>
 
         <nav aria-label="Work" className="mt-10 flex-1">
-          <Tabs />
+          <DesktopNav activeStudio={activeStudio} />
         </nav>
       </aside>
     </>
+  );
+}
+
+function DesktopNav({ activeStudio }: { activeStudio: StudioId }) {
+  return (
+    <ul className="space-y-1.5">
+      {studios.map((studio) => (
+        <li key={studio.id}>
+          <StudioTab studio={studio} active={activeStudio === studio.id} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function MobileNav({
+  activeStudio,
+  onNavigate,
+}: {
+  activeStudio: StudioId;
+  onNavigate: () => void;
+}) {
+  return (
+    <ul>
+      {studios.map((studio) => {
+        const active = activeStudio === studio.id;
+        return (
+          <li key={studio.id}>
+            <Link
+              href={studio.href}
+              prefetch
+              scroll={false}
+              aria-current={active ? "page" : undefined}
+              onClick={() => {
+                window.setTimeout(onNavigate, 0);
+              }}
+              className={cn(
+                "block border-b border-hairline py-5",
+                active ? "text-ink" : "text-ink-muted",
+              )}
+            >
+              <span className="block text-[22px] font-medium tracking-tight">
+                {studio.label}
+              </span>
+              <span className="mt-1 block text-[15px] leading-6 text-ink-soft">
+                {studio.subtitle}
+              </span>
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 
@@ -153,7 +200,7 @@ function SocialRow() {
               target="_blank"
               rel="noreferrer"
               aria-label={social.name}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-hairline text-ink-soft transition-colors duration-300 hover:border-ink hover:text-ink"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-hairline text-ink-soft transition-colors duration-300 hover:border-ink hover:text-ink"
             >
               <Icon />
             </a>

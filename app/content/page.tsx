@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function ContentPage() {
   return (
-    <div className="px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
+    <div className="px-6 py-10 sm:px-8 lg:px-10 lg:py-10">
       <StudioBanner studio={studio} />
       <p className="mb-8 max-w-xl text-[17px] leading-7 text-ink-soft">
         Since 2021 I&apos;ve been teaching product design in public — Figma
@@ -30,11 +30,11 @@ export default function ContentPage() {
               href={social.href}
               target="_blank"
               rel="noreferrer"
-              className="flex items-baseline justify-between gap-4 py-5 text-lg transition-opacity hover:opacity-70"
+              className="flex items-start justify-between gap-4 py-5 text-lg transition-opacity hover:opacity-70 sm:items-baseline"
             >
-              <span>
+              <span className="flex min-w-0 flex-col sm:flex-row sm:items-baseline">
                 {social.name}
-                <span className="ml-3 text-sm text-ink-soft">
+                <span className="mt-1 text-sm text-ink-soft sm:ml-3 sm:mt-0">
                   {social.stat} {social.label}
                 </span>
               </span>

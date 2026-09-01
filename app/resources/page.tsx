@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function ResourcesPage() {
   return (
-    <div className="px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
+    <div className="px-6 py-10 sm:px-8 lg:px-10 lg:py-10">
       <StudioBanner studio={studio} />
 
       <section>
@@ -38,7 +38,7 @@ export default function ResourcesPage() {
                 href={item.href}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-4 py-5 transition-opacity hover:opacity-70"
+                className="flex items-start gap-4 py-5 transition-opacity hover:opacity-70 sm:items-center"
               >
                 <BrandMark src={item.logo} alt={item.logoAlt} />
                 <span className="min-w-0 flex-1">

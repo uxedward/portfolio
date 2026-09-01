@@ -7,7 +7,7 @@ export function ResourceCard({ resource }: { resource: Resource }) {
   return (
     <Link
       href={`/resources/${resource.slug}`}
-      className="group flex h-full flex-col gap-5 rounded-[var(--radius)] border border-hairline bg-paper-warm p-6 transition-opacity duration-300 hover:opacity-80"
+      className="group flex h-full flex-col gap-5 rounded-[var(--radius)] border border-hairline bg-paper-warm p-5 transition-opacity duration-300 hover:opacity-80 sm:p-6"
     >
       <span className="flex gap-3">
         {resource.logos.map((logo) => (

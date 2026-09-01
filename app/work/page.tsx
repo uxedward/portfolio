@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return (
-    <div className="px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
+    <div className="px-6 py-10 sm:px-8 lg:px-10 lg:py-10">
       <StudioBanner studio={studio} />
       <ProjectGrid projects={workProjects} />
     </div>

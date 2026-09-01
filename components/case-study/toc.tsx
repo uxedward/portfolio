@@ -5,7 +5,7 @@ import { cn } from "@/lib/cn";
 
 export type TocItem = { id: string; label: string };
 
-const HEADER_OFFSET = 96;
+const HEADER_OFFSET = 112;
 
 export function CaseStudyToc({ items }: { items: TocItem[] }) {
   const [active, setActive] = useState(items[0]?.id);

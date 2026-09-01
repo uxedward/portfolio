@@ -27,7 +27,7 @@ export type HomePhotoRow = {
 
 export const homePhotoRows: HomePhotoRow[] = [
   {
-    heightClass: "h-[220px] sm:h-[420px]",
+    heightClass: "h-[420px]",
     photos: [
       {
         src: "/images/home/dsc05676.jpg",
@@ -37,12 +37,12 @@ export const homePhotoRows: HomePhotoRow[] = [
       {
         src: "/images/home/img-9472.jpg",
         alt: "Edward at Config APAC with the conference stage behind him",
-        widthClass: "w-[38%] sm:w-[280px] sm:shrink-0",
+        widthClass: "w-[280px] shrink-0",
       },
     ],
   },
   {
-    heightClass: "h-[180px] sm:h-[300px]",
+    heightClass: "h-[300px]",
     photos: [
       {
         src: "/images/home/img-1022.jpg",
@@ -57,7 +57,7 @@ export const homePhotoRows: HomePhotoRow[] = [
     ],
   },
   {
-    heightClass: "h-[200px] sm:h-[340px]",
+    heightClass: "h-[340px]",
     photos: [
       {
         src: "/images/home/img-0155.jpg",
@@ -67,17 +67,17 @@ export const homePhotoRows: HomePhotoRow[] = [
       {
         src: "/images/home/d50d4909.jpg",
         alt: "Group photo at Maker Collective Singapore",
-        widthClass: "w-[38%] sm:w-[280px] sm:shrink-0",
+        widthClass: "w-[280px] shrink-0",
       },
     ],
   },
   {
-    heightClass: "h-[200px] sm:h-[340px]",
+    heightClass: "h-[340px]",
     photos: [
       {
         src: "/images/home/view-recent.jpg",
         alt: "Edward with a guest in front of a digital billboard",
-        widthClass: "w-[36%] sm:w-[270px] sm:shrink-0",
+        widthClass: "w-[270px] shrink-0",
       },
       {
         src: "/images/home/img-6884.jpg",
@@ -87,7 +87,7 @@ export const homePhotoRows: HomePhotoRow[] = [
     ],
   },
   {
-    heightClass: "h-[200px] sm:h-[340px]",
+    heightClass: "h-[340px]",
     photos: [
       {
         src: "/images/home/desk.jpg",
@@ -97,8 +97,10 @@ export const homePhotoRows: HomePhotoRow[] = [
       {
         src: "/images/home/img-0119.jpg",
         alt: "Edward at a desk with a laptop and tablet showing design work",
-        widthClass: "w-[42%] sm:w-[393px] sm:shrink-0",
+        widthClass: "w-[393px] shrink-0",
       },
     ],
   },
 ];
+
+export const homePhotos = homePhotoRows.flatMap((row) => row.photos);

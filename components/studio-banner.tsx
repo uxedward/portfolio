@@ -4,7 +4,7 @@ import type { Studio } from "@/lib/nav";
 
 export function StudioBanner({ studio }: { studio: Studio }) {
   return (
-    <div className="mb-12 flex flex-wrap items-end justify-between gap-5 border-b border-hairline pb-8">
+    <div className="mb-10 flex flex-col gap-5 border-b border-hairline pb-8 sm:mb-12 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
       <div className="flex items-center gap-3">
         <StudioMark studio={studio} size="lg" />
         <div>

@@ -33,7 +33,7 @@ export default async function ResourceGuidePage({ params }: Props) {
   if (!resource) notFound();
 
   return (
-    <article className="px-5 py-10 sm:px-8 lg:px-10 lg:py-14">
+    <article className="px-6 py-10 sm:px-8 lg:px-10 lg:py-14">
       <p className="mb-8">
         <Link
           href="/resources"

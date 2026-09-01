@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function AiToolsPage() {
   return (
-    <div className="px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
+    <div className="px-6 py-10 sm:px-8 lg:px-10 lg:py-10">
       <StudioBanner studio={studio} />
       <p className="mb-3 text-sm text-ink-soft">Stuff I’m building</p>
       <p className="mb-8 max-w-xl text-[17px] leading-7 text-ink-soft">
