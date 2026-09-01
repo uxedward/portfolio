@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 import {
-  IconDribbble,
   IconInstagram,
   IconLinkedIn,
   IconThreads,
@@ -20,7 +19,6 @@ const socialIcons = {
   TikTok: IconTikTok,
   Threads: IconThreads,
   LinkedIn: IconLinkedIn,
-  Dribbble: IconDribbble,
 } as const;
 
 export function Sidebar() {

@@ -43,11 +43,5 @@ export const site = {
       stat: "1k+",
       label: "followers",
     },
-    {
-      name: "Dribbble",
-      href: "https://dribbble.com/uxedward",
-      stat: "Explorations",
-      label: "design studies",
-    },
   ],
 } as const;
