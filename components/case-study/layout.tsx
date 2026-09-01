@@ -18,100 +18,100 @@ export function CaseStudyHero({
 }) {
   const hero = project.hero ?? project.cover;
   const isGif = hero.endsWith(".gif");
+  const domains = project.domains ?? [];
 
   return (
     <header className="bg-ink text-paper">
-      <div className="mx-auto max-w-[1180px] px-6 pt-8 sm:px-8 sm:pt-10 lg:pt-14">
-        <p className="text-sm text-paper/65">{project.client}</p>
-        <h1 className="mt-3 max-w-4xl font-sans text-[clamp(1.65rem,7.2vw,5.4rem)] leading-[1.08] tracking-[-0.03em]">
-          {project.title}
-        </h1>
-      </div>
-      <div className="mx-auto mt-8 w-full min-w-0 max-w-[1180px] overflow-hidden bg-paper-2 sm:mt-10 sm:px-8 sm:pb-16 lg:pb-20">
-        <div className="relative sm:overflow-hidden sm:rounded-[var(--radius)]">
-          <Image
-            src={hero}
-            alt={project.title}
-            width={1600}
-            height={720}
-            priority
-            unoptimized={isGif}
-            sizes="100vw"
-            className="block h-auto w-full max-w-full"
-            style={caseImageStyle}
-          />
+      <div className="mx-auto flex max-w-[1180px] flex-col gap-6 px-5 pb-8 pt-10 lg:gap-8 lg:px-10 lg:pb-8 lg:pt-[100px]">
+        <div className="flex flex-col gap-4 lg:gap-6">
+          <div>
+            <p className="text-[10px] font-medium tracking-[0.12em] text-accent lg:text-xl lg:tracking-[0.06em]">
+              {project.client}
+            </p>
+            <h1 className="mt-1 font-sans text-[1.25rem] font-medium leading-[1.4] tracking-[-0.03em] lg:text-[2.5rem] lg:leading-[1.5]">
+              {project.title}
+            </h1>
+          </div>
+          <div className="overflow-hidden rounded-3xl bg-paper-2 lg:rounded-[32px]">
+            <Image
+              src={hero}
+              alt={project.title}
+              width={1600}
+              height={720}
+              priority
+              unoptimized={isGif}
+              sizes="100vw"
+              className="block h-auto w-full max-w-full"
+              style={caseImageStyle}
+            />
+          </div>
         </div>
+
+        {domains.length > 0 ? (
+          <div className="flex flex-col gap-2 lg:gap-3">
+            <p className="text-[15px] leading-6 text-paper lg:text-base">
+              This project will demonstrate my expertise in these three crucial
+              domains:
+            </p>
+            <ul className="flex flex-wrap gap-2 lg:gap-4">
+              {domains.map((domain) => (
+                <li key={domain}>
+                  <Chip tone="inverse">{domain}</Chip>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
+        <dl className="grid gap-4 text-base lg:grid-cols-3 lg:gap-3">
+          <div className="flex flex-col gap-2">
+            <dt className="font-medium">Project</dt>
+            <dd className="text-paper/85">{project.type}</dd>
+          </div>
+          <div className="flex flex-col gap-2">
+            <dt className="font-medium">Duration</dt>
+            <dd className="text-paper/85">{project.duration}</dd>
+          </div>
+          <div className="flex flex-col gap-2">
+            <dt className="font-medium">Link</dt>
+            <dd>
+              {project.liveUrl ? (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-block break-all font-medium text-accent underline decoration-accent/40 underline-offset-4 transition-colors duration-300 hover:decoration-accent"
+                >
+                  {project.liveUrl}
+                </a>
+              ) : null}
+            </dd>
+          </div>
+        </dl>
       </div>
     </header>
   );
 }
 
 export function CaseStudyShell({
-  project,
-  domains,
   toc,
   children,
   next,
 }: {
-  project: Project;
-  domains: string[];
+  project?: Project;
+  domains?: string[];
   toc: TocItem[];
   children: React.ReactNode;
   next?: { href: string; title: string };
 }) {
   return (
     <>
-      <div className="border-b border-hairline bg-paper">
-        <div className="mx-auto max-w-[1180px] px-6 py-8 sm:px-8 sm:py-10">
-          <p className="text-[15px] leading-7 text-ink sm:text-[17px]">
-            This project will demonstrate my expertise in these three crucial
-            domains:
-          </p>
-          <ul className="mt-4 flex flex-wrap gap-2">
-            {domains.map((domain) => (
-              <li key={domain}>
-                <Chip>{domain}</Chip>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-8 grid gap-5 border-t border-hairline pt-6 text-sm sm:grid-cols-3 sm:gap-6">
-            <div>
-              <p className="text-[11px] uppercase tracking-[0.16em] text-ink-soft">
-                Project
-              </p>
-              <p className="mt-1">{project.type}</p>
-            </div>
-            <div>
-              <p className="text-[11px] uppercase tracking-[0.16em] text-ink-soft">
-                Duration
-              </p>
-              <p className="mt-1">{project.duration}</p>
-            </div>
-            <div>
-              <p className="text-[11px] uppercase tracking-[0.16em] text-ink-soft">
-                Link
-              </p>
-              {project.liveUrl ? (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-1 inline-block break-all underline decoration-hairline underline-offset-4 transition-colors duration-300 hover:decoration-ink"
-                >
-                  {project.liveUrl.replace("https://", "")}
-                </a>
-              ) : null}
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div className="bg-paper">
-        <div className="mx-auto grid w-full min-w-0 max-w-[1180px] grid-cols-1 lg:grid-cols-[200px_minmax(0,760px)] lg:gap-16">
-          <aside className="sticky top-16 z-30 min-w-0 max-w-full overflow-x-auto border-b border-hairline bg-paper/90 px-6 backdrop-blur-md lg:top-6 lg:self-start lg:overflow-visible lg:border-b-0 lg:bg-transparent lg:px-8 lg:py-12 lg:backdrop-blur-none">
+        <div className="mx-auto grid w-full min-w-0 max-w-[1180px] grid-cols-1 lg:grid-cols-[225px_minmax(0,1fr)] lg:items-start lg:gap-5 lg:px-10 lg:py-10">
+          <aside className="sticky top-16 z-30 min-w-0 max-w-full overflow-x-auto border-b border-hairline bg-paper/90 px-5 backdrop-blur-md sm:px-8 lg:top-8 lg:self-start lg:overflow-visible lg:border-b-0 lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-none">
             <CaseStudyToc items={toc} />
           </aside>
-          <div className="min-w-0 max-w-full overflow-x-hidden px-6 py-8 sm:px-8 sm:py-10 lg:py-12">
+          <div className="flex min-w-0 max-w-full flex-col gap-11 overflow-x-hidden px-5 py-8 sm:px-8 sm:py-10 lg:gap-[51px] lg:px-0 lg:py-0">
             {children}
           </div>
         </div>
@@ -119,7 +119,7 @@ export function CaseStudyShell({
 
       {next ? (
         <div className="border-t border-hairline bg-paper">
-          <div className="mx-auto flex max-w-[1180px] items-center justify-between gap-4 px-6 py-8 sm:gap-6 sm:px-8">
+          <div className="mx-auto flex max-w-[1180px] items-center justify-between gap-4 px-5 py-8 sm:gap-6 sm:px-8 lg:px-10">
             <p className="shrink-0 text-[11px] uppercase tracking-[0.16em] text-ink-soft">
               Next project
             </p>
@@ -142,21 +142,34 @@ export function Section({
   label,
   heading,
   children,
+  card = false,
 }: {
   id: string;
   label: string;
   heading: string;
   children: React.ReactNode;
+  card?: boolean;
 }) {
   return (
-    <section id={id} className="case-section mb-14 max-w-full sm:mb-24">
-      <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-ink-muted sm:text-[13px]">
+    <section
+      id={id}
+      className={cn(
+        "case-section max-w-full",
+        card && "rounded-[12px] bg-paper-2 p-5",
+      )}
+    >
+      <p className="text-[12px] font-medium tracking-[0.1em] text-ink-soft">
         {label}
       </p>
-      <h2 className="mt-2 font-sans text-[clamp(1.35rem,5.6vw,2.75rem)] font-medium leading-[1.2] tracking-[-0.03em] text-ink">
+      <h2 className="mt-1 font-sans text-xl font-medium leading-[1.4] tracking-[-0.03em] text-ink sm:text-2xl">
         {heading}
       </h2>
-      <div className="mt-5 max-w-full space-y-4 overflow-x-hidden text-[16px] leading-7 break-words text-ink sm:mt-6 sm:space-y-5 sm:text-[18px] sm:leading-8">
+      <div
+        className={cn(
+          "mt-4 max-w-full space-y-4 overflow-x-hidden text-[15px] leading-7 break-words text-ink sm:text-base sm:leading-[1.5]",
+          card && "space-y-3",
+        )}
+      >
         {children}
       </div>
     </section>
@@ -165,9 +178,30 @@ export function Section({
 
 export function Subhead({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="pt-4 text-lg font-medium leading-snug text-ink sm:text-[1.35rem]">
+    <h3 className="pt-2 text-lg font-medium leading-snug text-ink sm:text-xl">
       {children}
     </h3>
+  );
+}
+
+export function NumberChip({
+  children,
+  solid = false,
+}: {
+  children: React.ReactNode;
+  solid?: boolean;
+}) {
+  return (
+    <span
+      className={cn(
+        "inline-flex min-w-9 items-center justify-center rounded-full border px-3.5 py-2 text-[14px] font-medium lg:px-6 lg:py-2.5 lg:text-base",
+        solid
+          ? "border-ink bg-ink text-paper"
+          : "border-ink bg-transparent text-ink",
+      )}
+    >
+      {children}
+    </span>
   );
 }
 
@@ -179,11 +213,62 @@ export function StepHeading({
   children: React.ReactNode;
 }) {
   return (
-    <div className="pt-6">
-      <p className="text-[13px] font-medium text-ink-muted">{number}</p>
-      <h3 className="mt-1 text-lg font-medium leading-snug text-ink sm:text-[1.35rem]">
+    <div className="flex flex-col items-start gap-3 pt-2">
+      <NumberChip solid>{number}</NumberChip>
+      <h3 className="text-lg font-medium leading-snug text-ink sm:text-xl">
         {children}
       </h3>
+    </div>
+  );
+}
+
+export function SplitPanel({
+  title,
+  children,
+  figure,
+}: {
+  title: string;
+  children: React.ReactNode;
+  figure: React.ReactNode;
+}) {
+  return (
+    <div className="flex flex-col gap-4 rounded-[12px] bg-paper-2 p-5 lg:flex-row lg:items-start lg:gap-5">
+      <div className="min-w-0 space-y-3 lg:flex-1">
+        <h3 className="text-lg font-medium leading-snug text-ink sm:text-xl">
+          {title}
+        </h3>
+        <div className="space-y-3 text-[15px] leading-7 text-ink sm:text-base sm:leading-[1.5]">
+          {children}
+        </div>
+      </div>
+      <div className="min-w-0 lg:flex-1">{figure}</div>
+    </div>
+  );
+}
+
+export function HmwRow({
+  number,
+  issue,
+  hmw,
+}: {
+  number: string;
+  issue: React.ReactNode;
+  hmw: React.ReactNode;
+}) {
+  return (
+    <div className="flex flex-col items-start gap-3">
+      <NumberChip>{number}</NumberChip>
+      <div className="grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-start gap-3 lg:gap-6">
+        <div className="min-w-0 text-[14px] leading-6 text-ink lg:text-base lg:leading-[1.5]">
+          {issue}
+        </div>
+        <p className="pt-0.5 text-ink" aria-hidden>
+          →
+        </p>
+        <div className="min-w-0 text-[14px] leading-6 text-ink lg:text-base lg:leading-[1.5]">
+          {hmw}
+        </div>
+      </div>
     </div>
   );
 }
@@ -192,15 +277,20 @@ export function Figure({
   src,
   alt,
   className,
+  bleed = true,
 }: {
   src: string;
   alt: string;
   className?: string;
+  bleed?: boolean;
 }) {
   return (
     <figure
       className={cn(
-        "relative w-[calc(100%+3rem)] max-w-none -mx-6 my-2 overflow-hidden bg-paper-2 sm:mx-0 sm:w-full sm:rounded-[var(--radius)]",
+        "relative max-w-none overflow-hidden bg-paper-2",
+        bleed
+          ? "my-2 w-[calc(100%+2.5rem)] -mx-5 sm:mx-0 sm:w-full sm:rounded-[var(--radius)]"
+          : "w-full rounded-[var(--radius)]",
         className,
       )}
     >
@@ -220,9 +310,33 @@ export function Figure({
 
 export function Metrics({
   items,
+  plain = false,
 }: {
   items: { value: string; label: string }[];
+  plain?: boolean;
 }) {
+  if (plain) {
+    return (
+      <div
+        className={cn(
+          "grid gap-6",
+          items.length === 2 ? "lg:grid-cols-2" : "lg:grid-cols-3",
+        )}
+      >
+        {items.map((item) => (
+          <div key={item.label} className="min-w-0">
+            <p className="font-sans text-xl font-medium tracking-tight text-accent lg:text-2xl">
+              {item.value}
+            </p>
+            <p className="mt-1 text-sm leading-6 text-ink-muted lg:text-base">
+              {item.label}
+            </p>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div
       className={cn(
@@ -252,11 +366,11 @@ export function Issue({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[var(--radius)] border border-hairline bg-paper-2 px-4 py-4 sm:px-5 sm:py-5">
-      <p className="text-[13px] font-medium text-ink-muted">{number}</p>
-      <h3 className="mt-2 text-base font-medium text-ink sm:text-lg">{title}</h3>
+    <div className="flex flex-col items-start gap-3">
+      <NumberChip>{number}</NumberChip>
+      <h3 className="text-base font-medium text-ink sm:text-lg">{title}</h3>
       {children ? (
-        <div className="mt-2 space-y-2 text-[15px] leading-7 text-ink sm:text-[17px] sm:leading-8">
+        <div className="space-y-2 text-[15px] leading-7 text-ink sm:text-base sm:leading-[1.5]">
           {children}
         </div>
       ) : null}

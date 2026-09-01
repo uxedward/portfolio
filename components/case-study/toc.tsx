@@ -42,7 +42,7 @@ export function CaseStudyToc({ items }: { items: TocItem[] }) {
       aria-label="On this page"
       className="min-w-0 w-full max-w-full overflow-x-auto overscroll-x-contain [-ms-overflow-style:none] [scrollbar-width:none] lg:overflow-visible [&::-webkit-scrollbar]:hidden"
     >
-      <ul className="flex w-max gap-5 py-3 lg:w-full lg:flex-col lg:gap-1 lg:py-0">
+      <ul className="flex w-max gap-5 py-3 lg:w-full lg:flex-col lg:gap-3 lg:py-0">
         {items.map((item) => {
           const isActive = active === item.id;
           return (
@@ -55,7 +55,7 @@ export function CaseStudyToc({ items }: { items: TocItem[] }) {
                 }}
                 aria-current={isActive ? "location" : undefined}
                 className={cn(
-                  "block whitespace-nowrap py-2 text-[15px] leading-snug tracking-tight transition-colors duration-300 ease-[var(--ease-out)]",
+                  "block whitespace-nowrap py-2 text-[15px] leading-[1.35] tracking-tight transition-colors duration-300 ease-[var(--ease-out)] lg:text-base",
                   isActive
                     ? "font-medium text-ink"
                     : "text-ink-muted hover:text-ink",

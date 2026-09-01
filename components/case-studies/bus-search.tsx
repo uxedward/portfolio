@@ -1,10 +1,11 @@
 import {
   Figure,
+  HmwRow,
   Issue,
   Metrics,
   Section,
+  SplitPanel,
   StepHeading,
-  Subhead,
 } from "@/components/case-study/layout";
 
 export const busSearchToc = [
@@ -12,6 +13,7 @@ export const busSearchToc = [
   { id: "background", label: "Background & Context" },
   { id: "research", label: "Research & Prioritization" },
   { id: "root-problem", label: "The Root Problem" },
+  { id: "no-results-error", label: "No Results Error" },
   { id: "how-might-we", label: "How Might We" },
   { id: "final-designs", label: "Final Designs" },
   { id: "reflection", label: "Reflection" },
@@ -24,6 +26,7 @@ export function BusSearchBody() {
         id="in-a-nutshell"
         label="In A Nutshell"
         heading="Small Improvements, Large Impact"
+        card
       >
         <p>
           Due to multiple user <em>Error Search Results</em>, my team and I
@@ -59,12 +62,9 @@ export function BusSearchBody() {
         </ul>
         <p>Here&apos;s how the story goes ▼</p>
         <Figure
+          bleed={false}
           src="/images/work/bus-search-1.jpg"
           alt="Old Design versus New Design"
-        />
-        <Figure
-          src="/images/work/bus-search-11.png"
-          alt="Bus & Shuttle Flow [Early 2023]"
         />
       </Section>
 
@@ -84,12 +84,18 @@ export function BusSearchBody() {
           prompting our team to investigate contributing factors and develop
           effective solutions.
         </p>
+        <Figure
+          bleed={false}
+          src="/images/work/bus-search-11.png"
+          alt="Bus & Shuttle Flow [Early 2023]"
+        />
       </Section>
 
       <Section
         id="research"
         label="Research"
         heading="Multiple Problems, Minimal Effort"
+        card
       >
         <p>
           To address our low conversion rate, we conducted a comprehensive
@@ -116,6 +122,7 @@ export function BusSearchBody() {
           </strong>
         </p>
         <Figure
+          bleed={false}
           src="/images/work/bus-search-10.jpg"
           alt="Impact of Ideas versus Implementation Effort matrix"
         />
@@ -131,190 +138,269 @@ export function BusSearchBody() {
           Error&quot; due to inaccurate location data from third-party
           aggregators.
         </p>
-        <Subhead>The Cause</Subhead>
-        <p>
-          Vendors can define their own <em>departure and arrival locations</em>,
-          causing multiple entries for the same place.
-        </p>
-        <Figure
-          src="/images/work/bus-search-9.jpg"
-          alt="Agent 1 and Agent 2 using different names for the same departure and arrival locations"
-        />
-        <Subhead>The Effect</Subhead>
-        <p>
-          This inconsistency results in users finding{" "}
-          <em>no search results</em> when looking for locations from different
-          vendors.
-        </p>
-        <Figure
-          src="/images/work/bus-search-4.jpg"
-          alt="Search #1 returning a result versus Search #2 returning No Result"
-        />
+        <div className="space-y-5">
+          <SplitPanel
+            title="The Cause"
+            figure={
+              <Figure
+                bleed={false}
+                src="/images/work/bus-search-9.jpg"
+                alt="Agent 1 and Agent 2 using different names for the same departure and arrival locations"
+              />
+            }
+          >
+            <p>
+              Vendors can define their own{" "}
+              <em>departure and arrival locations</em>, causing multiple
+              entries for the same place.
+            </p>
+          </SplitPanel>
+          <SplitPanel
+            title="The Effect"
+            figure={
+              <Figure
+                bleed={false}
+                src="/images/work/bus-search-4.jpg"
+                alt="Search #1 returning a result versus Search #2 returning No Result"
+              />
+            }
+          >
+            <p>
+              This inconsistency results in users finding{" "}
+              <em>no search results</em> when looking for locations from
+              different vendors.
+            </p>
+          </SplitPanel>
+        </div>
       </Section>
 
       <Section
-        id="how-might-we"
-        label="No Result Errors"
+        id="no-results-error"
+        label="No Results Error"
         heading="Deep-diving into the Errors"
       >
         <p>
           Users will receive two different types of errors depending on what
           they search:
         </p>
-        <div className="grid gap-3 sm:grid-cols-2">
-          <div className="space-y-3">
-            <Issue
-              number="1"
-              title={
-                <>
-                  Error <strong>with Alternative Routes</strong>
-                </>
-              }
-            />
-            <Figure
-              src="/images/work/bus-search-6.jpg"
-              alt="Error with recommended alternatives, City to City Jakarta to Bandung"
-            />
-          </div>
-          <div className="space-y-3">
-            <Issue
-              number="2"
-              title={
-                <>
-                  Error <strong>without Alternative Routes</strong>
-                </>
-              }
-            />
-            <Figure
-              src="/images/work/bus-search-13.jpg"
-              alt="Error message with no alternatives and a Change search button"
-            />
+        <div className="rounded-[12px] bg-paper-2 p-5">
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-6">
+            <div className="space-y-2">
+              <Issue
+                number="1"
+                title={
+                  <>
+                    Error <strong>with Alternative Routes</strong>
+                  </>
+                }
+              />
+              <Figure
+                bleed={false}
+                src="/images/work/bus-search-6.jpg"
+                alt="Error with recommended alternatives, City to City Jakarta to Bandung"
+              />
+            </div>
+            <div className="space-y-2">
+              <Issue
+                number="2"
+                title={
+                  <>
+                    Error <strong>without Alternative Routes</strong>
+                  </>
+                }
+              />
+              <Figure
+                bleed={false}
+                src="/images/work/bus-search-13.jpg"
+                alt="Error message with no alternatives and a Change search button"
+              />
+            </div>
           </div>
         </div>
-        <p className="pt-4 text-[12px] uppercase tracking-[0.16em] text-ink-soft">
-          Design Evaluation
-        </p>
-        <Subhead>Issues &amp; How Might We</Subhead>
+      </Section>
+
+      <Section
+        id="how-might-we"
+        label="Design Evaluation"
+        heading="Issues & How Might We"
+        card
+      >
         <Figure
+          bleed={false}
           src="/images/work/bus-search-2.jpg"
           alt="Annotated old error page: Misleading Header, Huge Error Message, Unclear Alternative Routes"
         />
-        <div className="space-y-3">
-          <Issue number="1" title="🚧 Misleading Header">
-            <p>
-              When users search for a specific terminal, the header only
-              displays <em>City to City</em>.
-            </p>
-            <p>
-              ❓ <em>How Might We</em>
-              <br />
-              Present accurate information to avoid misleading users.
-            </p>
-          </Issue>
-          <Issue number="2" title="🚧 Huge Error Message">
-            <p>
-              The large error message overwhelms users and obscures alternative
-              routes.
-            </p>
-            <p>
-              ❓ <em>How Might We</em>
-              <br />
-              Reduce the error message&apos;s prominence to avoid misperception
-              of search results.
-            </p>
-          </Issue>
-          <Issue number="3" title="🚧 Unclear Alternative Routes">
-            <p>
-              There&apos;s no information displaying what the recommended
-              routes are based off.
-            </p>
-            <p>
-              ❓ <em>How Might We</em>
-              <br />
-              Display relevant alternative routes clearly and seamlessly.
-            </p>
-          </Issue>
+        <div className="space-y-5">
+          <HmwRow
+            number="1"
+            issue={
+              <>
+                <p>
+                  🚧 <strong>Misleading Header</strong>
+                </p>
+                <p>
+                  When users search for a specific terminal, the header only
+                  displays <em>City to City</em>.
+                </p>
+              </>
+            }
+            hmw={
+              <>
+                <p>
+                  ❓ <em>How Might We</em>
+                </p>
+                <p>Present accurate information to avoid misleading users.</p>
+              </>
+            }
+          />
+          <HmwRow
+            number="2"
+            issue={
+              <>
+                <p>
+                  🚧 <strong>Huge Error Message</strong>
+                </p>
+                <p>
+                  The large error message overwhelms users and obscures
+                  alternative routes.
+                </p>
+              </>
+            }
+            hmw={
+              <>
+                <p>
+                  ❓ <em>How Might We</em>
+                </p>
+                <p>
+                  Reduce the error message&apos;s prominence to avoid
+                  misperception of search results.
+                </p>
+              </>
+            }
+          />
+          <HmwRow
+            number="3"
+            issue={
+              <>
+                <p>
+                  🚧 <strong>Unclear Alternative Routes</strong>
+                </p>
+                <p>
+                  There&apos;s no information displaying what the recommended
+                  routes are based off.
+                </p>
+              </>
+            }
+            hmw={
+              <>
+                <p>
+                  ❓ <em>How Might We</em>
+                </p>
+                <p>
+                  Display relevant alternative routes clearly and seamlessly.
+                </p>
+              </>
+            }
+          />
         </div>
       </Section>
 
       <Section
         id="final-designs"
-        label="Solutions"
+        label="Design Solutions"
         heading="Small Improvement, Large Impacts"
       >
         <p>
           We improved 3 main aspects of our Bus &amp; Shuttle Search Error
           Result Experience.
         </p>
-        <StepHeading number="1">Header: Precise Search Results</StepHeading>
-        <p>
-          Instead of a generalized &quot;City to City&quot; header, we now
-          display the exact search terms entered by users to avoid confusion
-          and misinformation.
-        </p>
+        <div className="space-y-8">
+          <div className="space-y-3">
+            <StepHeading number="1">Header: Precise Search Results</StepHeading>
+            <Figure
+              bleed={false}
+              src="/images/work/bus-search-3.jpg"
+              alt="Clear Header Information showing the exact terminal search"
+            />
+            <p>
+              Instead of a generalized &quot;City to City&quot; header, we now
+              display the exact search terms entered by users to avoid confusion
+              and misinformation.
+            </p>
+          </div>
+          <div className="space-y-3">
+            <StepHeading number="2">
+              Error Message: Reduced Error Perception
+            </StepHeading>
+            <Figure
+              bleed={false}
+              src="/images/work/bus-search-7.jpg"
+              alt="Minimal Error Message: Currently available routes"
+            />
+            <p>
+              We redesigned the error message to occupy less space and appear
+              less like an error state, reassuring users that their search
+              results are not incorrect.
+            </p>
+          </div>
+          <div className="space-y-3">
+            <StepHeading number="3">
+              Alternative Routes: Seamless Recommendations
+            </StepHeading>
+            <Figure
+              bleed={false}
+              src="/images/work/bus-search-5.jpg"
+              alt="Relevant Alternative Routes on the search results list"
+            />
+            <p>
+              By clearly indicating the recommended routes (e.g., City to City),
+              users can easily understand which Bus &amp; Shuttle terminals are
+              being suggested.
+            </p>
+          </div>
+          <div className="space-y-3">
+            <StepHeading number="4">Before, After &amp; Imapct</StepHeading>
+            <Figure
+              bleed={false}
+              src="/images/work/bus-search-12.jpg"
+              alt="Old Design versus New Design with annotated improvements"
+            />
+            <p>
+              To validate whether my designs worked, we conducted an A/B
+              Experiment to test both designs. The new designs resulted in the
+              following results:
+            </p>
+            <Metrics
+              plain
+              items={[
+                {
+                  value: "+4.2%",
+                  label: "Increased CVR from Search to book",
+                },
+                {
+                  value: "+7%",
+                  label: "Increased CTR from No Route Error to Product Detail",
+                },
+                {
+                  value: "+12%",
+                  label: "Increased CVR from No Route Error to Purchase",
+                },
+              ]}
+            />
+          </div>
+        </div>
         <Figure
-          src="/images/work/bus-search-3.jpg"
-          alt="Clear Header Information showing the exact terminal search"
-        />
-        <StepHeading number="2">
-          Error Message: Reduced Error Perception
-        </StepHeading>
-        <p>
-          We redesigned the error message to occupy less space and appear less
-          like an error state, reassuring users that their search results are
-          not incorrect.
-        </p>
-        <Figure
-          src="/images/work/bus-search-7.jpg"
-          alt="Minimal Error Message: Currently available routes"
-        />
-        <StepHeading number="3">
-          Alternative Routes: Seamless Recommendations
-        </StepHeading>
-        <p>
-          By clearly indicating the recommended routes (e.g., City to City),
-          users can easily understand which Bus &amp; Shuttle terminals are
-          being suggested.
-        </p>
-        <Figure
-          src="/images/work/bus-search-5.jpg"
-          alt="Relevant Alternative Routes on the search results list"
-        />
-        <StepHeading number="4">Before, After &amp; Imapct</StepHeading>
-        <p>
-          To validate whether my designs worked, we conducted an A/B Experiment
-          to test both designs. The new designs resulted in the following
-          results:
-        </p>
-        <Figure
-          src="/images/work/bus-search-12.jpg"
-          alt="Old Design versus New Design with annotated improvements"
-        />
-        <Metrics
-          items={[
-            {
-              value: "+4.2%",
-              label: "Increased CVR from Search to book",
-            },
-            {
-              value: "+7%",
-              label: "Increased CTR from No Route Error to Product Detail",
-            },
-            {
-              value: "+12%",
-              label: "Increased CVR from No Route Error to Purchase by 12%",
-            },
-          ]}
-        />
-        <Figure
+          bleed={false}
           src="/images/work/bus-search-8.jpg"
           alt="Bus & Shuttle search and results screens"
         />
         <Figure
+          bleed={false}
           src="/images/work/bus-search-cover.jpg"
           alt="Bus & Shuttle search and currently available routes"
         />
         <Figure
+          bleed={false}
           src="/images/work/bus-search-14.jpg"
           alt="Desktop search results with currently available routes"
         />
