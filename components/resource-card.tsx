@@ -63,8 +63,8 @@ export function GuideHeader({
 
 export function CommandBlock({ command }: { command: string }) {
   return (
-    <pre className="mt-3 overflow-x-auto rounded-[var(--radius-sm)] border border-hairline bg-paper-2 px-4 py-3 text-[13px] leading-6 text-ink">
-      <code>{command}</code>
+    <pre className="mt-3 max-w-full min-w-0 whitespace-pre-wrap break-words rounded-[var(--radius-sm)] border border-hairline bg-paper-2 px-4 py-3 text-[13px] leading-6 text-ink [overflow-wrap:anywhere]">
+      <code className="block">{command}</code>
     </pre>
   );
 }
