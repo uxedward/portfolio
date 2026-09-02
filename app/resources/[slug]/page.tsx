@@ -75,13 +75,13 @@ export default async function ResourceGuidePage({ params }: Props) {
         </ul>
       </section>
 
-      <section className="mt-14 max-w-2xl">
+      <section className="mt-14 max-w-2xl min-w-0">
         <h2 className="text-[11px] uppercase tracking-[0.16em] text-ink-soft">
           Step by Step Setup
         </h2>
-        <ol className="mt-6 space-y-8">
+        <ol className="mt-6 min-w-0 space-y-8">
           {resource.steps.map((step, index) => (
-            <li key={step.title} className="border-t border-hairline pt-6">
+            <li key={step.title} className="min-w-0 border-t border-hairline pt-6">
               <p className="text-[13px] text-ink-soft">Step {index + 1}</p>
               <h3 className="mt-1 text-[20px] font-medium tracking-tight">
                 {step.title}
