@@ -5,18 +5,21 @@ import { cn } from "@/lib/cn";
 
 export type TocItem = { id: string; label: string };
 
-const HEADER_OFFSET = 112;
-
 export function CaseStudyToc({ items }: { items: TocItem[] }) {
   const [active, setActive] = useState(items[0]?.id);
 
+  function headerOffset() {
+    return window.matchMedia("(min-width: 1024px)").matches ? 48 : 112;
+  }
+
   useEffect(() => {
     function onScroll() {
+      const offset = headerOffset();
       let current = items[0]?.id;
       for (const item of items) {
         const el = document.getElementById(item.id);
         if (!el) continue;
-        if (el.getBoundingClientRect().top <= HEADER_OFFSET) {
+        if (el.getBoundingClientRect().top <= offset) {
           current = item.id;
         }
       }
@@ -31,7 +34,8 @@ export function CaseStudyToc({ items }: { items: TocItem[] }) {
   function goTo(id: string) {
     const el = document.getElementById(id);
     if (!el) return;
-    const top = el.getBoundingClientRect().top + window.scrollY - (HEADER_OFFSET - 8);
+    const offset = headerOffset();
+    const top = el.getBoundingClientRect().top + window.scrollY - (offset - 8);
     window.scrollTo({ top, behavior: "smooth" });
     history.replaceState(null, "", `#${id}`);
     setActive(id);

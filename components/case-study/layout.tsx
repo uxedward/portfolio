@@ -102,16 +102,18 @@ export function CaseStudyShell({
   domains?: string[];
   toc: TocItem[];
   children: React.ReactNode;
-  next?: { href: string; title: string };
+  next?: { href: string; title: string; external?: boolean };
 }) {
   return (
     <>
       <div className="bg-paper">
-        <div className="mx-auto grid w-full min-w-0 max-w-[1180px] grid-cols-1 lg:grid-cols-[225px_minmax(0,1fr)] lg:items-start lg:gap-5 lg:px-10 lg:py-10">
-          <aside className="sticky top-16 z-30 min-w-0 max-w-full overflow-x-auto border-b border-hairline bg-paper/90 px-5 backdrop-blur-md sm:px-8 lg:top-8 lg:self-start lg:overflow-visible lg:border-b-0 lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-none">
-            <CaseStudyToc items={toc} />
+        <div className="mx-auto flex w-full min-w-0 max-w-[1180px] flex-col lg:grid lg:grid-cols-[225px_minmax(0,1fr)] lg:items-stretch lg:gap-5 lg:px-10 lg:py-10">
+          <aside className="sticky top-16 z-30 min-w-0 max-w-full overflow-x-auto border-b border-hairline bg-paper px-5 sm:px-8 lg:static lg:overflow-visible lg:border-b-0 lg:bg-transparent lg:px-0 lg:py-0">
+            <div className="lg:sticky lg:top-8">
+              <CaseStudyToc items={toc} />
+            </div>
           </aside>
-          <div className="flex min-w-0 max-w-full flex-col gap-11 overflow-x-hidden px-5 py-8 sm:px-8 sm:py-10 lg:gap-[51px] lg:px-0 lg:py-0">
+          <div className="flex min-w-0 max-w-full flex-col gap-11 overflow-x-clip px-5 py-8 sm:px-8 sm:py-10 lg:gap-[51px] lg:px-0 lg:py-0">
             {children}
           </div>
         </div>
@@ -125,6 +127,7 @@ export function CaseStudyShell({
             </p>
             <Button
               href={next.href}
+              external={next.external}
               variant="ghost"
               className="px-0 text-right text-[15px] leading-snug sm:text-lg"
             >

@@ -134,6 +134,8 @@ export const projects: Project[] = [
     domains: ["Product Thinking", "Product Design", "Research"],
     liveUrl:
       "https://tiket.design/stories/the-design-odyssey-of-bus-and-shuttle-at-tiket-com",
+    externalUrl:
+      "https://tiket.design/stories/the-design-odyssey-of-bus-and-shuttle-at-tiket-com",
   },
   {
     slug: "instagram",
@@ -206,9 +208,9 @@ export function getCaseStudy(slug: string) {
 }
 
 export function getNextCaseStudy(slug: string) {
-  const index = caseStudies.findIndex((project) => project.slug === slug);
+  const index = workProjects.findIndex((project) => project.slug === slug);
   if (index === -1) return undefined;
-  return caseStudies[(index + 1) % caseStudies.length];
+  return workProjects[(index + 1) % workProjects.length];
 }
 
 export function projectHref(project: Project) {

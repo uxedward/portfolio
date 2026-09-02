@@ -12,7 +12,6 @@ export default function sitemap() {
     "/work/bus-search",
     "/work/train-booking",
     "/work/car-rentals",
-    "/work/bus-product",
     ...resources.map((resource) => `/resources/${resource.slug}`),
   ];
 
