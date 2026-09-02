@@ -8,7 +8,6 @@ import {
   PlanList,
 } from "@/components/resource-card";
 import { getResource, resources } from "@/lib/resources";
-import { site } from "@/lib/site";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -49,10 +48,6 @@ export default async function ResourceGuidePage({ params }: Props) {
       </p>
 
       <GuideHeader title={resource.pageTitle} />
-
-      <p className="mt-6 max-w-2xl text-[18px] leading-8 text-ink">
-        {resource.summary}
-      </p>
 
       <section className="mt-14 max-w-2xl">
         <h2 className="text-[11px] uppercase tracking-[0.16em] text-ink-soft">
@@ -131,10 +126,6 @@ export default async function ResourceGuidePage({ params }: Props) {
           ))}
         </ol>
       </section>
-
-      <p className="mt-16 text-[14px] text-ink-soft">
-        Created by {site.handle}
-      </p>
     </article>
   );
 }
