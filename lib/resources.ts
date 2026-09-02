@@ -247,42 +247,42 @@ export const resources: Resource[] = [
         ],
       },
       {
-        title: "Open Search and tools",
-        body: "Go to the top right of Claude Desktop, and click on the Search and tools button",
+        title: "Open Dev Mode in Figma",
+        body: "Go to the top right of Figma, and click on Dev Mode.",
         images: [
           {
-            src: "/images/resources/figma-mcp/desktop-search-tools.png",
-            alt: "Claude Desktop search and tools control highlighted",
+            src: "/images/resources/figma-mcp/desktop-dev-mode.png",
+            alt: "Figma toolbar with Dev Mode highlighted",
           },
         ],
       },
       {
-        title: "Search for Figma MCP",
-        body: "Search for Figma, and click on the Figma MCP",
+        title: "Open the MCP panel",
+        body: "Click + in the MCP panel.",
         images: [
           {
-            src: "/images/resources/figma-mcp/desktop-search-figma.png",
-            alt: "Searching for Figma MCP in Claude Desktop",
+            src: "/images/resources/figma-mcp/desktop-mcp-panel.png",
+            alt: "Figma MCP panel with the add control highlighted",
           },
         ],
       },
       {
-        title: "Connect Figma MCP",
-        body: "Click on Connect to start the authentication process",
+        title: "Install in Claude Desktop",
+        body: "Click + Install in Claude Desktop.",
         images: [
           {
             src: "/images/resources/figma-mcp/desktop-connect.png",
-            alt: "Add Figma to Claude Desktop with the Install button highlighted",
+            alt: "Add Figma to Claude Desktop with Install in Claude Desktop highlighted",
           },
         ],
       },
       {
-        title: "Allow Access",
-        body: "Click on Allow access",
+        title: "Install the Figma plugin",
+        body: "Click Install.",
         images: [
           {
-            src: "/images/resources/figma-mcp/desktop-allow.png",
-            alt: "Claude Desktop Figma plugin screen with Install highlighted",
+            src: "/images/resources/figma-mcp/desktop-install.png",
+            alt: "Claude Desktop Directory with the Figma plugin Install button highlighted",
           },
         ],
       },
@@ -292,7 +292,7 @@ export const resources: Resource[] = [
         images: [
           {
             src: "/images/resources/figma-mcp/desktop-connected.png",
-            alt: "Claude Desktop showing Figma MCP installed and connected",
+            alt: "Claude Desktop showing the Figma plugin installed and connected",
           },
         ],
       },
