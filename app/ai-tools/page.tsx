@@ -18,11 +18,6 @@ export default function AiToolsPage() {
   return (
     <div className="px-6 py-10 sm:px-8 lg:px-10 lg:py-10">
       <StudioBanner studio={studio} />
-      <p className="mb-3 text-sm text-ink-soft">Stuff I’m building</p>
-      <p className="mb-8 max-w-xl text-[17px] leading-7 text-ink-soft">
-        Tools I&apos;ve built with AI — small products, agents, and workflow
-        experiments from my own practice.
-      </p>
       {aiTools.length === 0 ? (
         <RiseIn>
           <div className="rounded-[var(--radius)] border border-hairline bg-paper-2 px-5 py-16 sm:px-8">
