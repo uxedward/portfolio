@@ -13,6 +13,7 @@ export type ResourceStep = {
   body: string;
   command?: string;
   extra?: string;
+  link?: ResourceLink;
   plans?: ResourcePlan[];
   images?: { src: string; alt: string }[];
 };
@@ -96,8 +97,7 @@ export const resources: Resource[] = [
     category: "AI & CODE",
     title: "Figma MCP & Claude Code Setup",
     pageTitle: "Figma MCP & Claude Code Setup",
-    summary:
-      "Install and configure the Figma Remote MCP Plugin to interact directly with your designs through Claude's command line.",
+    summary: "Install Figma MCP into Claude Code and Claude Desktop",
     readTime: "8 min read",
     cta: "Read Guidebook",
     logos: [
@@ -111,38 +111,190 @@ export const resources: Resource[] = [
         href: "https://code.claude.com/docs/en/overview",
       },
       {
+        label: "Claude Desktop",
+        href: "https://claude.com/download",
+      },
+      {
         label: "Figma MCP Documentation",
         href: "https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/#claude-code",
       },
     ],
     steps: [
       {
-        title: "Get Figma & Claude Paid Plans",
-        body: "Minimum Requirements: Figma Professional and Claude Pro",
-      },
-      {
-        title: "Enable Figma MCP",
-        body: "Switch to Dev Mode from the bottom toolbar, Enable MCP server and choose Claude Code.",
+        title: "Claude & Figma plans",
+        body: "Make sure you have Pro plans for Claude & Figma.",
+        plans: [
+          {
+            name: "Claude Pro or Max",
+            logo: "/images/brands/claude.png",
+          },
+          {
+            name: "Figma Professional Plan (or higher)",
+            logo: "/images/brands/figma.png",
+          },
+        ],
       },
       {
         title: "Install Claude Code via Terminal",
         body: "Run this command in your terminal:",
         command: "curl -fsSL https://claude.ai/install.sh | bash",
+        images: [
+          {
+            src: "/images/resources/figma-mcp/terminal-install.png",
+            alt: "Terminal showing Claude Code installed with the install script",
+          },
+        ],
       },
       {
-        title: "Install Figma MCP into Claude Code: Figma Remote MCP Plugin",
-        body: "Run this command in your terminal:",
-        command: "claude plugin install figma@claude-plugins-official",
+        title: "Start Claude Code",
+        body: "To start Claude Code, run this command:",
+        command: "claude",
+        images: [
+          {
+            src: "/images/resources/figma-mcp/terminal-start.png",
+            alt: "Terminal with the claude command to start Claude Code",
+          },
+        ],
       },
       {
-        title: "Make Figma MCP available for all your Figma projects",
-        body: "Run this command in your terminal and verify your Figma account:",
+        title: "Add Figma MCP",
+        body: "Run this command to add Figma MCP",
+        command:
+          "claude mcp add --transport http figma-desktop http://127.0.0.1:3845/mcp",
+        images: [
+          {
+            src: "/images/resources/figma-mcp/terminal-figma-desktop.png",
+            alt: "Claude Code terminal adding the local Figma desktop MCP server",
+          },
+        ],
+      },
+      {
+        title: "Make Figma MCP available to all projects",
+        body: "Run this command to make Figma MCP available to all projects in Figma",
         command:
           "claude mcp add --scope user --transport http figma https://mcp.figma.com/mcp",
+        images: [
+          {
+            src: "/images/resources/figma-mcp/terminal-figma-remote.png",
+            alt: "Claude Code terminal adding the Figma remote MCP server",
+          },
+        ],
       },
       {
-        title: "Install Figma into Claude Desktop App",
-        body: "Download Claude Desktop and Install Figma Connector & Plugin.",
+        title: "Authenticate Access",
+        body: "Authentication process will happen either directly or after you restart the terminal & Claude Code",
+        images: [
+          {
+            src: "/images/resources/figma-mcp/terminal-auth.png",
+            alt: "Figma authorization screen for Figma MCP in Claude Code",
+          },
+        ],
+      },
+      {
+        title: "Confirm Terminal Install",
+        body: "Installed!",
+        extra: "Restart Claude Code (if needed)",
+        images: [
+          {
+            src: "/images/resources/figma-mcp/terminal-installed.png",
+            alt: "Claude Code terminal after Figma MCP has been installed",
+          },
+        ],
+      },
+      {
+        title: "Check MCP List",
+        body: "Run this command after running Claude Code",
+        command: "/mcp",
+        images: [
+          {
+            src: "/images/resources/figma-mcp/terminal-mcp-list.png",
+            alt: "Claude Code terminal running /mcp to list connected servers",
+          },
+        ],
+      },
+      {
+        title: "Confirm Figma MCP Connected",
+        body: "You will see “figma” MCP connected",
+        images: [
+          {
+            src: "/images/resources/figma-mcp/terminal-mcp-connected.png",
+            alt: "Claude Code terminal showing the figma MCP server connected",
+          },
+        ],
+      },
+      {
+        title: "Download Claude Desktop",
+        body: "Download Claude Desktop",
+        link: {
+          label: "https://claude.com/download",
+          href: "https://claude.com/download",
+        },
+        images: [
+          {
+            src: "/images/resources/figma-mcp/desktop-download.png",
+            alt: "Claude download page for macOS, Windows, and mobile",
+          },
+        ],
+      },
+      {
+        title: "Open Claude Code in Desktop",
+        body: "You can open Claude Code on the top right",
+        images: [
+          {
+            src: "/images/resources/figma-mcp/desktop-open-code.png",
+            alt: "Claude Desktop with Claude Code available in the top right",
+          },
+        ],
+      },
+      {
+        title: "Open Search and tools",
+        body: "Go to the top right of Claude Desktop, and click on the Search and tools button",
+        images: [
+          {
+            src: "/images/resources/figma-mcp/desktop-search-tools.png",
+            alt: "Claude Desktop search and tools control highlighted",
+          },
+        ],
+      },
+      {
+        title: "Search for Figma MCP",
+        body: "Search for Figma, and click on the Figma MCP",
+        images: [
+          {
+            src: "/images/resources/figma-mcp/desktop-search-figma.png",
+            alt: "Searching for Figma MCP in Claude Desktop",
+          },
+        ],
+      },
+      {
+        title: "Connect Figma MCP",
+        body: "Click on Connect to start the authentication process",
+        images: [
+          {
+            src: "/images/resources/figma-mcp/desktop-connect.png",
+            alt: "Add Figma to Claude Desktop with the Install button highlighted",
+          },
+        ],
+      },
+      {
+        title: "Allow Access",
+        body: "Click on Allow access",
+        images: [
+          {
+            src: "/images/resources/figma-mcp/desktop-allow.png",
+            alt: "Claude Desktop Figma plugin screen with Install highlighted",
+          },
+        ],
+      },
+      {
+        title: "Confirm Desktop Connect",
+        body: "Figma MCP is now connected!",
+        images: [
+          {
+            src: "/images/resources/figma-mcp/desktop-connected.png",
+            alt: "Claude Desktop showing Figma MCP installed and connected",
+          },
+        ],
       },
     ],
   },

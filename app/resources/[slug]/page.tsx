@@ -107,6 +107,18 @@ export default async function ResourceGuidePage({ params }: Props) {
                   )}
                 </p>
               ) : null}
+              {step.link ? (
+                <p className="mt-2 text-[16px] leading-7 text-ink">
+                  <a
+                    href={step.link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="break-all underline decoration-hairline underline-offset-4 hover:decoration-ink"
+                  >
+                    {step.link.label}
+                  </a>
+                </p>
+              ) : null}
               {step.command ? <CommandBlock command={step.command} /> : null}
               {step.images?.map((image) => (
                 <GuideFigure
