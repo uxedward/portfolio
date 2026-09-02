@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CommandBlock, GuideHeader } from "@/components/resource-card";
+import {
+  CommandBlock,
+  GuideFigure,
+  GuideHeader,
+  PlanList,
+} from "@/components/resource-card";
 import { getResource, resources } from "@/lib/resources";
 import { site } from "@/lib/site";
 
@@ -82,6 +87,7 @@ export default async function ResourceGuidePage({ params }: Props) {
                 {step.title}
               </h3>
               <p className="mt-2 text-[16px] leading-7 text-ink">{step.body}</p>
+              {step.plans ? <PlanList plans={step.plans} /> : null}
               {step.extra ? (
                 <p className="mt-2 text-[16px] leading-7 text-ink">
                   {step.extra.includes("mobbin.com/edward") ? (
@@ -102,6 +108,13 @@ export default async function ResourceGuidePage({ params }: Props) {
                 </p>
               ) : null}
               {step.command ? <CommandBlock command={step.command} /> : null}
+              {step.images?.map((image) => (
+                <GuideFigure
+                  key={image.src}
+                  src={image.src}
+                  alt={image.alt}
+                />
+              ))}
             </li>
           ))}
         </ol>

@@ -3,11 +3,18 @@ export type ResourceLink = {
   href: string;
 };
 
+export type ResourcePlan = {
+  name: string;
+  logo: string;
+};
+
 export type ResourceStep = {
   title: string;
   body: string;
   command?: string;
   extra?: string;
+  plans?: ResourcePlan[];
+  images?: { src: string; alt: string }[];
 };
 
 export type Resource = {
@@ -144,11 +151,12 @@ export const resources: Resource[] = [
     category: "AI & CODE",
     title: "Setting up Mobbin MCP",
     pageTitle: "Claude Code & Mobbin Setup",
-    summary: "Install Mobbin MCP into Claude Code",
+    summary: "Install Mobbin MCP into Claude Code and Claude Desktop",
     readTime: "8 min read",
     cta: "Read Guidebook",
     logos: [
       { src: "/images/brands/claude.png", alt: "Claude" },
+      { src: "/images/brands/figma.png", alt: "Figma" },
       { src: "/images/brands/mobbin.png", alt: "Mobbin" },
     ],
     links: [
@@ -157,25 +165,87 @@ export const resources: Resource[] = [
         href: "https://code.claude.com/docs/en/overview",
       },
       {
+        label: "Claude Desktop",
+        href: "https://claude.ai/download",
+      },
+      {
         label: "Video Tutorial",
         href: "https://www.instagram.com/reel/DbnuUhIpbrD/?utm_source=ig_web_copy_link",
       },
     ],
     steps: [
       {
-        title: "Get Claude & Mobbin Paid Plans",
-        body: "Minimum Requirements: Claude Pro & Mobbin Pro",
+        title: "Get Claude, Figma & Mobbin Paid Plans",
+        body: "Make sure you have Pro plans for Claude, Figma & Mobbin.",
         extra: "Get 20% off: mobbin.com/edward",
+        plans: [
+          {
+            name: "Claude Pro or Max",
+            logo: "/images/brands/claude.png",
+          },
+          {
+            name: "Figma Professional Plan (or higher)",
+            logo: "/images/brands/figma.png",
+          },
+          {
+            name: "Mobbin Pro Plan",
+            logo: "/images/brands/mobbin.png",
+          },
+        ],
       },
       {
         title: "Install Mobbin via Claude Code Terminal",
-        body: "Run this command in your terminal:",
+        body: "Run this command in Claude Code Terminal:",
         command:
           "claude mcp add mobbin --scope user --transport http https://api.mobbin.com/mcp",
+        images: [
+          {
+            src: "/images/resources/mobbin/terminal-command.png",
+            alt: "Claude Code terminal with the Mobbin MCP install command",
+          },
+        ],
       },
       {
         title: "Authenticate Access",
         body: "Authenticate & Sign in with your Mobbin account to authorize access.",
+        images: [
+          {
+            src: "/images/resources/mobbin/terminal-auth.png",
+            alt: "Connect Claude Code with Mobbin MCP authorization screen",
+          },
+        ],
+      },
+      {
+        title: "Confirm Authentication",
+        body: "Successfully authenticate Mobbin & Claude Code!",
+        images: [
+          {
+            src: "/images/resources/mobbin/terminal-success.png",
+            alt: "Claude Code terminal showing Mobbin MCP authentication successful",
+          },
+        ],
+      },
+      {
+        title: "Install Mobbin MCP in Claude Desktop",
+        body: "Download Claude Desktop. Run this command in Claude Desktop:",
+        command:
+          "claude mcp add mobbin --scope user --transport http https://api.mobbin.com/mcp",
+        images: [
+          {
+            src: "/images/resources/mobbin/desktop-command.png",
+            alt: "Claude Desktop with the Mobbin MCP install command",
+          },
+        ],
+      },
+      {
+        title: "Confirm Desktop Install",
+        body: "You can see it says it has been installed because we’ve installed it in our terminal.",
+        images: [
+          {
+            src: "/images/resources/mobbin/desktop-connected.png",
+            alt: "Claude Desktop showing Mobbin MCP already connected",
+          },
+        ],
       },
     ],
   },

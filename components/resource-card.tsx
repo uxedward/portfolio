@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
-import type { Resource } from "@/lib/resources";
+import type { Resource, ResourcePlan } from "@/lib/resources";
 import { site } from "@/lib/site";
 
 export function ResourceCard({ resource }: { resource: Resource }) {
@@ -65,5 +66,39 @@ export function CommandBlock({ command }: { command: string }) {
     <pre className="mt-3 overflow-x-auto rounded-[var(--radius-sm)] border border-hairline bg-paper-2 px-4 py-3 text-[13px] leading-6 text-ink">
       <code>{command}</code>
     </pre>
+  );
+}
+
+export function PlanList({ plans }: { plans: ResourcePlan[] }) {
+  return (
+    <ul className="mt-4 space-y-3">
+      {plans.map((plan) => (
+        <li key={plan.name} className="flex items-center gap-3">
+          <BrandMark src={plan.logo} alt="" />
+          <span className="text-[16px] leading-7 text-ink">{plan.name}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export function GuideFigure({
+  src,
+  alt,
+}: {
+  src: string;
+  alt: string;
+}) {
+  return (
+    <figure className="mt-4 overflow-hidden rounded-[var(--radius)] border border-hairline bg-paper-2">
+      <Image
+        src={src}
+        alt={alt}
+        width={1008}
+        height={648}
+        sizes="(min-width: 768px) 672px, 100vw"
+        className="block h-auto w-full"
+      />
+    </figure>
   );
 }
