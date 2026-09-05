@@ -31,8 +31,7 @@ export function CaseStudyToc({ items }: { items: TocItem[] }) {
   function goTo(id: string) {
     const el = document.getElementById(id);
     if (!el) return;
-    const top = el.getBoundingClientRect().top + window.scrollY - (HEADER_OFFSET - 8);
-    window.scrollTo({ top, behavior: "smooth" });
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
     history.replaceState(null, "", `#${id}`);
     setActive(id);
   }
@@ -40,7 +39,7 @@ export function CaseStudyToc({ items }: { items: TocItem[] }) {
   return (
     <nav
       aria-label="On this page"
-      className="min-w-0 w-full max-w-full overflow-x-auto overscroll-x-contain [-ms-overflow-style:none] [scrollbar-width:none] lg:overflow-visible [&::-webkit-scrollbar]:hidden"
+      className="min-w-0 w-full max-w-full overflow-x-auto overflow-y-hidden overscroll-x-contain [-ms-overflow-style:none] [scrollbar-width:none] lg:overflow-visible [&::-webkit-scrollbar]:hidden"
     >
       <ul className="flex w-max gap-5 py-3 lg:w-full lg:flex-col lg:gap-3 lg:py-0">
         {items.map((item) => {
@@ -55,7 +54,7 @@ export function CaseStudyToc({ items }: { items: TocItem[] }) {
                 }}
                 aria-current={isActive ? "location" : undefined}
                 className={cn(
-                  "block whitespace-nowrap py-2 text-[15px] leading-[1.35] tracking-tight transition-colors duration-300 ease-[var(--ease-out)] lg:text-base",
+                  "block cursor-pointer whitespace-nowrap py-2 text-[15px] leading-[1.35] tracking-tight transition-colors duration-300 ease-[var(--ease-out)] lg:text-base",
                   isActive
                     ? "font-medium text-ink"
                     : "text-ink-muted hover:text-ink",
