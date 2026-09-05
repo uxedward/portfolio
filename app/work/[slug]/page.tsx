@@ -75,7 +75,7 @@ export default async function CaseStudyPage({ params }: Props) {
   const { toc, Body } = content;
 
   return (
-    <article className="w-full min-w-0 max-w-full overflow-x-clip">
+    <article className="w-full min-w-0 max-w-full">
       <CaseStudyHero project={project} />
       <CaseStudyShell
         project={project}

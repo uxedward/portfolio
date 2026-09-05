@@ -122,7 +122,7 @@ export function CaseStudyShell({
           <aside className="sticky top-16 z-30 min-w-0 max-w-full overflow-x-auto overflow-y-hidden border-b border-hairline bg-paper/90 px-5 backdrop-blur-md sm:px-8 lg:top-8 lg:z-20 lg:max-h-none lg:self-start lg:overflow-visible lg:border-b-0 lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-none">
             <CaseStudyToc items={toc} />
           </aside>
-          <div className="flex min-w-0 max-w-full flex-col gap-11 overflow-x-clip px-5 py-8 sm:px-8 sm:py-10 lg:gap-[51px] lg:px-0 lg:py-0">
+          <div className="flex min-w-0 max-w-full flex-col gap-11 overflow-x-clip overflow-y-visible px-5 py-8 sm:px-8 sm:py-10 lg:gap-[51px] lg:px-0 lg:py-0">
             {children}
           </div>
         </div>
