@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { IconExternal } from "@/components/icons";
 import { FadeIn } from "@/components/motion/fade-in";
-import { FillText } from "@/components/motion/fill-text";
 import { Reveal, RevealList } from "@/components/motion/reveal";
 import { homeNow, homePhotoRows, homePhotos } from "@/lib/home";
 import { site } from "@/lib/site";
@@ -20,7 +19,7 @@ export default function Home() {
     <div>
       <div className="px-6 pt-12 sm:px-8 lg:px-10 lg:pt-10">
         <h1 className="font-serif text-[clamp(2.6rem,11vw,3.8rem)] leading-[0.95] tracking-[-0.03em]">
-          <FillText>Hi! I&apos;m Edward.</FillText>
+          Hi! I&apos;m Edward.
         </h1>
         <FadeIn delay={0.18}>
           <p className="mt-4 max-w-xl text-[18px] leading-8 text-ink">

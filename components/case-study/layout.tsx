@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { CaseStudyToc, type TocItem } from "@/components/case-study/toc";
 import { FadeIn } from "@/components/motion/fade-in";
-import { FillText } from "@/components/motion/fill-text";
 import { Reveal } from "@/components/motion/reveal";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { Button } from "@/components/ui/button";
@@ -35,7 +34,7 @@ export function CaseStudyHero({
               </p>
             </FadeIn>
             <h1 className="mt-1 font-sans text-[1.25rem] font-medium leading-[1.4] tracking-[-0.03em] lg:text-[2.5rem] lg:leading-[1.5]">
-              <FillText delay={0.08}>{project.title}</FillText>
+              {project.title}
             </h1>
           </div>
           <FadeIn delay={0.22} y={28}>

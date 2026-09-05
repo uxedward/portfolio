@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
 import { FadeIn } from "@/components/motion/fade-in";
-import { FillText } from "@/components/motion/fill-text";
 import { Reveal } from "@/components/motion/reveal";
 import type { Resource, ResourcePlan } from "@/lib/resources";
 import { site } from "@/lib/site";
@@ -46,7 +45,7 @@ export function GuideHeader({
         {kicker}
       </p>
       <h1 className="mt-3 font-serif text-[clamp(2.4rem,6vw,3.8rem)] leading-[0.95] tracking-[-0.03em]">
-        <FillText delay={0.06}>{title}</FillText>
+        {title}
       </h1>
       <FadeIn delay={0.2}>
         <p className="mt-4 text-[15px] text-ink-soft">
