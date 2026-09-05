@@ -1,4 +1,5 @@
 import { IconExternal } from "@/components/icons";
+import { FillText } from "@/components/motion/fill-text";
 import { StudioMark } from "@/components/studio-tab";
 import type { Studio } from "@/lib/nav";
 
@@ -9,7 +10,7 @@ export function StudioBanner({ studio }: { studio: Studio }) {
         <StudioMark studio={studio} size="lg" />
         <div>
           <h1 className="font-serif text-[clamp(2.4rem,6vw,3.8rem)] leading-[0.95] tracking-[-0.03em]">
-            {studio.bannerLabel}
+            <FillText delay={0.04}>{studio.bannerLabel}</FillText>
           </h1>
           {"years" in studio && studio.years ? (
             <p className="mt-2 text-sm text-ink-soft">{studio.years}</p>

@@ -1,4 +1,6 @@
-import { cn } from "@/lib/cn";
+"use client";
+
+import { Reveal } from "@/components/motion/reveal";
 
 export function RiseIn({
   children,
@@ -7,5 +9,5 @@ export function RiseIn({
   children: React.ReactNode;
   className?: string;
 }) {
-  return <div className={cn("card-rise", className)}>{children}</div>;
+  return <Reveal className={className}>{children}</Reveal>;
 }

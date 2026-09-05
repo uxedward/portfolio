@@ -1,5 +1,9 @@
 import Image from "next/image";
 import { CaseStudyToc, type TocItem } from "@/components/case-study/toc";
+import { FadeIn } from "@/components/motion/fade-in";
+import { FillText } from "@/components/motion/fill-text";
+import { Reveal } from "@/components/motion/reveal";
+import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
 import { cn } from "@/lib/cn";
@@ -25,30 +29,34 @@ export function CaseStudyHero({
       <div className="mx-auto flex max-w-[1180px] flex-col gap-6 px-5 pb-8 pt-10 lg:gap-8 lg:px-10 lg:pb-8 lg:pt-[100px]">
         <div className="flex flex-col gap-4 lg:gap-6">
           <div>
-            <p className="text-[10px] font-medium tracking-[0.12em] text-case-link lg:text-xl lg:tracking-[0.06em]">
-              {project.client}
-            </p>
+            <FadeIn>
+              <p className="text-[10px] font-medium tracking-[0.12em] text-case-link lg:text-xl lg:tracking-[0.06em]">
+                {project.client}
+              </p>
+            </FadeIn>
             <h1 className="mt-1 font-sans text-[1.25rem] font-medium leading-[1.4] tracking-[-0.03em] lg:text-[2.5rem] lg:leading-[1.5]">
-              {project.title}
+              <FillText delay={0.08}>{project.title}</FillText>
             </h1>
           </div>
-          <div className="overflow-hidden rounded-3xl bg-paper-2 lg:rounded-[32px]">
-            <Image
-              src={hero}
-              alt={project.title}
-              width={1600}
-              height={720}
-              priority
-              unoptimized={isGif}
-              sizes="100vw"
-              className="block h-auto w-full max-w-full"
-              style={caseImageStyle}
-            />
-          </div>
+          <FadeIn delay={0.22} y={28}>
+            <div className="overflow-hidden rounded-3xl bg-paper-2 lg:rounded-[32px]">
+              <Image
+                src={hero}
+                alt={project.title}
+                width={1600}
+                height={720}
+                priority
+                unoptimized={isGif}
+                sizes="100vw"
+                className="block h-auto w-full max-w-full"
+                style={caseImageStyle}
+              />
+            </div>
+          </FadeIn>
         </div>
 
         {domains.length > 0 ? (
-          <div className="flex flex-col gap-2 lg:gap-3">
+          <FadeIn delay={0.32} className="flex flex-col gap-2 lg:gap-3">
             <p className="text-[15px] leading-6 text-paper lg:text-base">
               This project will demonstrate my expertise in these three crucial
               domains:
@@ -60,34 +68,36 @@ export function CaseStudyHero({
                 </li>
               ))}
             </ul>
-          </div>
+          </FadeIn>
         ) : null}
 
-        <dl className="grid gap-4 text-base lg:grid-cols-3 lg:gap-3">
-          <div className="flex flex-col gap-2">
-            <dt className="font-medium">Project</dt>
-            <dd className="text-paper/85">{project.type}</dd>
-          </div>
-          <div className="flex flex-col gap-2">
-            <dt className="font-medium">Duration</dt>
-            <dd className="text-paper/85">{project.duration}</dd>
-          </div>
-          <div className="flex flex-col gap-2">
-            <dt className="font-medium text-case-link">Link</dt>
-            <dd>
-              {project.liveUrl ? (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-block break-all font-medium text-case-link underline decoration-case-link/40 underline-offset-4 transition-colors duration-300 hover:decoration-case-link"
-                >
-                  {project.liveUrl}
-                </a>
-              ) : null}
-            </dd>
-          </div>
-        </dl>
+        <FadeIn delay={0.4}>
+          <dl className="grid gap-4 text-base lg:grid-cols-3 lg:gap-3">
+            <div className="flex flex-col gap-2">
+              <dt className="font-medium">Project</dt>
+              <dd className="text-paper/85">{project.type}</dd>
+            </div>
+            <div className="flex flex-col gap-2">
+              <dt className="font-medium">Duration</dt>
+              <dd className="text-paper/85">{project.duration}</dd>
+            </div>
+            <div className="flex flex-col gap-2">
+              <dt className="font-medium text-case-link">Link</dt>
+              <dd>
+                {project.liveUrl ? (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-block break-all font-medium text-case-link underline decoration-case-link/40 underline-offset-4 transition-colors duration-300 hover:decoration-case-link"
+                  >
+                    {project.liveUrl}
+                  </a>
+                ) : null}
+              </dd>
+            </div>
+          </dl>
+        </FadeIn>
       </div>
     </header>
   );
@@ -106,6 +116,7 @@ export function CaseStudyShell({
 }) {
   return (
     <>
+      <ScrollProgress />
       <div className="bg-paper">
         <div className="mx-auto grid w-full min-w-0 max-w-[1180px] grid-cols-1 lg:grid-cols-[225px_minmax(0,1fr)] lg:items-start lg:gap-5 lg:px-10 lg:py-10">
           <aside className="sticky top-16 z-30 min-w-0 max-w-full overflow-x-auto border-b border-hairline bg-paper/90 px-5 backdrop-blur-md sm:px-8 lg:top-8 lg:self-start lg:overflow-visible lg:border-b-0 lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-none">
@@ -119,18 +130,20 @@ export function CaseStudyShell({
 
       {next ? (
         <div className="border-t border-hairline bg-paper">
-          <div className="mx-auto flex max-w-[1180px] items-center justify-between gap-4 px-5 py-8 sm:gap-6 sm:px-8 lg:px-10">
-            <p className="shrink-0 text-[11px] uppercase tracking-[0.16em] text-ink-soft">
-              Next project
-            </p>
-            <Button
-              href={next.href}
-              variant="ghost"
-              className="px-0 text-right text-[15px] leading-snug sm:text-lg"
-            >
-              {next.title} ↗
-            </Button>
-          </div>
+          <Reveal>
+            <div className="mx-auto flex max-w-[1180px] items-center justify-between gap-4 px-5 py-8 sm:gap-6 sm:px-8 lg:px-10">
+              <p className="shrink-0 text-[11px] uppercase tracking-[0.16em] text-ink-soft">
+                Next project
+              </p>
+              <Button
+                href={next.href}
+                variant="ghost"
+                className="px-0 text-right text-[15px] leading-snug sm:text-lg"
+              >
+                {next.title} ↗
+              </Button>
+            </div>
+          </Reveal>
         </div>
       ) : null}
     </>
@@ -158,20 +171,22 @@ export function Section({
         card && "rounded-[12px] bg-paper-2 p-5",
       )}
     >
-      <p className="text-[12px] font-medium tracking-[0.1em] text-ink-soft">
-        {label}
-      </p>
-      <h2 className="mt-1 font-sans text-xl font-medium leading-[1.4] tracking-[-0.03em] text-ink sm:text-2xl">
-        {heading}
-      </h2>
-      <div
-        className={cn(
-          "mt-4 max-w-full space-y-4 overflow-x-hidden text-[15px] leading-7 break-words text-ink sm:text-base sm:leading-[1.5]",
-          card && "space-y-3",
-        )}
-      >
-        {children}
-      </div>
+      <Reveal>
+        <p className="text-[12px] font-medium tracking-[0.1em] text-ink-soft">
+          {label}
+        </p>
+        <h2 className="mt-1 font-sans text-xl font-medium leading-[1.4] tracking-[-0.03em] text-ink sm:text-2xl">
+          {heading}
+        </h2>
+        <div
+          className={cn(
+            "mt-4 max-w-full space-y-4 overflow-x-hidden text-[15px] leading-7 break-words text-ink sm:text-base sm:leading-[1.5]",
+            card && "space-y-3",
+          )}
+        >
+          {children}
+        </div>
+      </Reveal>
     </section>
   );
 }
@@ -232,16 +247,18 @@ export function SplitPanel({
   figure: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-4 rounded-[12px] bg-paper-2 p-5 lg:flex-row lg:items-start lg:gap-5">
-      <div className="min-w-0 space-y-3 lg:flex-1">
-        <h3 className="text-lg font-medium leading-snug text-ink sm:text-xl">
-          {title}
-        </h3>
-        <div className="space-y-3 text-[15px] leading-7 text-ink sm:text-base sm:leading-[1.5]">
-          {children}
+    <div className="rounded-[12px] bg-paper-2 p-5">
+      <Reveal className="flex w-full flex-col gap-4 lg:flex-row lg:items-start lg:gap-5">
+        <div className="min-w-0 space-y-3 lg:flex-1">
+          <h3 className="text-lg font-medium leading-snug text-ink sm:text-xl">
+            {title}
+          </h3>
+          <div className="space-y-3 text-[15px] leading-7 text-ink sm:text-base sm:leading-[1.5]">
+            {children}
+          </div>
         </div>
-      </div>
-      <div className="min-w-0 lg:flex-1">{figure}</div>
+        <div className="min-w-0 lg:flex-1">{figure}</div>
+      </Reveal>
     </div>
   );
 }
@@ -262,20 +279,22 @@ export function ProblemSplit({
   return (
     <section
       id={id}
-      className="case-section flex max-w-full flex-col gap-4 rounded-[12px] bg-paper-2 p-5 lg:flex-row lg:items-start lg:gap-5"
+      className="case-section max-w-full rounded-[12px] bg-paper-2 p-5"
     >
-      <div className="min-w-0 space-y-3 lg:flex-1">
-        <p className="text-[12px] font-medium tracking-[0.1em] text-ink-soft">
-          {label}
-        </p>
-        <h2 className="font-sans text-xl font-medium leading-[1.4] tracking-[-0.03em] text-ink sm:text-2xl">
-          {heading}
-        </h2>
-        <div className="space-y-3 text-[15px] leading-7 break-words text-ink sm:text-base sm:leading-[1.5]">
-          {children}
+      <Reveal className="flex w-full flex-col gap-4 lg:flex-row lg:items-start lg:gap-5">
+        <div className="min-w-0 space-y-3 lg:flex-1">
+          <p className="text-[12px] font-medium tracking-[0.1em] text-ink-soft">
+            {label}
+          </p>
+          <h2 className="font-sans text-xl font-medium leading-[1.4] tracking-[-0.03em] text-ink sm:text-2xl">
+            {heading}
+          </h2>
+          <div className="space-y-3 text-[15px] leading-7 break-words text-ink sm:text-base sm:leading-[1.5]">
+            {children}
+          </div>
         </div>
-      </div>
-      <div className="min-w-0 lg:flex-1">{figure}</div>
+        <div className="min-w-0 lg:flex-1">{figure}</div>
+      </Reveal>
     </section>
   );
 }

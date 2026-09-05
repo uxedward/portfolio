@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
+import { FadeIn } from "@/components/motion/fade-in";
+import { FillText } from "@/components/motion/fill-text";
+import { Reveal } from "@/components/motion/reveal";
 import type { Resource, ResourcePlan } from "@/lib/resources";
 import { site } from "@/lib/site";
 
@@ -43,20 +46,22 @@ export function GuideHeader({
         {kicker}
       </p>
       <h1 className="mt-3 font-serif text-[clamp(2.4rem,6vw,3.8rem)] leading-[0.95] tracking-[-0.03em]">
-        {title}
+        <FillText delay={0.06}>{title}</FillText>
       </h1>
-      <p className="mt-4 text-[15px] text-ink-soft">
-        Created by {site.handle}
-        <span className="mx-2 text-hairline">·</span>
-        <a
-          href={site.socials[0].href}
-          target="_blank"
-          rel="noreferrer"
-          className="transition-colors duration-300 hover:text-ink"
-        >
-          instagram.com/ux.edward
-        </a>
-      </p>
+      <FadeIn delay={0.2}>
+        <p className="mt-4 text-[15px] text-ink-soft">
+          Created by {site.handle}
+          <span className="mx-2 text-hairline">·</span>
+          <a
+            href={site.socials[0].href}
+            target="_blank"
+            rel="noreferrer"
+            className="transition-colors duration-300 hover:text-ink"
+          >
+            instagram.com/ux.edward
+          </a>
+        </p>
+      </FadeIn>
     </header>
   );
 }
@@ -90,15 +95,17 @@ export function GuideFigure({
   alt: string;
 }) {
   return (
-    <figure className="mt-4 overflow-hidden rounded-[var(--radius)] border border-hairline bg-paper-2">
-      <Image
-        src={src}
-        alt={alt}
-        width={1008}
-        height={648}
-        sizes="(min-width: 768px) 672px, 100vw"
-        className="block h-auto w-full"
-      />
-    </figure>
+    <Reveal>
+      <figure className="mt-4 overflow-hidden rounded-[var(--radius)] border border-hairline bg-paper-2">
+        <Image
+          src={src}
+          alt={alt}
+          width={1008}
+          height={648}
+          sizes="(min-width: 768px) 672px, 100vw"
+          className="block h-auto w-full"
+        />
+      </figure>
+    </Reveal>
   );
 }
