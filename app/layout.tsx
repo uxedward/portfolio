@@ -63,16 +63,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       id="top"
+      suppressHydrationWarning
       className={`${sans.variable} ${serif.variable} min-h-full antialiased`}
     >
-      <head>
+      <body className="min-h-full bg-paper font-sans text-ink">
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(localStorage.getItem("sidebar-collapsed")==="1"){document.documentElement.style.setProperty("--sidebar-w","0px");document.documentElement.classList.add("sidebar-collapsed");}}catch(e){}`,
+            __html:
+              'try{if(localStorage.getItem("sidebar-collapsed")==="1"){document.documentElement.style.setProperty("--sidebar-w","0px");document.documentElement.classList.add("sidebar-collapsed")}}catch(e){}',
           }}
         />
-      </head>
-      <body className="min-h-full bg-paper font-sans text-ink">
         <Sidebar />
         <div className="vt-main min-h-full min-w-0 max-w-full overflow-x-clip bg-paper pt-16 lg:pl-[var(--sidebar-w)] lg:pt-0">
           <main>{children}</main>
