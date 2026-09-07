@@ -23,11 +23,45 @@ export type Project = {
   duration?: string;
   type?: string;
   liveUrl?: string;
+  liveLabel?: string;
   externalUrl?: string;
   domains?: string[];
+  domainsIntro?: string;
+  nextSlug?: string;
 };
 
 export const projects: Project[] = [
+  {
+    slug: "help-center",
+    title: "Redesigning Help Center into halo tiket Customer Support",
+    client: "tiket.com / Help Center",
+    year: "2025",
+    tags: ["Product", "Research"],
+    category: "product",
+    summary:
+      "Re-designed tiket.com's Help Center experience to reduce contact-to-agent (CTB) by guiding users toward faster, self-service solutions, while keeping human support accessible when truly needed.",
+    lede: "Re-designed tiket.com's Help Center experience to reduce contact-to-agent (CTB) by guiding users toward faster, self-service solutions, while keeping human support accessible when truly needed.",
+    bullets: [
+      "In-App Support Research with 10 users across 3 Help Center familiarity levels",
+      "CS Agent Research: interviews and observation across L1 and L2 agent teams",
+      "Leading workshop with CS, CX, Brand Marketing, Corporate Strategy",
+    ],
+    outcome: "Self-service first · halo tiket",
+    metrics: [
+      { value: "2×", label: "Users chose an agent over self-service" },
+      { value: "46%", label: "Recognised Help Center as a channel" },
+      { value: "93%", label: "Cases from users with an active order" },
+    ],
+    cover: "/images/work/help-center-hero.jpg",
+    hero: "/images/work/help-center-hero.jpg",
+    duration: "Q3 2025 (3 months)",
+    type: "Help Center Revamp",
+    domains: ["User Research", "Product Design", "Product Strategy"],
+    domainsIntro: "Disciplines applied across this project:",
+    liveUrl: "https://www.tiket.com/en-id/help-center",
+    liveLabel: "tiket.com/en-id/help-center",
+    nextSlug: "train-booking",
+  },
   {
     slug: "bus-search",
     title: "Improving Search Result Experience",
@@ -206,8 +240,12 @@ export function getCaseStudy(slug: string) {
 }
 
 export function getNextCaseStudy(slug: string) {
+  const current = caseStudies.find((project) => project.slug === slug);
+  if (!current) return undefined;
+  if (current.nextSlug) {
+    return caseStudies.find((project) => project.slug === current.nextSlug);
+  }
   const index = caseStudies.findIndex((project) => project.slug === slug);
-  if (index === -1) return undefined;
   return caseStudies[(index + 1) % caseStudies.length];
 }
 

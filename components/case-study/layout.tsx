@@ -50,8 +50,8 @@ export function CaseStudyHero({
         {domains.length > 0 ? (
           <div className="flex flex-col gap-2 lg:gap-3">
             <p className="text-[15px] leading-6 text-paper lg:text-base">
-              This project will demonstrate my expertise in these three crucial
-              domains:
+              {project.domainsIntro ??
+                "This project will demonstrate my expertise in these three crucial domains:"}
             </p>
             <ul className="flex flex-wrap gap-2 lg:gap-4">
               {domains.map((domain) => (
@@ -82,7 +82,7 @@ export function CaseStudyHero({
                   rel="noreferrer"
                   className="inline-block break-all font-medium text-case-link underline decoration-case-link/40 underline-offset-4 transition-colors duration-300 hover:decoration-case-link"
                 >
-                  {project.liveUrl}
+                  {project.liveLabel ?? project.liveUrl}
                 </a>
               ) : null}
             </dd>

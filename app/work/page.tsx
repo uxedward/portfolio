@@ -9,7 +9,7 @@ const studio = getStudio("work");
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Product design case studies from tiket.com — Bus & Shuttle, Train, and Car Rentals.",
+    "Product design case studies from tiket.com — Help Center, Bus & Shuttle, Train, and Car Rentals.",
   alternates: { canonical: "/work" },
 };
 

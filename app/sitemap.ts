@@ -9,6 +9,7 @@ export default function sitemap() {
     "/content",
     "/ai-tools",
     "/resources",
+    "/work/help-center",
     "/work/bus-search",
     "/work/train-booking",
     "/work/car-rentals",
