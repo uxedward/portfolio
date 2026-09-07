@@ -87,16 +87,23 @@ function ProblemRow({
   impact: React.ReactNode;
 }) {
   return (
-    <div className="grid grid-cols-[38px_minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-x-3 lg:gap-x-4">
+    <div className="flex items-start gap-3 lg:grid lg:grid-cols-[38px_minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-x-4">
       <IndexMark>{number}</IndexMark>
-      <div className="min-w-0 text-[15px] leading-[1.5] text-ink sm:text-base">
-        {issue}
-      </div>
-      <p className="text-[15px] leading-[1.5] text-ink sm:text-base" aria-hidden>
-        →
-      </p>
-      <div className="min-w-0 text-[15px] leading-[1.5] text-ink sm:text-base">
-        {impact}
+      <div className="flex min-w-0 flex-col gap-1 lg:contents">
+        <div className="min-w-0 text-[15px] leading-[1.5] text-ink sm:text-base">
+          {issue}
+        </div>
+        <div className="flex items-start gap-3 lg:contents">
+          <p
+            className="text-[15px] leading-[1.5] text-ink sm:text-base"
+            aria-hidden
+          >
+            →
+          </p>
+          <div className="min-w-0 text-[15px] leading-[1.5] text-ink sm:text-base">
+            {impact}
+          </div>
+        </div>
       </div>
     </div>
   );
