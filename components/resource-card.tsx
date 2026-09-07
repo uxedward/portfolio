@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
 import type { Resource, ResourcePlan } from "@/lib/resources";
-import { site } from "@/lib/site";
 
 export function ResourceCard({ resource }: { resource: Resource }) {
   return (
@@ -45,18 +44,6 @@ export function GuideHeader({
       <h1 className="mt-3 font-serif text-[clamp(2.4rem,6vw,3.8rem)] leading-[0.95] tracking-[-0.03em]">
         {title}
       </h1>
-      <p className="mt-4 text-[15px] text-ink-soft">
-        Created by {site.handle}
-        <span className="mx-2 text-hairline">·</span>
-        <a
-          href={site.socials[0].href}
-          target="_blank"
-          rel="noreferrer"
-          className="transition-colors duration-300 hover:text-ink"
-        >
-          instagram.com/ux.edward
-        </a>
-      </p>
     </header>
   );
 }
