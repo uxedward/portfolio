@@ -62,13 +62,13 @@ function InsightCard({
   return (
     <div className="flex flex-col gap-4 rounded-[12px] bg-paper-2 p-5 lg:flex-row lg:items-center lg:gap-5">
       <div className="min-w-0 space-y-2 lg:flex-1">
-        <p className="text-[12px] font-medium tracking-[0.1em] text-ink-muted">
+        <p className="text-[15px] font-medium tracking-[0.04em] text-ink-muted sm:text-base">
           {label}
         </p>
-        <h3 className="text-lg font-medium leading-snug text-ink sm:text-xl">
+        <h3 className="text-[1.35rem] font-bold leading-snug text-ink sm:text-2xl">
           {heading}
         </h3>
-        <div className="text-[15px] leading-7 text-ink sm:text-base sm:leading-[1.5]">
+        <div className="text-base leading-[1.65] text-ink sm:text-lg sm:leading-[1.55]">
           {children}
         </div>
       </div>
@@ -90,17 +90,17 @@ function ProblemRow({
     <div className="flex items-start gap-3 lg:grid lg:grid-cols-[38px_minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-x-4">
       <IndexMark>{number}</IndexMark>
       <div className="flex min-w-0 flex-col gap-1 lg:contents">
-        <div className="min-w-0 text-[15px] leading-[1.5] text-ink sm:text-base">
+        <div className="min-w-0 text-base leading-[1.55] text-ink sm:text-lg">
           {issue}
         </div>
         <div className="flex items-start gap-3 lg:contents">
           <p
-            className="text-[15px] leading-[1.5] text-ink sm:text-base"
+            className="text-base leading-[1.55] text-ink sm:text-lg"
             aria-hidden
           >
             →
           </p>
-          <div className="min-w-0 text-[15px] leading-[1.5] text-ink sm:text-base">
+          <div className="min-w-0 text-base leading-[1.55] text-ink sm:text-lg">
             {impact}
           </div>
         </div>
@@ -121,8 +121,8 @@ function NumberedBlock({
   return (
     <div className="flex items-start gap-4">
       <IndexMark>{number}</IndexMark>
-      <div className="min-w-0 space-y-1 text-[15px] leading-[1.5] text-ink sm:text-base sm:leading-[1.5]">
-        <h3 className="font-bold text-ink">{title}</h3>
+      <div className="min-w-0 space-y-1 text-base leading-[1.55] text-ink sm:text-lg sm:leading-[1.55]">
+        <h3 className="text-lg font-bold text-ink sm:text-xl">{title}</h3>
         {children}
       </div>
     </div>
@@ -139,7 +139,7 @@ function MetricRow({
   return (
     <div className="flex items-center gap-2.5">
       <IndexMark>{number}</IndexMark>
-      <p className="min-w-0 text-[15px] font-bold leading-[1.5] text-ink sm:text-base">
+      <p className="min-w-0 text-base font-bold leading-[1.55] text-ink sm:text-lg">
         {children}
       </p>
     </div>
@@ -158,8 +158,10 @@ function GoalCard({
   return (
     <div className="flex items-center gap-4 rounded-[20px] bg-paper-2 p-5">
       <IndexMark solid>{number}</IndexMark>
-      <div className="min-w-0 space-y-1 text-[15px] leading-[1.5] text-ink sm:text-base sm:leading-[1.5]">
-        {title ? <h3 className="font-bold text-ink">{title}</h3> : null}
+      <div className="min-w-0 space-y-1 text-base leading-[1.55] text-ink sm:text-lg sm:leading-[1.55]">
+        {title ? (
+          <h3 className="text-lg font-bold text-ink sm:text-xl">{title}</h3>
+        ) : null}
         {children}
       </div>
     </div>

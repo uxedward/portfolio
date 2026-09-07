@@ -29,11 +29,11 @@ export function CaseStudyHero({
         <div className="flex flex-col gap-4 lg:gap-6">
           <div>
             <FadeIn>
-              <p className="text-[10px] font-medium tracking-[0.12em] text-case-link lg:text-xl lg:tracking-[0.06em]">
+              <p className="text-sm font-semibold tracking-[0.08em] text-case-link lg:text-xl lg:tracking-[0.06em]">
                 {project.client}
               </p>
             </FadeIn>
-            <h1 className="mt-1 font-sans text-[1.25rem] font-medium leading-[1.4] tracking-[-0.03em] lg:text-[2.5rem] lg:leading-[1.5]">
+            <h1 className="mt-1 font-sans text-[1.75rem] font-bold leading-[1.25] tracking-[-0.03em] lg:text-[2.5rem] lg:leading-[1.3]">
               {project.title}
             </h1>
           </div>
@@ -56,7 +56,7 @@ export function CaseStudyHero({
 
         {domains.length > 0 ? (
           <FadeIn delay={0.32} className="flex flex-col gap-2 lg:gap-3">
-            <p className="text-[15px] leading-6 text-paper lg:text-base">
+            <p className="text-base leading-7 text-paper lg:text-lg">
               {project.domainsIntro ??
                 "This project will demonstrate my expertise in these three crucial domains:"}
             </p>
@@ -171,15 +171,15 @@ export function Section({
       )}
     >
       <Reveal>
-        <p className="text-[12px] font-medium tracking-[0.1em] text-ink-soft">
+        <p className="text-[15px] font-medium tracking-[0.04em] text-ink-muted sm:text-base">
           {label}
         </p>
-        <h2 className="mt-1 font-sans text-xl font-medium leading-[1.4] tracking-[-0.03em] text-ink sm:text-2xl">
+        <h2 className="mt-1.5 font-sans text-[1.65rem] font-bold leading-[1.25] tracking-[-0.03em] text-ink sm:text-[2rem] sm:leading-[1.3]">
           {heading}
         </h2>
         <div
           className={cn(
-            "mt-4 max-w-full space-y-4 overflow-x-clip text-[15px] leading-7 break-words text-ink sm:text-base sm:leading-[1.5]",
+            "mt-5 max-w-full space-y-4 overflow-x-clip text-base leading-[1.65] break-words text-ink sm:text-lg sm:leading-[1.55]",
             card && "space-y-3",
           )}
         >
@@ -192,7 +192,7 @@ export function Section({
 
 export function Subhead({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="pt-2 text-lg font-medium leading-snug text-ink sm:text-xl">
+    <h3 className="pt-2 text-[1.35rem] font-bold leading-snug text-ink sm:text-[1.75rem]">
       {children}
     </h3>
   );
@@ -229,7 +229,7 @@ export function StepHeading({
   return (
     <div className="flex flex-col items-start gap-3 pt-2">
       <NumberChip solid>{number}</NumberChip>
-      <h3 className="text-lg font-medium leading-snug text-ink sm:text-xl">
+      <h3 className="text-[1.35rem] font-bold leading-snug text-ink sm:text-[1.75rem]">
         {children}
       </h3>
     </div>
@@ -249,10 +249,10 @@ export function SplitPanel({
     <div className="rounded-[12px] bg-paper-2 p-5">
       <Reveal className="flex w-full flex-col gap-4 lg:flex-row lg:items-start lg:gap-5">
         <div className="min-w-0 space-y-3 lg:flex-1">
-          <h3 className="text-lg font-medium leading-snug text-ink sm:text-xl">
+          <h3 className="text-[1.35rem] font-bold leading-snug text-ink sm:text-[1.75rem]">
             {title}
           </h3>
-          <div className="space-y-3 text-[15px] leading-7 text-ink sm:text-base sm:leading-[1.5]">
+          <div className="space-y-3 text-base leading-[1.65] text-ink sm:text-lg sm:leading-[1.55]">
             {children}
           </div>
         </div>
@@ -282,13 +282,13 @@ export function ProblemSplit({
     >
       <Reveal className="flex w-full flex-col gap-4 lg:flex-row lg:items-start lg:gap-5">
         <div className="min-w-0 space-y-3 lg:flex-1">
-          <p className="text-[12px] font-medium tracking-[0.1em] text-ink-soft">
+          <p className="text-[15px] font-medium tracking-[0.04em] text-ink-muted sm:text-base">
             {label}
           </p>
-          <h2 className="font-sans text-xl font-medium leading-[1.4] tracking-[-0.03em] text-ink sm:text-2xl">
+          <h2 className="font-sans text-[1.65rem] font-bold leading-[1.25] tracking-[-0.03em] text-ink sm:text-[2rem] sm:leading-[1.3]">
             {heading}
           </h2>
-          <div className="space-y-3 text-[15px] leading-7 break-words text-ink sm:text-base sm:leading-[1.5]">
+          <div className="space-y-3 text-base leading-[1.65] break-words text-ink sm:text-lg sm:leading-[1.55]">
             {children}
           </div>
         </div>
@@ -311,13 +311,13 @@ export function HmwRow({
     <div className="flex flex-col items-start gap-3">
       <NumberChip>{number}</NumberChip>
       <div className="grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-start gap-3 lg:gap-6">
-        <div className="min-w-0 text-[14px] leading-6 text-ink lg:text-base lg:leading-[1.5]">
+        <div className="min-w-0 text-base leading-[1.55] text-ink">
           {issue}
         </div>
         <p className="pt-0.5 text-ink" aria-hidden>
           →
         </p>
-        <div className="min-w-0 text-[14px] leading-6 text-ink lg:text-base lg:leading-[1.5]">
+        <div className="min-w-0 text-base leading-[1.55] text-ink">
           {hmw}
         </div>
       </div>
@@ -377,7 +377,7 @@ export function Metrics({
       >
         {items.map((item) => (
           <div key={item.label} className="min-w-0">
-            <p className="font-sans text-xl font-medium tracking-tight text-accent lg:text-2xl">
+            <p className="font-sans text-xl font-bold tracking-tight text-accent lg:text-2xl">
               {item.value}
             </p>
             <p className="mt-1 text-sm leading-6 text-ink-muted lg:text-base">
@@ -398,7 +398,7 @@ export function Metrics({
     >
       {items.map((item) => (
         <div key={item.label} className="bg-paper px-4 py-5 sm:px-5 sm:py-6">
-          <p className="font-sans text-[2rem] tracking-tight text-accent sm:text-4xl">
+          <p className="font-sans text-[2rem] font-bold tracking-tight text-accent sm:text-4xl">
             {item.value}
           </p>
           <p className="mt-2 text-sm leading-6 text-ink-muted">{item.label}</p>
@@ -420,9 +420,9 @@ export function Issue({
   return (
     <div className="flex flex-col items-start gap-3">
       <NumberChip>{number}</NumberChip>
-      <h3 className="text-base font-medium text-ink sm:text-lg">{title}</h3>
+      <h3 className="text-lg font-bold text-ink sm:text-xl">{title}</h3>
       {children ? (
-        <div className="space-y-2 text-[15px] leading-7 text-ink sm:text-base sm:leading-[1.5]">
+        <div className="space-y-2 text-base leading-[1.65] text-ink sm:text-lg sm:leading-[1.55]">
           {children}
         </div>
       ) : null}

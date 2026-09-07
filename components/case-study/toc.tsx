@@ -54,10 +54,10 @@ export function CaseStudyToc({ items }: { items: TocItem[] }) {
                 }}
                 aria-current={isActive ? "location" : undefined}
                 className={cn(
-                  "block cursor-pointer whitespace-nowrap py-2 text-[15px] leading-[1.35] tracking-tight transition-colors duration-300 ease-[var(--ease-out)] lg:text-base",
+                  "block cursor-pointer whitespace-nowrap py-2 text-base leading-[1.35] tracking-tight transition-colors duration-300 ease-[var(--ease-out)] lg:text-lg",
                   isActive
-                    ? "font-medium text-ink"
-                    : "text-ink-muted hover:text-ink",
+                    ? "font-semibold text-ink"
+                    : "font-medium text-ink-muted hover:text-ink",
                 )}
               >
                 {item.label}
