@@ -1,12 +1,10 @@
 import {
   Figure,
-  HmwRow,
-  Issue,
-  NumberChip,
   Section,
   StepHeading,
   Subhead,
 } from "@/components/case-study/layout";
+import { cn } from "@/lib/cn";
 
 export const helpCenterToc = [
   { id: "in-a-nutshell", label: "In A Nutshell" },
@@ -28,6 +26,27 @@ const channelUsage = [
   { label: "Live Chat", value: 15, tone: "bg-ink-soft" },
   { label: "Other", value: 28, tone: "bg-hairline" },
 ];
+
+function IndexMark({
+  children,
+  solid = false,
+}: {
+  children: React.ReactNode;
+  solid?: boolean;
+}) {
+  return (
+    <span
+      className={cn(
+        "inline-flex shrink-0 items-center justify-center rounded-full text-[14px] font-medium leading-none",
+        solid
+          ? "size-10 bg-ink text-paper"
+          : "size-[38px] border border-ink text-ink",
+      )}
+    >
+      {children}
+    </span>
+  );
+}
 
 function InsightCard({
   label,
@@ -58,7 +77,69 @@ function InsightCard({
   );
 }
 
-function PrincipleCard({
+function ProblemRow({
+  number,
+  issue,
+  impact,
+}: {
+  number: string;
+  issue: React.ReactNode;
+  impact: React.ReactNode;
+}) {
+  return (
+    <div className="grid grid-cols-[38px_minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-x-3 lg:gap-x-4">
+      <IndexMark>{number}</IndexMark>
+      <div className="min-w-0 text-[15px] leading-[1.5] text-ink sm:text-base">
+        {issue}
+      </div>
+      <p className="text-[15px] leading-[1.5] text-ink sm:text-base" aria-hidden>
+        →
+      </p>
+      <div className="min-w-0 text-[15px] leading-[1.5] text-ink sm:text-base">
+        {impact}
+      </div>
+    </div>
+  );
+}
+
+function NumberedBlock({
+  number,
+  title,
+  children,
+}: {
+  number: string;
+  title: React.ReactNode;
+  children?: React.ReactNode;
+}) {
+  return (
+    <div className="flex items-start gap-4">
+      <IndexMark>{number}</IndexMark>
+      <div className="min-w-0 space-y-1 text-[15px] leading-[1.5] text-ink sm:text-base sm:leading-[1.5]">
+        <h3 className="font-bold text-ink">{title}</h3>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function MetricRow({
+  number,
+  children,
+}: {
+  number: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex items-center gap-2.5">
+      <IndexMark>{number}</IndexMark>
+      <p className="min-w-0 text-[15px] font-bold leading-[1.5] text-ink sm:text-base">
+        {children}
+      </p>
+    </div>
+  );
+}
+
+function GoalCard({
   number,
   title,
   children,
@@ -68,19 +149,17 @@ function PrincipleCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex items-start gap-4 rounded-[12px] bg-paper-2 p-5">
-      <NumberChip solid>{number}</NumberChip>
-      <div className="min-w-0 space-y-2">
-        {title ? (
-          <h3 className="text-base font-medium text-ink sm:text-lg">{title}</h3>
-        ) : null}
-        <div className="text-[15px] leading-7 text-ink sm:text-base sm:leading-[1.5]">
-          {children}
-        </div>
+    <div className="flex items-center gap-4 rounded-[20px] bg-paper-2 p-5">
+      <IndexMark solid>{number}</IndexMark>
+      <div className="min-w-0 space-y-1 text-[15px] leading-[1.5] text-ink sm:text-base sm:leading-[1.5]">
+        {title ? <h3 className="font-bold text-ink">{title}</h3> : null}
+        {children}
       </div>
     </div>
   );
 }
+
+const nestedListClass = "list-disc space-y-0 pl-[1.15em]";
 
 export function HelpCenterBody() {
   return (
@@ -164,8 +243,8 @@ export function HelpCenterBody() {
           <li>&quot;What&apos;s my booking status?&quot;</li>
         </ul>
         <p>Three structural problems explained why:</p>
-        <div className="space-y-5">
-          <HmwRow
+        <div className="space-y-6">
+          <ProblemRow
             number="1"
             issue={
               <p>
@@ -173,14 +252,14 @@ export function HelpCenterBody() {
                 text-heavy content
               </p>
             }
-            hmw={
+            impact={
               <p>
                 Discouraged exploration and{" "}
                 <strong>pushed users straight to an CS agent</strong>
               </p>
             }
           />
-          <HmwRow
+          <ProblemRow
             number="2"
             issue={
               <p>
@@ -188,14 +267,14 @@ export function HelpCenterBody() {
                 categories and low-value links
               </p>
             }
-            hmw={
+            impact={
               <p>
                 <strong>Overwhelmed users on arrival</strong> and eroded trust in
                 the page
               </p>
             }
           />
-          <HmwRow
+          <ProblemRow
             number="3"
             issue={
               <p>
@@ -203,7 +282,7 @@ export function HelpCenterBody() {
                 and recent activity
               </p>
             }
-            hmw={
+            impact={
               <p>
                 <strong>Users skipped self-service</strong> entirely and went to
                 a human
@@ -334,8 +413,8 @@ export function HelpCenterBody() {
         />
         <p>Three distinct agendas surfaced:</p>
         <div className="space-y-6">
-          <Issue number="1" title="CS (Customer Service) & CX (Customer Experience)">
-            <ul className="list-disc space-y-1 pl-5">
+          <NumberedBlock title="CS (Customer Service) & CX (Customer Experience)" number="1">
+            <ul className={nestedListClass}>
               <li>Fewer repetitive inquiries reaching agents.</li>
               <li>
                 Cases that arrive pre-categorised, with the order already
@@ -343,9 +422,9 @@ export function HelpCenterBody() {
               </li>
               <li>Automation first, but never blocking the path to a human.</li>
             </ul>
-          </Issue>
-          <Issue number="2" title="Brand Marketing & Corporate Strategy">
-            <ul className="list-disc space-y-1 pl-5">
+          </NumberedBlock>
+          <NumberedBlock title="Brand Marketing & Corporate Strategy" number="2">
+            <ul className={nestedListClass}>
               <li>Rebrand the Help Center and give it clear USPs.</li>
               <li>
                 Build a named service identity, benchmarked against BCA&apos;s
@@ -353,13 +432,13 @@ export function HelpCenterBody() {
               </li>
               <li>Dedicated treatment for Diamond Tier members.</li>
             </ul>
-          </Issue>
-          <Issue number="3" title="Product & Tech Leads">
-            <ul className="list-disc space-y-1 pl-5">
+          </NumberedBlock>
+          <NumberedBlock title="Product & Tech Leads" number="3">
+            <ul className={nestedListClass}>
               <li>Reduce Case-to-Book ratio and lift automation adoption.</li>
               <li>Route users to self-service first.</li>
             </ul>
-          </Issue>
+          </NumberedBlock>
         </div>
       </Section>
 
@@ -369,23 +448,23 @@ export function HelpCenterBody() {
         heading="HMW Questions"
       >
         <div className="space-y-4">
-          <PrincipleCard number="1">
+          <GoalCard number="1">
             <p>
               HMW avoid making users <strong>feel overwhelmed?</strong>
             </p>
-          </PrincipleCard>
-          <PrincipleCard number="2">
+          </GoalCard>
+          <GoalCard number="2">
             <p>
               HMW encourage users to{" "}
               <strong>resolve their issues through smart self-help?</strong>
             </p>
-          </PrincipleCard>
-          <PrincipleCard number="3">
+          </GoalCard>
+          <GoalCard number="3">
             <p>
               HMW show <strong>the most relevant actions</strong> based on user
               context (order + time)?
             </p>
-          </PrincipleCard>
+          </GoalCard>
         </div>
       </Section>
 
@@ -395,24 +474,22 @@ export function HelpCenterBody() {
         heading="Guiding Goals"
       >
         <div className="space-y-4">
-          <PrincipleCard number="1" title="Encourage Automation">
-            <ul className="list-disc space-y-1 pl-5">
+          <GoalCard number="1" title="Encourage Automation">
+            <ul className={nestedListClass}>
               <li>Lower contact-to-agent for repeatable issues.</li>
               <li>Shift non-urgent help into chat.</li>
               <li>Free agents to focus on genuinely complex cases.</li>
             </ul>
-          </PrincipleCard>
-          <PrincipleCard number="2" title="Contextual">
-            <p>
-              Surface the phone only when urgency genuinely warrants it.
-            </p>
-          </PrincipleCard>
-          <PrincipleCard number="3" title="Simplicity">
+          </GoalCard>
+          <GoalCard number="2" title="Contextual">
+            <p>Surface the phone only when urgency genuinely warrants it.</p>
+          </GoalCard>
+          <GoalCard number="3" title="Simplicity">
             <p>
               Recommend help based on the user&apos;s actual order, not a
               generic list.
             </p>
-          </PrincipleCard>
+          </GoalCard>
         </div>
       </Section>
 
@@ -432,18 +509,18 @@ export function HelpCenterBody() {
           src="/images/work/help-center-branding.jpg"
           alt="Annotated halo tiket screen highlighting branding, order card, Priority Lane, 24/7, channels, and language"
         />
-        <div className="space-y-6">
-          <Issue number="1" title="“halo tiket” branding">
-            <ul className="list-disc space-y-1 pl-5">
+        <div className="space-y-4">
+          <NumberedBlock title="“halo tiket” branding" number="1">
+            <ul className={nestedListClass}>
               <li>
                 A new identity developed with Brand Marketing, replacing a label
                 most users did not recognise and align with BCA’s HaloBCA (our
                 sister company).
               </li>
             </ul>
-          </Issue>
-          <Issue number="2" title="Order card and FAQ">
-            <ul className="list-disc space-y-1 pl-5">
+          </NumberedBlock>
+          <NumberedBlock title="Order card and FAQ" number="2">
+            <ul className={nestedListClass}>
               <li>
                 93% of cases come from users with an active order, so the order
                 greets them first.
@@ -455,9 +532,9 @@ export function HelpCenterBody() {
                 work for the agent in one move.
               </li>
             </ul>
-          </Issue>
-          <Issue number="3" title="USP #1: Priority Lane for Diamond Tier">
-            <ul className="list-disc space-y-1 pl-5">
+          </NumberedBlock>
+          <NumberedBlock title="USP #1: Priority Lane for Diamond Tier" number="3">
+            <ul className={nestedListClass}>
               <li>
                 Placed directly above the channel list, at the moment a user
                 decides whether contacting support is worth it.
@@ -467,16 +544,14 @@ export function HelpCenterBody() {
                 real handling.
               </li>
             </ul>
-          </Issue>
-          <Issue number="4" title="USP #2: 24/7 availability">
-            <ul className="list-disc space-y-1 pl-5">
-              <li>
-                To reassure users that we’re ready to help them anytime
-              </li>
+          </NumberedBlock>
+          <NumberedBlock title="USP #2: 24/7 availability" number="4">
+            <ul className={nestedListClass}>
+              <li>To reassure users that we’re ready to help them anytime</li>
             </ul>
-          </Issue>
-          <Issue number="5" title="Contact channels">
-            <ul className="list-disc space-y-1 pl-5">
+          </NumberedBlock>
+          <NumberedBlock title="Contact channels" number="5">
+            <ul className={nestedListClass}>
               <li>
                 Chat sits above Call deliberately, to intercept users scrolling
                 for the phone number.
@@ -490,9 +565,9 @@ export function HelpCenterBody() {
                 the Low Emergency state.
               </li>
             </ul>
-          </Issue>
-          <Issue number="6" title="Language selector">
-            <ul className="list-disc space-y-1 pl-5">
+          </NumberedBlock>
+          <NumberedBlock title="Language selector" number="6">
+            <ul className={nestedListClass}>
               <li>
                 Many Indonesian users browse the app in English but want to be
                 answered in Bahasa Indonesia. Capturing that preference
@@ -503,7 +578,7 @@ export function HelpCenterBody() {
                 task.
               </li>
             </ul>
-          </Issue>
+          </NumberedBlock>
         </div>
         <Figure
           bleed={false}
@@ -628,19 +703,16 @@ export function HelpCenterBody() {
           at the right time, and on how much repeatable load the design removes
           from human agents.
         </p>
-        <div className="space-y-5">
-          <Issue
-            number="1"
-            title="📉 Contact-to-agent rate for repeatable issues"
-          />
-          <Issue
-            number="2"
-            title="📈 Chat share of non-urgent support volume"
-          />
-          <Issue
-            number="3"
-            title="💬 Agent capacity redirected to genuinely complex cases"
-          />
+        <div className="space-y-4">
+          <MetricRow number="1">
+            📉 Contact-to-agent rate for repeatable issues
+          </MetricRow>
+          <MetricRow number="2">
+            📈 Chat share of non-urgent support volume
+          </MetricRow>
+          <MetricRow number="3">
+            💬 Agent capacity redirected to genuinely complex cases
+          </MetricRow>
         </div>
       </Section>
 
