@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { IconExternal } from "@/components/icons";
+import { FadeIn } from "@/components/motion/fade-in";
+import { Reveal, RevealList } from "@/components/motion/reveal";
 import { homeNow, homePhotoRows, homePhotos } from "@/lib/home";
 import { site } from "@/lib/site";
 
@@ -19,12 +21,14 @@ export default function Home() {
         <h1 className="font-serif text-[clamp(2.6rem,11vw,3.8rem)] leading-[0.95] tracking-[-0.03em]">
           Hi! I&apos;m Edward.
         </h1>
-        <p className="mt-4 max-w-xl text-[18px] leading-8 text-ink">
-          Product Designer, Content Creator, MX Ambassador Logitech.
-        </p>
+        <FadeIn delay={0.18}>
+          <p className="mt-4 max-w-xl text-[18px] leading-8 text-ink">
+            Product Designer, Content Creator, MX Ambassador Logitech.
+          </p>
+        </FadeIn>
 
         <div className="mt-12 max-w-xl space-y-10">
-          {homeNow.map((item) => {
+          {homeNow.map((item, index) => {
             const label = (
               <>
                 <span className="text-[18px] font-medium tracking-tight">
@@ -35,7 +39,7 @@ export default function Home() {
             );
 
             return (
-              <div key={item.title}>
+              <Reveal key={item.title} delay={index * 0.06}>
                 {item.external ? (
                   <a
                     href={item.href}
@@ -56,7 +60,7 @@ export default function Home() {
                 <p className="mt-2 text-[16px] leading-7 text-ink-muted">
                   {item.body}
                 </p>
-              </div>
+              </Reveal>
             );
           })}
         </div>
@@ -66,7 +70,7 @@ export default function Home() {
         aria-label="Photos"
         className="px-6 py-12 sm:px-8 lg:px-10 lg:py-8"
       >
-        <div className="flex flex-col gap-3 md:hidden">
+        <RevealList className="flex flex-col gap-3 md:hidden">
           {homePhotos.map((photo, photoIndex) => (
             <figure
               key={photo.src}
@@ -82,9 +86,9 @@ export default function Home() {
               />
             </figure>
           ))}
-        </div>
+        </RevealList>
 
-        <div className="hidden flex-col gap-4 md:flex">
+        <RevealList className="hidden flex-col gap-4 md:flex">
           {homePhotoRows.map((row) => (
             <div
               key={row.photos.map((photo) => photo.src).join("-")}
@@ -107,7 +111,7 @@ export default function Home() {
               ))}
             </div>
           ))}
-        </div>
+        </RevealList>
       </section>
     </div>
   );
