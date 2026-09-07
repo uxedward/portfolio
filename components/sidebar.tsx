@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import {
+  IconChevronLeft,
   IconInstagram,
   IconLinkedIn,
   IconThreads,
@@ -21,6 +22,30 @@ const socialIcons = {
   LinkedIn: IconLinkedIn,
 } as const;
 
+const SIDEBAR_KEY = "sidebar-collapsed";
+const SIDEBAR_EXPANDED = "280px";
+
+function applySidebarCollapsed(collapsed: boolean, button?: HTMLButtonElement | null) {
+  const root = document.documentElement;
+  root.classList.toggle("sidebar-collapsed", collapsed);
+  root.style.setProperty("--sidebar-w", collapsed ? "0px" : SIDEBAR_EXPANDED);
+  try {
+    localStorage.setItem(SIDEBAR_KEY, collapsed ? "1" : "0");
+  } catch {
+    /* private mode */
+  }
+
+  const aside = document.getElementById("site-nav");
+  if (aside) {
+    aside.toggleAttribute("inert", collapsed);
+    aside.setAttribute("aria-hidden", collapsed ? "true" : "false");
+  }
+  if (button) {
+    button.setAttribute("aria-expanded", collapsed ? "false" : "true");
+    button.setAttribute("aria-label", collapsed ? "Show navigation" : "Hide navigation");
+  }
+}
+
 export function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
@@ -28,6 +53,7 @@ export function Sidebar() {
   const [open, setOpen] = useState(false);
   const [openForPath, setOpenForPath] = useState(pathname);
   const menuId = useId();
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   if (openForPath !== pathname) {
     setOpenForPath(pathname);
@@ -61,6 +87,12 @@ export function Sidebar() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
+
+  useEffect(() => {
+    const collapsed =
+      document.documentElement.classList.contains("sidebar-collapsed");
+    applySidebarCollapsed(collapsed, toggleRef.current);
+  }, []);
 
   return (
     <>
@@ -117,19 +149,44 @@ export function Sidebar() {
         </div>
       ) : null}
 
-      <aside className="vt-sidebar fixed inset-y-0 left-0 z-40 hidden w-[var(--sidebar-w)] flex-col border-r border-hairline bg-paper px-6 py-8 lg:flex">
-        <Link href="/" className="text-lg font-medium tracking-tight">
-          {site.fullName}
-        </Link>
+      <aside
+        id="site-nav"
+        className="vt-sidebar fixed inset-y-0 left-0 z-40 hidden w-[var(--sidebar-w)] flex-col overflow-hidden border-r border-hairline bg-paper lg:flex"
+      >
+        <div className="flex h-full w-[280px] min-w-[280px] flex-col px-6 py-8">
+          <Link href="/" className="text-lg font-medium tracking-tight">
+            {site.fullName}
+          </Link>
 
-        <div className="mt-6">
-          <SocialRow />
+          <div className="mt-6">
+            <SocialRow />
+          </div>
+
+          <nav aria-label="Work" className="mt-10 flex-1">
+            <DesktopNav activeStudio={activeStudio} />
+          </nav>
         </div>
-
-        <nav aria-label="Work" className="mt-10 flex-1">
-          <DesktopNav activeStudio={activeStudio} />
-        </nav>
       </aside>
+
+      <button
+        ref={toggleRef}
+        id="sidebar-toggle"
+        type="button"
+        className="sidebar-toggle"
+        aria-controls="site-nav"
+        aria-expanded="true"
+        aria-label="Hide navigation"
+        onClick={() => {
+          const next = !document.documentElement.classList.contains(
+            "sidebar-collapsed",
+          );
+          applySidebarCollapsed(next, toggleRef.current);
+        }}
+      >
+        <span className="sidebar-toggle-icon">
+          <IconChevronLeft />
+        </span>
+      </button>
     </>
   );
 }

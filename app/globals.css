@@ -4,6 +4,12 @@
 /* Design system — color, type, space, motion                                 */
 /* -------------------------------------------------------------------------- */
 
+@property --sidebar-w {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 280px;
+}
+
 :root {
   --paper: #ffffff;
   --paper-2: #f0f0f0;
@@ -167,6 +173,60 @@ img {
   overflow-y: visible;
 }
 
+.sidebar-toggle {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  html {
+    transition: --sidebar-w 320ms var(--ease-out);
+  }
+
+  .vt-sidebar {
+    overflow: hidden;
+  }
+
+  .sidebar-toggle {
+    position: fixed;
+    top: 2rem;
+    left: max(1rem, var(--sidebar-w));
+    z-index: 50;
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-pill);
+    background: var(--paper);
+    color: var(--ink-muted);
+    box-shadow: 0 1px 2px rgba(18, 18, 18, 0.06);
+    transform: translateX(-50%);
+    transition:
+      left 320ms var(--ease-out),
+      color 180ms var(--ease-out),
+      border-color 180ms var(--ease-out);
+  }
+
+  .sidebar-toggle:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+
+  .sidebar-toggle-icon {
+    display: inline-flex;
+    transition: transform 320ms var(--ease-out);
+  }
+
+  html.sidebar-collapsed .sidebar-toggle-icon {
+    transform: rotate(180deg);
+  }
+
+  html.sidebar-collapsed .vt-sidebar {
+    pointer-events: none;
+    border-right-color: transparent;
+  }
+}
+
 .page-enter {
   animation: page-enter var(--duration-slow) var(--ease-out) both;
 }
@@ -199,6 +259,12 @@ img {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+    transition: none;
+  }
+
+  .sidebar-toggle,
+  .sidebar-toggle-icon {
+    transition: none;
   }
 
   .page-enter,

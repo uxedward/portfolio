@@ -82,6 +82,27 @@ export function IconLinkedIn() {
   );
 }
 
+export function IconChevronLeft() {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      width={16}
+      height={16}
+      className="h-3.5 w-3.5"
+      fill="none"
+      aria-hidden
+    >
+      <path
+        d="M10 3.5 5.5 8 10 12.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function IconExternal() {
   return (
     <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" aria-hidden>

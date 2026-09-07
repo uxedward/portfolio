@@ -171,15 +171,17 @@ export function Section({
       )}
     >
       <Reveal>
-        <p className="text-[15px] font-medium tracking-[0.04em] text-ink-muted sm:text-base">
-          {label}
-        </p>
-        <h2 className="mt-1.5 font-sans text-[1.65rem] font-bold leading-[1.25] tracking-[-0.03em] text-ink sm:text-[2rem] sm:leading-[1.3]">
-          {heading}
-        </h2>
+        <div className="flex flex-col gap-1">
+          <p className="text-base font-medium leading-none tracking-[0.02em] text-ink-muted">
+            {label}
+          </p>
+          <h2 className="font-sans text-[1.65rem] font-bold leading-[1.2] tracking-[-0.03em] text-ink sm:text-[2rem]">
+            {heading}
+          </h2>
+        </div>
         <div
           className={cn(
-            "mt-5 max-w-full space-y-4 overflow-x-clip text-base leading-[1.65] break-words text-ink sm:text-lg sm:leading-[1.55]",
+            "mt-4 max-w-full space-y-4 overflow-x-clip text-base leading-[1.65] break-words text-ink sm:text-lg sm:leading-[1.55]",
             card && "space-y-3",
           )}
         >
@@ -281,14 +283,16 @@ export function ProblemSplit({
       className="case-section max-w-full rounded-[12px] bg-paper-2 p-5"
     >
       <Reveal className="flex w-full flex-col gap-4 lg:flex-row lg:items-start lg:gap-5">
-        <div className="min-w-0 space-y-3 lg:flex-1">
-          <p className="text-[15px] font-medium tracking-[0.04em] text-ink-muted sm:text-base">
-            {label}
-          </p>
-          <h2 className="font-sans text-[1.65rem] font-bold leading-[1.25] tracking-[-0.03em] text-ink sm:text-[2rem] sm:leading-[1.3]">
-            {heading}
-          </h2>
-          <div className="space-y-3 text-base leading-[1.65] break-words text-ink sm:text-lg sm:leading-[1.55]">
+        <div className="min-w-0 lg:flex-1">
+          <div className="flex flex-col gap-1">
+            <p className="text-base font-medium leading-none tracking-[0.02em] text-ink-muted">
+              {label}
+            </p>
+            <h2 className="font-sans text-[1.65rem] font-bold leading-[1.2] tracking-[-0.03em] text-ink sm:text-[2rem]">
+              {heading}
+            </h2>
+          </div>
+          <div className="mt-4 space-y-3 text-base leading-[1.65] break-words text-ink sm:text-lg sm:leading-[1.55]">
             {children}
           </div>
         </div>

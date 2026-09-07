@@ -61,14 +61,16 @@ function InsightCard({
 }) {
   return (
     <div className="flex flex-col gap-4 rounded-[12px] bg-paper-2 p-5 lg:flex-row lg:items-center lg:gap-5">
-      <div className="min-w-0 space-y-2 lg:flex-1">
-        <p className="text-[15px] font-medium tracking-[0.04em] text-ink-muted sm:text-base">
-          {label}
-        </p>
-        <h3 className="text-[1.35rem] font-bold leading-snug text-ink sm:text-2xl">
-          {heading}
-        </h3>
-        <div className="text-base leading-[1.65] text-ink sm:text-lg sm:leading-[1.55]">
+      <div className="min-w-0 lg:flex-1">
+        <div className="flex flex-col gap-1">
+          <p className="text-base font-medium leading-none tracking-[0.02em] text-ink-muted">
+            {label}
+          </p>
+          <h3 className="text-[1.35rem] font-bold leading-[1.2] text-ink sm:text-2xl">
+            {heading}
+          </h3>
+        </div>
+        <div className="mt-4 text-base leading-[1.65] text-ink sm:text-lg sm:leading-[1.55]">
           {children}
         </div>
       </div>
