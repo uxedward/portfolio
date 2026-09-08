@@ -57,17 +57,17 @@ export function StudioTab({
         window.setTimeout(onNavigate, 0);
       }}
       className={cn(
-        "flex items-start gap-3 rounded-[var(--radius)] px-3 py-2.5",
+        "sidebar-tab flex items-start gap-3 rounded-[var(--radius)] px-3 py-2.5",
         active ? "bg-ink text-paper" : "text-ink hover:bg-paper-2",
       )}
     >
       <span className="min-w-0 flex-1">
-        <span className="block text-[15px] font-medium tracking-tight">
+        <span className="sidebar-tab-label block text-[15px] font-medium tracking-tight">
           {studio.label}
         </span>
         <span
           className={cn(
-            "mt-0.5 block text-[13px] leading-5",
+            "sidebar-tab-subtitle mt-0.5 block text-[13px] leading-5",
             active ? "text-paper/70" : "text-ink-soft",
           )}
         >

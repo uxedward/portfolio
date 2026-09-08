@@ -366,46 +366,26 @@ export function Figure({
 
 export function Metrics({
   items,
-  plain = false,
 }: {
   items: { value: string; label: string }[];
   plain?: boolean;
 }) {
-  if (plain) {
-    return (
-      <div
-        className={cn(
-          "grid gap-6",
-          items.length === 2 ? "lg:grid-cols-2" : "lg:grid-cols-3",
-        )}
-      >
-        {items.map((item) => (
-          <div key={item.label} className="min-w-0">
-            <p className="font-sans text-xl font-bold tracking-tight text-accent lg:text-2xl">
-              {item.value}
-            </p>
-            <p className="mt-1 text-sm leading-6 text-ink-muted lg:text-base">
-              {item.label}
-            </p>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
   return (
     <div
       className={cn(
-        "grid gap-px overflow-hidden rounded-[var(--radius)] border border-hairline bg-hairline",
-        items.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3",
+        "grid gap-8",
+        items.length === 2 ? "lg:grid-cols-2" : "lg:grid-cols-3",
+        "lg:gap-6",
       )}
     >
       {items.map((item) => (
-        <div key={item.label} className="bg-paper px-4 py-5 sm:px-5 sm:py-6">
-          <p className="font-sans text-[2rem] font-bold tracking-tight text-accent sm:text-4xl">
+        <div key={item.label} className="min-w-0">
+          <p className="font-sans text-[2rem] font-bold leading-none tracking-tight text-ink sm:text-[2.5rem]">
             {item.value}
           </p>
-          <p className="mt-2 text-sm leading-6 text-ink-muted">{item.label}</p>
+          <p className="mt-2 text-base leading-[1.45] text-ink sm:text-lg sm:leading-[1.5]">
+            {item.label}
+          </p>
         </div>
       ))}
     </div>

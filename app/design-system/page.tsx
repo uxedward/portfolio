@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const colors = [
   { name: "paper", value: "#ffffff", className: "bg-paper border border-hairline" },
-  { name: "paper-2", value: "#f0f0f0", className: "bg-paper-2" },
+  { name: "paper-2", value: "#e6e7eb", className: "bg-paper-2" },
   { name: "ink", value: "#121212", className: "bg-ink" },
   { name: "ink-muted", value: "#4a4a4a", className: "bg-ink-muted" },
   { name: "ink-soft", value: "#999999", className: "bg-ink-soft" },
@@ -27,7 +27,7 @@ export default function DesignSystemPage() {
       <p className="mt-6 max-w-xl text-[17px] leading-7 text-ink-soft">
         Inter Tight for titles, interface, and body. Color and
         components follow Eric Sin: white ground, #121212 ink, 12px cards, 4px
-        badges. Accent is for metrics and primary hover.
+        badges. Accent is for primary hover.
       </p>
 
       <section className="mt-16 border-t border-hairline pt-12">
@@ -90,18 +90,24 @@ export default function DesignSystemPage() {
         <h2 className="font-sans text-[clamp(2rem,4vw,3.2rem)] tracking-tight">
           Metrics
         </h2>
-        <div className="mt-8 grid gap-px overflow-hidden rounded-[var(--radius)] border border-hairline bg-hairline sm:grid-cols-3">
-          <div className="bg-paper px-5 py-6">
-            <p className="font-sans text-4xl tracking-tight text-accent">+4.2%</p>
-            <p className="mt-2 text-sm text-ink-soft">Search to book CVR</p>
+        <div className="mt-8 grid gap-8 sm:grid-cols-3 sm:gap-6">
+          <div className="min-w-0">
+            <p className="font-sans text-[2.5rem] font-bold leading-none tracking-tight text-ink">
+              +4.2%
+            </p>
+            <p className="mt-2 text-lg leading-[1.5] text-ink">Search to book CVR</p>
           </div>
-          <div className="bg-paper px-5 py-6">
-            <p className="font-sans text-4xl tracking-tight text-accent">+7%</p>
-            <p className="mt-2 text-sm text-ink-soft">No-route error CTR</p>
+          <div className="min-w-0">
+            <p className="font-sans text-[2.5rem] font-bold leading-none tracking-tight text-ink">
+              +7%
+            </p>
+            <p className="mt-2 text-lg leading-[1.5] text-ink">No-route error CTR</p>
           </div>
-          <div className="bg-paper px-5 py-6">
-            <p className="font-sans text-4xl tracking-tight text-accent">+12%</p>
-            <p className="mt-2 text-sm text-ink-soft">No-route error CVR</p>
+          <div className="min-w-0">
+            <p className="font-sans text-[2.5rem] font-bold leading-none tracking-tight text-ink">
+              +12%
+            </p>
+            <p className="mt-2 text-lg leading-[1.5] text-ink">No-route error CVR</p>
           </div>
         </div>
       </section>

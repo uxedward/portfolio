@@ -24,25 +24,24 @@ const socialIcons = {
 
 const SIDEBAR_KEY = "sidebar-collapsed";
 const SIDEBAR_EXPANDED = "280px";
+const SIDEBAR_RAIL = "96px";
 
 function applySidebarCollapsed(collapsed: boolean, button?: HTMLButtonElement | null) {
   const root = document.documentElement;
   root.classList.toggle("sidebar-collapsed", collapsed);
-  root.style.setProperty("--sidebar-w", collapsed ? "0px" : SIDEBAR_EXPANDED);
+  root.style.setProperty("--sidebar-w", collapsed ? SIDEBAR_RAIL : SIDEBAR_EXPANDED);
   try {
     localStorage.setItem(SIDEBAR_KEY, collapsed ? "1" : "0");
   } catch {
     /* private mode */
   }
 
-  const aside = document.getElementById("site-nav");
-  if (aside) {
-    aside.toggleAttribute("inert", collapsed);
-    aside.setAttribute("aria-hidden", collapsed ? "true" : "false");
-  }
   if (button) {
     button.setAttribute("aria-expanded", collapsed ? "false" : "true");
-    button.setAttribute("aria-label", collapsed ? "Show navigation" : "Hide navigation");
+    button.setAttribute(
+      "aria-label",
+      collapsed ? "Expand navigation" : "Collapse navigation",
+    );
   }
 }
 
@@ -153,16 +152,20 @@ export function Sidebar() {
         id="site-nav"
         className="vt-sidebar fixed inset-y-0 left-0 z-40 hidden w-[var(--sidebar-w)] flex-col overflow-hidden border-r border-hairline bg-paper lg:flex"
       >
-        <div className="flex h-full w-[280px] min-w-[280px] flex-col px-6 py-8">
-          <Link href="/" className="text-lg font-medium tracking-tight">
-            {site.fullName}
+        <div className="sidebar-inner flex h-full w-[280px] min-w-[280px] flex-col px-6 py-8">
+          <Link
+            href="/"
+            className="sidebar-brand text-lg font-medium tracking-tight"
+          >
+            <span className="sidebar-brand-full">{site.fullName}</span>
+            <span className="sidebar-brand-short hidden">{site.name}</span>
           </Link>
 
-          <div className="mt-6">
+          <div className="sidebar-social mt-6">
             <SocialRow />
           </div>
 
-          <nav aria-label="Work" className="mt-10 flex-1">
+          <nav aria-label="Work" className="sidebar-nav mt-10 flex-1">
             <DesktopNav activeStudio={activeStudio} />
           </nav>
         </div>
@@ -175,7 +178,7 @@ export function Sidebar() {
         className="sidebar-toggle"
         aria-controls="site-nav"
         aria-expanded="true"
-        aria-label="Hide navigation"
+        aria-label="Collapse navigation"
         onClick={() => {
           const next = !document.documentElement.classList.contains(
             "sidebar-collapsed",

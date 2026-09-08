@@ -70,7 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script
           dangerouslySetInnerHTML={{
             __html:
-              'try{if(localStorage.getItem("sidebar-collapsed")==="1"){document.documentElement.style.setProperty("--sidebar-w","0px");document.documentElement.classList.add("sidebar-collapsed")}}catch(e){}',
+              'try{if(localStorage.getItem("sidebar-collapsed")==="1"){document.documentElement.style.setProperty("--sidebar-w","96px");document.documentElement.classList.add("sidebar-collapsed")}}catch(e){}',
           }}
         />
         <Sidebar />

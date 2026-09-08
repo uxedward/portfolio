@@ -19,10 +19,10 @@ export function Metric({
 }) {
   return (
     <div className="bg-paper px-5 py-6">
-      <p className="font-sans text-[2rem] tracking-tight text-accent sm:text-4xl">
+      <p className="font-sans text-[2rem] font-bold tracking-tight text-ink sm:text-[2.5rem]">
         {value}
       </p>
-      <p className="mt-2 text-sm leading-6 text-ink-muted">{label}</p>
+      <p className="mt-2 text-base leading-6 text-ink">{label}</p>
     </div>
   );
 }

@@ -12,7 +12,7 @@
 
 :root {
   --paper: #ffffff;
-  --paper-2: #f0f0f0;
+  --paper-2: #e6e7eb;
   --paper-warm: #fcf8f8;
   --ink: #121212;
   --ink-muted: #4a4a4a;
@@ -31,6 +31,8 @@
   --radius: 12px;
   --radius-pill: 999px;
   --header-h: 4rem;
+  --sidebar-expanded-w: 280px;
+  --sidebar-rail-w: 96px;
   --sidebar-w: 280px;
   --content: 720px;
   --toc: 220px;
@@ -221,9 +223,41 @@ img {
     transform: rotate(180deg);
   }
 
-  html.sidebar-collapsed .vt-sidebar {
-    pointer-events: none;
-    border-right-color: transparent;
+  html.sidebar-collapsed .sidebar-inner {
+    width: var(--sidebar-rail-w);
+    min-width: var(--sidebar-rail-w);
+    padding-inline: 0.4rem;
+  }
+
+  html.sidebar-collapsed .sidebar-brand {
+    text-align: center;
+    font-size: 0.875rem;
+  }
+
+  html.sidebar-collapsed .sidebar-brand-full,
+  html.sidebar-collapsed .sidebar-social,
+  html.sidebar-collapsed .sidebar-tab-subtitle {
+    display: none;
+  }
+
+  html.sidebar-collapsed .sidebar-brand-short {
+    display: block;
+  }
+
+  html.sidebar-collapsed .sidebar-nav {
+    margin-top: 1.5rem;
+  }
+
+  html.sidebar-collapsed .sidebar-tab {
+    justify-content: center;
+    padding-inline: 0.35rem;
+    padding-block: 0.55rem;
+    text-align: center;
+  }
+
+  html.sidebar-collapsed .sidebar-tab-label {
+    font-size: 13px;
+    line-height: 1.2;
   }
 }
 
