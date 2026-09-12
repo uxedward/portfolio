@@ -42,6 +42,14 @@ export type ResourceItem = {
 
 export const resourceItems: ResourceItem[] = [
   {
+    title: "[Playground] Figma agents by @ux.edward",
+    href: "https://www.figma.com/community/file/1680528170033800324",
+    body: "A hands-on playground for Figma agent by @ux.edward",
+    external: true,
+    logo: "/images/brands/figma.png",
+    logoAlt: "Figma",
+  },
+  {
     title: "Figma agent Playground",
     href: "https://psxid.figma.com/edward_agent",
     body: "Explore the capabilities of Figma's agents.",
