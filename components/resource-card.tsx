@@ -7,11 +7,11 @@ import type { Resource, ResourcePlan } from "@/lib/resources";
 import { site } from "@/lib/site";
 
 export function ResourceCard({ resource }: { resource: Resource }) {
-  return (
-    <Link
-      href={`/resources/${resource.slug}`}
-      className="group flex h-full flex-col gap-5 rounded-[var(--radius)] border border-hairline bg-paper-warm p-5 transition-opacity duration-300 hover:opacity-80 sm:p-6"
-    >
+  const isExternal = Boolean(resource.href);
+  const className =
+    "group flex h-full flex-col gap-5 rounded-[var(--radius)] border border-hairline bg-paper-warm p-5 transition-opacity duration-300 hover:opacity-80 sm:p-6";
+  const content = (
+    <>
       <span className="flex gap-3">
         {resource.logos.map((logo) => (
           <BrandMark key={logo.src + logo.alt} src={logo.src} alt={logo.alt} />
@@ -25,9 +25,28 @@ export function ResourceCard({ resource }: { resource: Resource }) {
           {resource.summary}
         </p>
         <p className="text-[14px] text-ink-soft transition-colors duration-300 group-hover:text-ink">
-          {resource.cta} →
+          {resource.cta} {isExternal ? "↗" : "→"}
         </p>
       </span>
+    </>
+  );
+
+  if (isExternal && resource.href) {
+    return (
+      <a
+        href={resource.href}
+        target="_blank"
+        rel="noreferrer"
+        className={className}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={`/resources/${resource.slug}`} className={className}>
+      {content}
     </Link>
   );
 }

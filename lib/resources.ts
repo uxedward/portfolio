@@ -29,6 +29,7 @@ export type Resource = {
   logos: { src: string; alt: string }[];
   links: ResourceLink[];
   steps: ResourceStep[];
+  href?: string;
 };
 
 export type ResourceItem = {
@@ -41,14 +42,6 @@ export type ResourceItem = {
 };
 
 export const resourceItems: ResourceItem[] = [
-  {
-    title: "[Playground] Figma agents by @ux.edward",
-    href: "https://www.figma.com/community/file/1680528170033800324",
-    body: "A hands-on playground for Figma agent by @ux.edward",
-    external: true,
-    logo: "/images/brands/figma.png",
-    logoAlt: "Figma",
-  },
   {
     title: "Figma agent Playground",
     href: "https://psxid.figma.com/edward_agent",
@@ -307,6 +300,19 @@ export const resources: Resource[] = [
     ],
   },
   {
+    slug: "figma-agents-playground",
+    href: "https://www.figma.com/community/file/1680528170033800324",
+    category: "AI & CODE",
+    title: "[Playground] Figma agents by @ux.edward",
+    pageTitle: "[Playground] Figma agents by @ux.edward",
+    summary: "A hands-on playground for Figma agent by @ux.edward",
+    readTime: "",
+    cta: "Open in Figma",
+    logos: [{ src: "/images/brands/figma.png", alt: "Figma" }],
+    links: [],
+    steps: [],
+  },
+  {
     slug: "mobbin-setup",
     category: "AI & CODE",
     title: "Setting up Mobbin MCP",
@@ -412,5 +418,9 @@ export const resources: Resource[] = [
 ];
 
 export function getResource(slug: string) {
-  return resources.find((resource) => resource.slug === slug);
+  return resources.find((resource) => resource.slug === slug && !resource.href);
+}
+
+export function getGuides() {
+  return resources.filter((resource) => !resource.href);
 }

@@ -1,4 +1,4 @@
-import { resources } from "@/lib/resources";
+import { getGuides } from "@/lib/resources";
 import { site } from "@/lib/site";
 
 export default function sitemap() {
@@ -14,7 +14,7 @@ export default function sitemap() {
     "/work/train-booking",
     "/work/car-rentals",
     "/work/bus-product",
-    ...resources.map((resource) => `/resources/${resource.slug}`),
+    ...getGuides().map((resource) => `/resources/${resource.slug}`),
   ];
 
   return routes.map((route) => ({

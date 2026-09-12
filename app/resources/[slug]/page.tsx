@@ -10,7 +10,7 @@ import {
   GuideHeader,
   PlanList,
 } from "@/components/resource-card";
-import { getResource, resources } from "@/lib/resources";
+import { getGuides, getResource } from "@/lib/resources";
 import { site } from "@/lib/site";
 
 type Props = {
@@ -18,7 +18,7 @@ type Props = {
 };
 
 export function generateStaticParams() {
-  return resources.map((resource) => ({ slug: resource.slug }));
+  return getGuides().map((resource) => ({ slug: resource.slug }));
 }
 
 export const dynamicParams = false;
