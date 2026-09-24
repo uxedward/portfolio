@@ -17,6 +17,10 @@ import {
   helpCenterToc,
 } from "@/components/case-studies/help-center";
 import {
+  LiveActivitiesBody,
+  liveActivitiesToc,
+} from "@/components/case-studies/live-activities";
+import {
   TrainBookingBody,
   trainBookingToc,
 } from "@/components/case-studies/train-booking";
@@ -41,6 +45,7 @@ const bodies: Record<
   { toc: TocItem[]; Body: () => React.ReactNode }
 > = {
   "help-center": { toc: helpCenterToc, Body: HelpCenterBody },
+  "live-activities": { toc: liveActivitiesToc, Body: LiveActivitiesBody },
   "bus-search": { toc: busSearchToc, Body: BusSearchBody },
   "train-booking": { toc: trainBookingToc, Body: TrainBookingBody },
   "car-rentals": { toc: carRentalsToc, Body: CarRentalsBody },

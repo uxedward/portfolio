@@ -32,6 +32,36 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "live-activities",
+    title: "Standardizing tiket.com’s Live Activities",
+    client: "tiket.com / Live Activities Standardization",
+    year: "2025–26",
+    tags: ["Product", "Design Systems"],
+    category: "product",
+    summary:
+      "Standardized tiket.com’s Live Activities into a three-type template system, replacing per-vertical builds and costly WhatsApp and SMS reminders.",
+    lede: "Standardized tiket.com’s Live Activities into a three-type template system, replacing per-vertical builds and costly WhatsApp and SMS reminders.",
+    bullets: [
+      "A three-type template covering every vertical use case",
+      "40+ use case requests consolidated into three reusable types",
+    ],
+    outcome: "40+ use cases → 3 reusable types",
+    metrics: [
+      { value: "3", label: "Reusable Live Activity types" },
+      { value: "40+", label: "Use cases consolidated" },
+      { value: "Rp1.76B", label: "Quarterly WhatsApp / SMS cost to replace" },
+    ],
+    cover: "/images/work/live-activities-cover.png",
+    hero: "/images/work/live-activities-cover.png",
+    duration: "Q4 2025 to Q1 2026 (6 months)",
+    type: "Live Activity Standardization",
+    domains: ["Design Systems", "Product Design", "Product Strategy"],
+    domainsIntro: "This project showcases my expertise in three key domains:",
+    liveUrl: "https://www.tiket.com",
+    liveLabel: "tiket.com Live Activities",
+    nextSlug: "train-booking",
+  },
+  {
     slug: "help-center",
     title: "Redesigning Help Center into halo tiket Customer Support",
     client: "tiket.com / Help Center",
